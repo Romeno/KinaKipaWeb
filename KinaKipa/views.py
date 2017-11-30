@@ -60,8 +60,3 @@ def get_currency_rate(req):
     response = ["{}: {}\n".format(item[0], item[1]) for item in result.items()]
 
     return HttpResponse(response)
-
-
-
-
-
