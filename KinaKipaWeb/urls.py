@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from KinaKipa.views import test_view
+from KinaKipa.views import freeze_info
+from KinaKipa.views import  sistem_info
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^test/', test_view),
+    #url(r'^free/', freeze_info,)
+    url(r'^sis/',  sistem_info),
+
+
 ]
