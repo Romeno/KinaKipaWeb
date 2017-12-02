@@ -168,7 +168,7 @@ background: url(img/4.jpg);
 
 .news-group {
   display: block;
-  margin: 0% 35% 5% 20%;
+  margin: 0% 38% 5% 25% !important;
   background-color: #f7f4f4;
   font-family: 'league_gothicregular', sans-serif;
 }
@@ -176,11 +176,11 @@ background: url(img/4.jpg);
 .news-group header {
   display: inline-block;
   width: 80%;
-  padding-left: 15px;
+  padding-left: 20px;
 }
 
 .news-group header .title {
-  font-weight: bold; !important;
+  font-weight: bold;
 }
 
 .news-group header .title h3 {
@@ -201,7 +201,7 @@ background: url(img/4.jpg);
 
 .news-group .content {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .news-group .content img {
@@ -210,7 +210,7 @@ background: url(img/4.jpg);
 }
 
 .news-group .content p {
-  padding-left: 10px;
-  margin: 5% 10% 0% 0%;
+  padding-left: 20px;
+  margin: 5% 5% 0% 0%;
   color: #3d3a3a;
 }
