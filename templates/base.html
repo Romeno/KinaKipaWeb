@@ -1,24 +1,25 @@
+<!DOCTYPE html>
 {% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    </head>
 
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-
-</head>
-
-<body>
+    <body>
 
 
-<ul class="navigation">
- <li><a href="#">Галоуная</a></li>
- <li><a href="#">Фiльмы</a></li>
- <li><a href="#">Серыялы</a></li>
- <li><a href="#">Пра нас</a></li>
- <li><a href="#">Как нас найти</a></li>
+    <ul class="navigation">
+      <li><a href="#">Галоуная</a></li>
+      <li><a href="#">Фiльмы</a></li>
+      <li><a href="#">Серыялы</a></li>
+      <li><a href="#">Пра нас</a></li>
+      <li><a href="#">Как нас найти</a></li>
+    </ul>
 
-</ul>
+    {% block content %}
 
-{% block content %}
-{% endblock %}
+    {% endblock %}
 
-</body>
+    </body>
+</html>

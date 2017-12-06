@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Article, Event, Film
 
-# Register your models here.
+
+admin.site.register(Article)
+admin.site.register(Film)
+admin.site.register(Event)
