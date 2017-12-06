@@ -5,13 +5,16 @@ import sys
 from django.shortcuts import render
 from django.http import HttpResponse
 from KinaKipaWeb.settings import BASE_DIR
+from django.template.response import TemplateResponse
+
+
 
 
 # Create your views here.
 
 
 def test_view(req):
-    return HttpResponse("Hello World!")
+    return TemplateResponse(req, 'index.html', {})
 
 
 def get_server_info(req):
@@ -31,7 +34,7 @@ def get_local_dir(req):
 
 
 def get_index_page(req):
-    path = os.path.join(BASE_DIR, "layout", "index.html")
+    path = os.path.join(BASE_DIR, "KinaKipaWeb/layout", "../templates/index.html")
     response = []
     with open(path, 'r', encoding='utf8') as index_html:
         index_html = index_html
@@ -60,3 +63,5 @@ def get_currency_rate(req):
     response = ["{}: {}\n".format(item[0], item[1]) for item in result.items()]
 
     return HttpResponse(response)
+def news(req):
+    return TemplateResponse(req, 'news.html', {})
