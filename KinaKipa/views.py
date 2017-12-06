@@ -5,6 +5,7 @@ import sys
 from django.shortcuts import render
 from django.http import HttpResponse
 from KinaKipaWeb.settings import BASE_DIR
+from django.template.response import TemplateResponse
 
 
 # Create your views here.
@@ -12,6 +13,14 @@ from KinaKipaWeb.settings import BASE_DIR
 
 def test_view(req):
     return HttpResponse("Hello World!")
+
+
+def test(req):
+    return TemplateResponse(req, 'index.html', {})
+
+
+def news(request):
+    return TemplateResponse(request, 'news.html', {})
 
 
 def get_server_info(req):
