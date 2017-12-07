@@ -17,16 +17,19 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from KinaKipa.views import (get_currency_rate, get_index_page,
-                            get_local_dir, get_server_info, news,
-                            test_view, test)
+                            get_local_dir, get_server_info, hello_world,
+                            news, index)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test/', test_view),
-    url(r'^server_info/', get_server_info),
-    url(r'^local_directory/', get_local_dir),
-    url(r'^index_test/', get_index_page),
-    url(r'^currency_courses/', get_currency_rate),
-    url(r'^test_template/', test),
-    url(r'^news/', news)
+
+    url(r'^$', index),
+    url(r'^news/$', news),
+
+    url(r'^server_info/$', get_server_info),
+    url(r'^local_directory/$', get_local_dir),
+    url(r'^index_test/$', get_index_page),
+    url(r'^currency_courses/$', get_currency_rate),
+
+    url(r'^hello_world/$', hello_world),
 ]

@@ -12,11 +12,11 @@ from django.template.response import TemplateResponse
 # Create your views here.
 
 
-def test_view(req):
+def hello_world(req):
     return HttpResponse("Hello World!")
 
 
-def test(req):
+def index(req):
     return TemplateResponse(req, 'index.html', {})
 
 
