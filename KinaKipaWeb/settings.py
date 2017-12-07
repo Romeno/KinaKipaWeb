@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from . import settings_local
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +27,7 @@ SECRET_KEY = '+wq83@$(zbmoy^dy$g)pkv5(#1k@wu74alyp@ix!u1iu9%@84-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = settings_local.ALLOWED_HOSTS
 
 
 # Application definition
@@ -78,9 +79,10 @@ WSGI_APPLICATION = 'KinaKipaWeb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kinakipa',
-        'USER': 'root',
-        'PASSWORD': 'alex0202'
+        'NAME': settings_local.DATABASES['default']['NAME'],
+        'USER': settings_local.DATABASES['default']['USER'],
+        'PASSWORD': settings_local.DATABASES['default']['PASSWORD'],
+        'HOST': settings_local.DATABASES['default']['HOST'],
     }
 }
 
@@ -122,3 +124,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+

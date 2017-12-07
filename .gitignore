@@ -1,2 +1,4 @@
 *.pyc
 /.idea/*
+/static/
+/KinaKipaWeb/settings_local.py
