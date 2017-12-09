@@ -1,0 +1,13 @@
+[
+{
+    "model": "KinaKipa.article",
+    "pk": 1,
+    "fields": {
+        "title": "qq",
+        "content": "consdfsafd",
+        "published_date": "2017-12-09T08:23:17Z",
+        "image": "",
+        "video": ""
+    }
+}
+]
