@@ -8,6 +8,8 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.template.response import TemplateResponse
 
+from django.utils.translation import ugettext as _
+
 
 # Create your views here.
 
@@ -22,6 +24,20 @@ def index(req):
 
 def news(request):
     return TemplateResponse(request, 'news.html', {})
+
+
+def test_trans(req):
+    from django.utils.translation import activate, get_language_info
+
+    activate('be')
+    li = get_language_info('be')
+    resp = "Translating: "
+    resp += _("Administration")
+    resp += "<br>"
+    for k, v in li.items():
+        resp += f"{k}: {v} <br>"
+
+    return HttpResponse(resp)
 
 
 def get_server_info(req):

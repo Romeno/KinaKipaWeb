@@ -14,9 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
-from KinaKipa.views import (get_currency_courses, get_index_test,
+from KinaKipa.views import (get_currency_courses, get_index_test, test_trans,
                             get_local_directory, get_server_info, hello_world,
                             news, index)
 
@@ -30,6 +32,11 @@ urlpatterns = [
     url(r'^local_directory/$', get_local_directory),
     url(r'^index_test/$', get_index_test),
     url(r'^currency_courses/$', get_currency_courses),
+    url(r'^test_trans/$', test_trans),
 
     url(r'^hello_world/$', hello_world),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
