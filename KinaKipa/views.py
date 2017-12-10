@@ -55,7 +55,7 @@ def get_local_directory(req):
     который будет выводить: содержимое дерева
     директорий папки KinaKipaWeb"
     """
-    def search(current_dir=os.getcwd()):
+    def search(current_dir=settings.BASE_DIR):
         items_name = os.listdir(current_dir)
         items_path = [os.path.join(current_dir, item) for item in items_name]
         for i, item_path in enumerate(items_path):
@@ -86,9 +86,7 @@ def get_index_test(req):
     выводить: прочитает старницу index.html из файла и
     отдаст её в запросе, так чтобы она вернулась в запросе
     """
-    os.path.join(os.getcwd(), 'layout', 'index.html')
-
-    filepath = os.path.join(os.getcwd(), 'layout', 'index.html')
+    filepath = os.path.join(settings.BASE_DIR, 'layout', 'index.html')
 
     with open(filepath, encoding='utf-8') as file:
         html = file.readlines()
