@@ -7,8 +7,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
 from django.template.response import TemplateResponse
-
 from django.utils.translation import ugettext as _
+from .models import Film
 
 
 # Create your views here.
@@ -133,3 +133,8 @@ def get_currency_courses(req):
     <p>По отношению к евро: {rate_eur}</p>
     """
     return HttpResponse(response)
+
+
+def film(request):
+    film_cursor = Film.objects.last()
+    return render(request, 'film_page.html', {'film': film_cursor})

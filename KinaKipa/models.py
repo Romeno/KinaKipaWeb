@@ -2,7 +2,8 @@
 
 from django.db import models
 from django.db.models import (CharField, DateTimeField, FileField, ImageField,
-                              PositiveSmallIntegerField, TextField, URLField)
+                              PositiveSmallIntegerField, TextField, URLField,
+                              FloatField)
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 
@@ -44,9 +45,14 @@ class Film(models.Model):
     )
 
     name = CharField(max_length=200, verbose_name='film_name', help_text="Назва")
+    name_origin = CharField(max_length=200, verbose_name='film_name_origin',
+                            default='',help_text="Назва арыгінала")
     director = CharField(max_length=200, help_text="Рэжысёр")
     year = PositiveSmallIntegerField(default=None, help_text="Год")
+    kp_rating = FloatField(null=True)
+    imdb_rating = FloatField(null=True)
     genres = CharField(max_length=200, choices=GENRES_CHOICES, default='', help_text="Жанры")
+    stars = CharField(max_length=200, help_text="Акцёры", default="нет инфармацыi")
     video = FileField(storage=VIDEO_STORAGE, help_text="Відэа")
     length = PositiveSmallIntegerField(help_text="Працягласць")
     description = TextField(help_text="Апісанне")

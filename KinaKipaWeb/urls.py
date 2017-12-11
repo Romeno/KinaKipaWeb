@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from KinaKipa.views import (get_currency_courses, get_index_test, test_trans,
                             get_local_directory, get_server_info, hello_world,
-                            news, index)
+                            news, index, film)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -35,6 +35,8 @@ urlpatterns = [
     url(r'^test_trans/$', test_trans),
 
     url(r'^hello_world/$', hello_world),
+
+    url(r'^film/', film)
 ]
 
 if settings.DEBUG:

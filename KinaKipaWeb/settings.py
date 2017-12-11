@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'KinaKipaWeb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': settings_local.DATABASES['default']['ENGINE'],
         'NAME': settings_local.DATABASES['default']['NAME'],
         'USER': settings_local.DATABASES['default']['USER'],
         'PASSWORD': settings_local.DATABASES['default']['PASSWORD'],
