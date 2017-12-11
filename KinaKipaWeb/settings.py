@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = settings_local.ALLOWED_HOSTS
 
+SITE_ID = 1
 
 # Application definition
 
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'KinaKipa',
 ]
 
@@ -138,3 +141,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
