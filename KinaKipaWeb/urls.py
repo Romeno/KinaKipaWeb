@@ -15,28 +15,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from KinaKipa.views import (get_currency_courses, get_index_test, test_trans,
                             get_local_directory, get_server_info, hello_world,
                             news, index, film)
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
+    # sort logically later
     url(r'^$', index),
     url(r'^news/$', news),
-
     url(r'^server_info/$', get_server_info),
     url(r'^local_directory/$', get_local_directory),
     url(r'^index_test/$', get_index_test),
     url(r'^currency_courses/$', get_currency_courses),
     url(r'^test_trans/$', test_trans),
-
     url(r'^hello_world/$', hello_world),
-
-    url(r'^film/', film)
+    url(r'^film/', film),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
 ]
 
 if settings.DEBUG:
