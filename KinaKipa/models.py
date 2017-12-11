@@ -52,7 +52,7 @@ class Film(models.Model):
     kp_rating = FloatField(null=True)
     imdb_rating = FloatField(null=True)
     genres = CharField(max_length=200, choices=GENRES_CHOICES, default='', help_text="Жанры")
-    stars = CharField(max_length=200, help_text="Акцёры", default="нет инфармацыi")
+    stars = CharField(max_length=200, help_text="Акцёры", default="нет Iнфармацыi")
     video = FileField(storage=VIDEO_STORAGE, help_text="Відэа")
     length = PositiveSmallIntegerField(help_text="Працягласць")
     description = TextField(help_text="Апісанне")
