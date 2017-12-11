@@ -37,13 +37,13 @@ install gettext cygwin package
 ### "Production" server
 Hoseted with [Pythonanywhere](http://pythonanywhere.com) and located at http://kinakipa.pythonanywhere.com
 
-#### Credentials for Pythonanywhere
+#### *Credentials for Pythonanywhere*
 **login**: KinaKipa
 
 **password**: KinaKipa001
 
 
-#### Credentials for KinaKipa admin
+#### *Credentials for KinaKipa admin*
 **login**: KinaKipa
 
 **password**: admin001
