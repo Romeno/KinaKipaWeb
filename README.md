@@ -2,7 +2,7 @@
 ### All your favorite movies!
 
 
-#### Install
+### Install
 `git clone https://github.com/Romeno/KinaKipaWeb.git`
 
 `pip install -r`
@@ -12,7 +12,7 @@ install [cygwyn](https://www.cygwin.com/)
 install gettext cygwin package
 
 
-#### Usage
+### Usage
 `dumpdata.bat`- helper for creating fixtures - data files to populate DB with some starting data during development
 
 `loaddata.bat` - loads all data from fixtures from `fixtures` directory in every app
@@ -22,7 +22,7 @@ install gettext cygwin package
 `compilemessages.bat` - helper to compile message \*.po files into \*.mo files
 
 
-#### Structure
+### Structure
 `KinaKipaWeb` - project name, settings, urls, etc storage
 
 `KinaKina` - main app
@@ -34,20 +34,20 @@ install gettext cygwin package
 `templates` - TODO: delete
 
 
-#### "Production" server
+### "Production" server
 Hoseted with [Pythonanywhere](http://pythonanywhere.com) and located at http://kinakipa.pythonanywhere.com
 
-##### Credentials for Pythonanywhere
+#### Credentials for Pythonanywhere
 **login**: KinaKipa
 
 **password**: KinaKipa001
 
 
-#### Credentials for KinaKipa admin
+### Credentials for KinaKipa admin
 **login**: KinaKipa
 
 **password**: admin001
 
 
-#### Other
+### Other
 Some info can be found on [wiki](https://github.com/Romeno/KinaKipaWeb/wiki)
