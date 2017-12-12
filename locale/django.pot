@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-11 01:49+0300\n"
+"POT-Creation-Date: 2017-12-12 20:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,4 +24,25 @@ msgid "Russian"
 msgstr ""
 
 msgid "Belarusian"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Article title"
+msgstr ""
+
+msgid "Article content"
+msgstr ""
+
+msgid "Publication date"
+msgstr ""
+
+msgid "Article image"
+msgstr ""
+
+msgid "Image of article when viewing article list on index or news page"
+msgstr ""
+
+msgid "Administration"
 msgstr ""
