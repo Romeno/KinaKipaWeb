@@ -7,6 +7,10 @@
 
 `pip install -r`
 
+`python manage.py migrate`
+
+`loaddata.bat`
+
 install [cygwyn](https://www.cygwin.com/)
 
 install gettext cygwin package
