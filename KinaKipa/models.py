@@ -75,5 +75,10 @@ class Event(models.Model):
         return self.title
 class Baner(models.Model):
     image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, help_text="")
+    BANER_CHOICES = (
+        ("baner_top" , "верхний банер"),
+        ("baner_right", "правый банер")
+    )
+    baner = models.CharField(max_length=255, choices=BANER_CHOICES, default='', help_text="банер")
 
 
