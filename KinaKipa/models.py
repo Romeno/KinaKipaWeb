@@ -6,6 +6,7 @@ from django.db.models import (CharField, DateTimeField, FileField, ImageField,
                               FloatField)
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
+from django.utils.translation import ugettext as _
 
 
 IMAGE_STORAGE = FileSystemStorage(location='layout/image')
@@ -14,10 +15,10 @@ VIDEO_STORAGE = FileSystemStorage(location='layout/video')
 
 class Article(models.Model):
 
-    title = CharField(max_length=200, verbose_name='article_title', help_text="Назва")
-    content = TextField(verbose_name='article_content', help_text="Змест")
-    published_date = DateTimeField(default=timezone.now, help_text="Дата публікацыі")
-    image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, help_text="Карцінка")
+    title = CharField(max_length=200, verbose_name=_('Title'), help_text=_("Article title"))
+    content = TextField(verbose_name=_('Article content'), help_text=_("Article content"))
+    published_date = DateTimeField(default=timezone.now, verbose_name=_('Publication date'), help_text=_("Publication date"))
+    image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Article image'), help_text=_("Image of article when viewing article list on index or news page"))
     video = FileField(storage=VIDEO_STORAGE, blank=True, null=True, help_text="Відэа")
 
     def publish(self):
@@ -72,3 +73,12 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+class Baner(models.Model):
+    image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, help_text="")
+    BANER_CHOICES = (
+        ("baner_top" , "верхний банер"),
+        ("baner_right", "правый банер")
+    )
+    baner = models.CharField(max_length=255, choices=BANER_CHOICES, default='', help_text="банер")
+
+

@@ -3,9 +3,25 @@
 
 
 ### Install
+#### Windows
 `git clone https://github.com/Romeno/KinaKipaWeb.git`
 
 `pip install -r`
+
+`python manage.py migrate`
+
+`loaddata.bat`
+
+#### Linux server (pythonanywhere)
+`git clone https://github.com/Romeno/KinaKipaWeb.git`
+
+`pip3.6 install -r`
+
+`python3.6 manage.py migrate`
+
+`python3.6 ./manage.py loaddata initial_data.json`
+
+
 
 install [cygwyn](https://www.cygwin.com/)
 
