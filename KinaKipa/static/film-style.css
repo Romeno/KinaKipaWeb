@@ -121,3 +121,7 @@
 .film-info table tr td:first-child {
   width: 130px;
 }
+.films {
+  width: 71%;
+  font-size: 12px;
+}

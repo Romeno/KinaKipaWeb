@@ -66,3 +66,6 @@ def last_film(request):
 
 def catalog(requst):
     return TemplateResponse(requst, 'catalog.html')
+
+def p_film(request):
+    return  TemplateResponse(request,  'p_film.html')
