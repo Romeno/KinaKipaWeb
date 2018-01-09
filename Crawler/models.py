@@ -35,17 +35,25 @@ class Crawled_Film(models.Model):
 
     def __eq__(self, other):
         # This function compares films-objects
-        # using NAME-similarity and released year.
+
         if not isinstance(other, self.__class__):
             return False
         if self.name == other.name:
             return True
+
+        # Find similarity between film-names
         similarity = SequenceMatcher(None, self.name, other.name).ratio()
         if similarity > 0.75:
             return True
-        # If not that similar, but has the same release-year:
-        if (self.year and other.year and
-            self.year == other.year and similarity > 0.5):
+
+        # If not that similar, but has the same release-year or country:
+        if ((self.year and other.year and
+            self.year == other.year and
+            similarity > 0.5) or (
+            self.country and other.country and
+            self.country == other.country and
+            similarity > 0.6
+            )):
             return True
         return False
 
