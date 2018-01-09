@@ -80,4 +80,4 @@ def last_film(request):
     return render(request, 'film_page.html', {'film': film_cursor})
 
 def catalog(requst):
-    return (requst, 'catalog.html')
+    return TemplateResponse(requst, 'catalog.html')
