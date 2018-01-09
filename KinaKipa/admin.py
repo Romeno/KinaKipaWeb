@@ -3,6 +3,7 @@
 from django.contrib import admin
 from django.contrib.flatpages.models import FlatPage
 from .models import Article, Event, Film, Baner
+from Crawler.models import Crawled_Film
 
 class TinyMCEAdmin(admin.ModelAdmin):
     class Media:
@@ -20,3 +21,6 @@ admin.site.register(Article, TinyMCEAdmin)
 admin.site.register(Film)
 admin.site.register(Event)
 admin.site.register(Baner)
+
+# # crawler
+# admin.site.register(Crawled_Film)

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'KinaKipa',
     'tinymce',
     'el_pagination',
+    'Crawler'
 ]
 
 MIDDLEWARE = [

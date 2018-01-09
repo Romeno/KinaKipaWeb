@@ -139,7 +139,8 @@ class Library():
                 print('Crawled items:')
                 for i in crawled_items:
                     print(i, crawled_items[i])
-                sleep(random()*20)
+                sleep(random()*10)
+
 
 
 lib = Library()
