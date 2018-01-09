@@ -25,6 +25,7 @@ from KinaKipa.views import (get_currency_courses, get_index_test, test_trans,
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^tinymce/', include('tinymce.urls')),
     # sort logically later
     url(r'^$', index),
     url(r'^news/$', news),

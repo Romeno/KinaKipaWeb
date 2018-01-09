@@ -17,11 +17,11 @@ with open(file_path, 'r', encoding="UTF-8") as page:
     title = content.find('div', {'class': 'title'}).text
     # find other information from text only
     raw_text = content.text
-    country = re.findall(r'Краіна:\s(.*)\n', raw_text)[0]
-    length = re.findall(r'Працягласць:\s(.*)\n', raw_text)[0]
-    director = re.findall(r'Рэжысёр:\s(.*)\n', raw_text)[0]
-    stars = re.findall(r'Ролі выконваюць:\s(.*)\n', raw_text)[0]
+    country = re.findall(r'Краіна:(.*)\n', raw_text)[0]
+    length = re.findall(r'Працягласць:(.*)\n', raw_text)[0]
+    director = re.findall(r'Рэжысёр:(.*)\n', raw_text)[0]
+    stars = re.findall(r'Ролі выконваюць:(.*)\n', raw_text)[0]
 
     # somehow description isn't working now
-    # description = re.findall(r'Пра фільм:[.\n]*</p>', content.__str__())
-    # print(content.__str__())
+    description = re.findall(r'Пра фільм:(.*)<\/p>', content.__str__())
+    print(content.__str__())
