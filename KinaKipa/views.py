@@ -78,3 +78,6 @@ def get_index_test(req):
 def last_film(request):
     film_cursor = Film.objects.last()
     return render(request, 'film_page.html', {'film': film_cursor})
+
+def catalog(requst):
+    return (requst, 'catalog.html')
