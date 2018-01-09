@@ -12,8 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from . import settings_local
+from django.conf.global_settings import TEMPLATES
 from django.utils.translation import ugettext_lazy as _
+from . import settings_local
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'KinaKipa',
     'tinymce',
+    'el_pagination',
 ]
 
 MIDDLEWARE = [
