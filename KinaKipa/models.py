@@ -54,9 +54,11 @@ class Film(models.Model):
     imdb_rating = FloatField(null=True)
     genres = CharField(max_length=200, choices=GENRES_CHOICES, default='', help_text="Жанры")
     stars = CharField(max_length=200, help_text="Акцёры", default="нет Iнфармацыi")
-    video = FileField(storage=VIDEO_STORAGE, help_text="Відэа")
-    length = PositiveSmallIntegerField(help_text="Працягласць")
+    video_html = TextField(help_text="html-код для проигрывания видео", default='')
+    length = CharField(max_length=25, help_text="Працягласць", default='')
+    image_url = URLField(max_length=200, blank=True, help_text="Спасылка на карцiнку")
     description = TextField(help_text="Апісанне")
+    country = CharField(max_length=200, help_text="Краiна", default="")
     torrent_links = URLField(max_length=200, blank=True, help_text="Спасылка на торэнт")
 
     def __str__(self):
