@@ -18,9 +18,8 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from KinaKipa.views import (get_index_test, test_trans,get_server_info,
-                            news, index, catalog)
-
+from KinaKipa.views import (test_trans, get_server_info,
+                            news, index, last_film, catalog)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,11 +27,12 @@ urlpatterns = [
     # sort logically later
     url(r'^$', index, name='index'),
     url(r'^news/$', news),
-    url(r'^server_info/$', get_server_info),
-    url(r'^index_test/$', get_index_test),
+    url(r'^last_film/', last_film),
+    # development tests
     url(r'^test_trans/$', test_trans),
-    url(r'^pages/', include('django.contrib.flatpages.urls')),
-    url(r'catalog/', catalog, name='catalog')
+    url(r'^server_info/$', get_server_info),
+    url(r'^catalog/$', catalog, name='catalog'),
+
 ]
 
 if settings.DEBUG:
