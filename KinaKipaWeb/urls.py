@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from KinaKipa.views import (get_currency_courses, get_index_test, test_trans,
                             get_local_directory, get_server_info, hello_world,
-                            news, index, film)
+                            news, index, film, catalog)
 
 
 urlpatterns = [
@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^hello_world/$', hello_world),
     url(r'^film/', film),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
+    url(r'catalog/$', catalog, name='catalog')
 ]
 
 if settings.DEBUG:
