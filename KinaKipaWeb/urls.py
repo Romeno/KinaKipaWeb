@@ -24,6 +24,7 @@ from KinaKipa.views import (test_trans, get_server_info,
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
     # sort logically later
     url(r'^$', index, name='index'),
     url(r'^news/$', news),
