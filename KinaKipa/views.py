@@ -60,21 +60,6 @@ def get_server_info(req):
     return HttpResponse(response)
 
 
-def get_index_test(req):
-    """
-    Написать обработчик на урл index_test, который будет
-    выводить: прочитает старницу index.html из файла и
-    отдаст её в запросе, так чтобы она вернулась в запросе
-    """
-    filepath = os.path.join(settings.BASE_DIR, 'layout', 'index.html')
-
-    with open(filepath, encoding='utf-8') as file:
-        html = file.readlines()
-
-    response = [line for line in html]
-    return HttpResponse(response)
-
-
 def last_film(request):
     film_cursor = Film.objects.last()
     return render(request, 'film_page.html', {'film': film_cursor})
