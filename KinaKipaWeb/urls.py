@@ -19,18 +19,22 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from KinaKipa.views import (test_trans, get_server_info,
-                            news, index, last_film)
+                            news, index, last_film, catalog, p_film)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
     # sort logically later
-    url(r'^$', index),
+    url(r'^$', index, name='index'),
     url(r'^news/$', news),
     url(r'^last_film/', last_film),
     # development tests
     url(r'^test_trans/$', test_trans),
     url(r'^server_info/$', get_server_info),
+    url(r'^catalog/$', catalog, name='catalog'),
+    url(r'^p_film/$', p_film, name='p_film'),
+
 ]
 
 if settings.DEBUG:

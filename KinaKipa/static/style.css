@@ -64,7 +64,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
   }
 }
-
+#films {
+  width: 79%;
+  font-size: 12px;
+}
 .flex-container {
   padding: 0;
   margin: 0;

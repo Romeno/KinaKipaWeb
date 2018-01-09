@@ -11,11 +11,12 @@
 
 
     <ul class="navigation">
-      <li><a href="#">Галоуная</a></li>
-      <li><a href="#">Фiльмы</a></li>
+      <li><a href="{% url 'index' %}">Галоуная</a></li>
+      <li><a href="{% url 'catalog' %}">Фiльмы</a></li>
+      <li><a href="{% url 'p_film' %}">Кино просмотры</a></li>
       <li><a href="#">Серыялы</a></li>
       <li><a href="/pages/about/">Пра нас</a></li>
-      <li><a href="{% url 'catalog' %}">Каталог</a></li>
+
     </ul>
 
     {% block content %}
