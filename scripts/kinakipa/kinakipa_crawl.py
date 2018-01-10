@@ -36,7 +36,7 @@ CSV_FIELDS = [
 
 session = vk.AuthSession(app_id=vk_id, user_login=login, user_password=password, scope='wall,video')
 vkApi = vk.API(session)
-POST_COUNT = 40
+POST_COUNT = 1000
 STEP = 20
 ID = 0
 
@@ -132,15 +132,21 @@ def prepare_inf_to_csv(inf, patterns):
     for post in inf:
         for patt in patterns:
             if patt[0] != "description":
-                post[0][patt[0]] = ", ".join(post[0][patt[0]]).strip()
+                    post[0][patt[0]] = ", ".join(post[0][patt[0]]).strip()
             else:
-                post[0][patt[0]] = "".join(s for s in post[0][patt[0]][0]).strip()
+                try:
+                    post[0][patt[0]] = "".join(s for s in post[0][patt[0]][0]).strip()
+                except IndexError:
+                    post[0][patt[0]] = ""
     for post in inf:
         new_post = dict()
         new_post["id"] = ID
         new_post.update(post[0])
-        new_post.update(post[1][0])
-        new_post["video"] = post[1][1]
+        try:
+            new_post.update(post[1][0])
+            new_post["video"] = post[1][1]
+        except TypeError:
+            pass
         result.append(new_post)
         ID += 1
     return result
