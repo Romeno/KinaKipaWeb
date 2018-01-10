@@ -1,7 +1,7 @@
 import vk
 import re
 import time
-import csv
+import requests
 
 
 login = input('vk_email: ')
@@ -9,7 +9,7 @@ password = input('vk_password: ')
 vk_id = '6295734'
 
 title = ("title", r'(^[\w\d][\w\d\s!\?\+ch-]+)[\\|]')
-content = ("content", r'<br>[\s]{0,2}<br>([^</]*)<br>([^</]*)<br>[\s]{0,2}')
+description = ("description", r'<br>[\s]{0,2}<br>([^</]*)<br>([^</]*)<br>[\s]{0,2}')
 year = ("year", r'\s(\d{4})')
 imdb = ("imdb", r'http[s]?://www.imdb.com[^\s<]*')
 kinopoisk = ("kinopoisk", r'http[s]?://www.kinopoisk.ru[^\s<]*')
@@ -18,14 +18,27 @@ voice_over = ("voice_over", r'[АаSB\d][гa\dD]\w+[:]?\s*(http[s]?:[^\s<]*)')
 video_link = ("video_link", r'[Аа][н][л]\w+[:]?\s*(http[s]?:[^\s<]*)')
 
 patterns = [
-    title, content, year,
+    title, description, year,
     tags, kinopoisk, imdb,
     voice_over, video_link
 ]
 
+CSV_FILENAME = "kinakipa_films.csv"
+
+CSV_FIELDS = [
+    "id",
+    "title", "description", "year", "tags", "kinopoisk",
+    "imdb", "voice_over", "video_link", "full_text",
+    "src_small", "src", "src_big",
+    "src_xbig", "src_xxbig", "src_xxxbig",
+    "video"
+]
+
 session = vk.AuthSession(app_id=vk_id, user_login=login, user_password=password, scope='wall,video')
-vkapi = vk.API(session)
-posts = vkapi.wall.get(owner_id='-136884833', filter='owner', count='20')
+vkApi = vk.API(session)
+POST_COUNT = 40
+STEP = 20
+ID = 0
 
 
 def search_in_posts(posts, patterns, vkapi):
@@ -80,17 +93,22 @@ def get_video(attachment, vkapi):
     owner_id = video_inf["owner_id"]
     width = 480
     height = 270
-    try:
-        link = get_video_link(owner_id, id)
-    except vk.exceptions.VkAPIError as err:
-        time.sleep(4)
-        link = get_video_link(owner_id, id)
-    return '<iframe src="{0}" width="{1}" height="{2}" frameborder="0" allowfullscreen></iframe>'.format(link,
+    while requests.exceptions.ReadTimeout:
+        time.sleep(1)
+        try:
+            link = get_video_link(owner_id, id, vkapi)
+        except vk.exceptions.VkAPIError:
+            link = get_video_link(owner_id, id, vkapi)
+            return '<iframe src="{0}" width="{1}" height="{2}" frameborder="0" allowfullscreen></iframe>'.format(link,
+                                                                                                                 width,
+                                                                                                                 height)
+        else:
+            return '<iframe src="{0}" width="{1}" height="{2}" frameborder="0" allowfullscreen></iframe>'.format(link,
                                                                                                          width,
                                                                                                          height)
 
 
-def get_video_link(owner_id, id):
+def get_video_link(owner_id, id, vkapi):
     try:
         link = (vkapi.video.get(owner_id=owner_id, videos="{}_{}".format(owner_id, id), count=1))[-1]["player"]
     except TypeError:
@@ -108,12 +126,50 @@ def del_not_film_posts(inf):
     return result
 
 
-def write_inf_to_csv(inf):
-    pass
+def prepare_inf_to_csv(inf, patterns):
+    global ID
+    result = []
+    for post in inf:
+        for patt in patterns:
+            if patt[0] != "description":
+                post[0][patt[0]] = ", ".join(post[0][patt[0]]).strip()
+            else:
+                post[0][patt[0]] = "".join(s for s in post[0][patt[0]][0]).strip()
+    for post in inf:
+        new_post = dict()
+        new_post["id"] = ID
+        new_post.update(post[0])
+        new_post.update(post[1][0])
+        new_post["video"] = post[1][1]
+        result.append(new_post)
+        ID += 1
+    return result
+
+
+def write_inf_to_csv(data, path, fields):
+    inf_to_write = prepare_inf_to_csv(data, patterns)
+    delimiter = ";"
+    with open(path, "a") as f:
+        for row in inf_to_write:
+            for field in fields:
+                try:
+                    if type(row[field]) != str:
+                        f.write("{0}{1}".format(str(row[field]), delimiter))
+                    elif field == 'video':
+                        f.write(row[field])
+                    else:
+                        f.write("{0}{1}".format(row[field], delimiter))
+                except (UnicodeEncodeError, KeyError):
+                    pass
+            f.write("\n")
 
 
 if __name__ == "__main__":
-    inf = search_in_posts(posts, patterns, vkapi)
-    inf = del_not_film_posts(inf)
-    for post in inf:
-        print(post, sep='\n')
+    with open(CSV_FILENAME, "w") as f:
+        f.write("{0}\n".format(";".join(CSV_FIELDS)))
+    for posts_offset in range(0, POST_COUNT+1, STEP):
+        posts = vkApi.wall.get(owner_id='-136884833', filter='owner', count=STEP, offset=posts_offset)
+        inf = search_in_posts(posts, patterns, vkApi)
+        inf = del_not_film_posts(inf)
+        write_inf_to_csv(inf, path=CSV_FILENAME, fields=CSV_FIELDS)
+        time.sleep(4)
