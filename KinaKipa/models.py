@@ -75,6 +75,8 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+
 class Baner(models.Model):
     image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, help_text="")
     BANER_CHOICES = (
