@@ -1,9 +1,16 @@
 import os
+# import django
+#
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KinaKipaWeb.settings")
+# django.setup()
+
 import bs4
 import re
 from KinaKipaWeb.settings import BASE_DIR
 from time import sleep
 from Crawler.sites.movananova_patterns import patterns
+from Crawler.models import Crawled_Film
+
 
 class Library():
     def __init__(self):
@@ -45,9 +52,12 @@ class Library():
 
             # find image-links
             links = [link.attrs['href'] for link in content.findChildren('a')]
-            crawled_items['image_urls'] = list(filter(lambda st: st.endswith('.jpg'), links))
+            links = list(filter(lambda st: st.endswith('.jpg'), links))
+            link = links[0] if links else ''
+            crawled_items['image_url'] = link
+
             # find title
-            crawled_items['title'] = content.find('div', {'class': 'title'}).text
+            crawled_items['name'] = content.find('div', {'class': 'title'}).text
             # find video html
             crawled_items['video_html'] = content.find('iframe')
 
@@ -57,11 +67,27 @@ class Library():
 
             return crawled_items
 
+    def store_in_model(self):
+        for filename in self.filenames:
+            print('Open:', filename)
 
-lib = Library()
-for filename in lib.filenames:
-    print('-'*100)
-    print(filename)
-    data = lib.get_film_data(filename)
-    for item, value in data.items():
-        print(item.rjust(40), value)
+            film_data = self.get_film_data(filename)
+            for item, value in film_data.items():
+                print(item.ljust(15), value)
+
+            current_film = Crawled_Film.objects.create()
+            for item, value in film_data.items():
+                for attr in current_film.__dict__:
+                    if item == attr:
+                        current_film.__dict__[item] = value
+
+            if current_film not in Crawled_Film.objects.all():
+                current_film.save()
+            else:
+                current_film.delete()
+
+            print('Done.\n','*'.center(64))
+
+if __name__ == '__main__':
+    lib = Library()
+    lib.store_in_model()
