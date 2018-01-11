@@ -19,7 +19,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from KinaKipa.views import (test_trans, get_server_info,
-                            news, index, last_film, catalog, p_film)
+                            news, index, last_film, catalog, p_film, last_baner)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^server_info/$', get_server_info),
     url(r'^catalog/$', catalog, name='catalog'),
     url(r'^p_film/$', p_film, name='p_film'),
+    url(r'^', last_baner)
 
 ]
 
