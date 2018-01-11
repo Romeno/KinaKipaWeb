@@ -14,15 +14,15 @@ class Crawled_Film(models.Model):
     name_origin = CharField(
         max_length=200, verbose_name='film_name_origin',
         default="", help_text="Назва арыгінала",
-        blank=True
+        null=True, blank=True
     )
     director = CharField(max_length=200, help_text="Рэжысёр", default="", blank=True)
     # year = PositiveSmallIntegerField(default=None, help_text="Год")
     year = CharField(max_length=4, help_text="Год", default="", blank=True)
     kp_rating = FloatField(default=0.0, blank=True)
     imdb_rating = FloatField(default=0.0, blank=True)
-    genres = CharField(max_length=200, help_text="Жанры", default="", blank=True)
-    stars = CharField(max_length=200, help_text="Акцёры", default="", blank=True)
+    genres = CharField(max_length=300, help_text="Жанры", default="", blank=True)
+    stars = CharField(max_length=800, help_text="Акцёры", default="", blank=True)
     # video = FileField(storage=VIDEO_STORAGE, help_text="Відэа")
     video_html = TextField(help_text="html-код для проигрывания видео", default='', blank=True)
     length = CharField(max_length=30, help_text="Працягласць", default='', blank=True)

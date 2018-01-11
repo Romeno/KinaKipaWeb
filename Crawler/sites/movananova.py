@@ -68,7 +68,7 @@ class Library():
             return crawled_items
 
     def store_in_model(self):
-        for filename in self.filenames:
+        for index, filename in enumerate(self.filenames):
             print('Open:', filename)
 
             film_data = self.get_film_data(filename)
@@ -79,14 +79,17 @@ class Library():
             for item, value in film_data.items():
                 for attr in current_film.__dict__:
                     if item == attr:
-                        current_film.__dict__[item] = value
+                        current_film.__dict__[item] = str(value)
 
             if current_film not in Crawled_Film.objects.all():
                 current_film.save()
             else:
                 current_film.delete()
 
-            print('Done.\n','*'.center(64))
+            print(
+                f'Successfully stored {index}/{len(self.filenames)} \n',
+                ('*'*64).ljust(64)
+            )
 
 if __name__ == '__main__':
     lib = Library()
