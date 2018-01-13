@@ -1,0 +1,26 @@
+{
+  "name": "kinakipaweb",
+  "version": "1.0.0",
+  "description": "Django Web server for KinaKipa",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0"
+  },
+  "devDependencies": {},
+  "main": "manage.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Romeno/KinaKipaWeb.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Romeno/KinaKipaWeb/issues"
+  },
+  "homepage": "https://github.com/Romeno/KinaKipaWeb#readme"
+}
