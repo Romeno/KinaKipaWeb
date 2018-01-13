@@ -87,6 +87,7 @@ h1, h2, h3, h4, h5, h6 {
 .flex-item {
   background: tomato;
   padding: 0;
+  margin-bottom: 15px;
   width: 210px;
   height: 310px;
   line-height: 310px;
@@ -101,27 +102,13 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.6;
 }
 
-.flex-item .film-1, .flex-item .film-2, .flex-item .film-3, .flex-item .film-4 {
-display: block;
-background-size: cover;
+.flex-item .film-1 image,
+.flex-item .film-2 image,
+.flex-item .film-3 image,
+.flex-item .film-4 image,{
+  display: flex;
+  background-size: cover;
 }
-
-.flex-item .film-1 {
-background: url(img/1.jpg);
-}
-
-.flex-item .film-2 {
-background: url(img/2.jpg);
-}
-
-.flex-item .film-3 {
-background: url(img/3.jpg);
-}
-
-.flex-item .film-4 {
-background: url(img/4.jpg);
-}
-
 
 .p-t-50 {
   padding-top: 50px;

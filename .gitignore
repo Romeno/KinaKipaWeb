@@ -3,3 +3,4 @@
 /static/
 /KinaKipaWeb/settings_local.py
 /venv
+package-lock.json

@@ -34,7 +34,6 @@ urlpatterns = [
     url(r'^server_info/$', get_server_info),
     url(r'^catalog/$', catalog, name='catalog'),
     url(r'^p_film/$', p_film, name='p_film'),
-    url(r'^', last_baner)
 
 ]
 
