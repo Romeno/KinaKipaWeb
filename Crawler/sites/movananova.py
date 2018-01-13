@@ -84,6 +84,7 @@ class Library():
             if current_film not in Crawled_Film.objects.all():
                 current_film.save()
             else:
+                current_film.update_similar()
                 current_film.delete()
 
             print(

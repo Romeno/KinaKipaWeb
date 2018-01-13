@@ -61,5 +61,26 @@ class Crawled_Film(models.Model):
     def __str__(self):
         return f"{self.name} / {self.name_origin} / {self.year}"
 
+    def get_similar(self):
+        for film in Crawled_Film.objects.all():
+            if film == self:
+                return film
+
+    def update_similar(self):
+        other = self.get_similar()
+        for key in other.__dict__.keys():
+            if key == '_state':
+                continue
+
+            old_value = other.__dict__[key]
+            new_value = self.__dict__[key]
+
+            if not new_value:
+                continue
+
+            if not old_value or len(new_value) > len(old_value):
+                other.__dict__[key] = self.__dict__[key]
+        other.save()
+
 class Library(models.Model):
     film_lists = URLField(max_length=2000, help_text="Страницы, на которых находятся ссылки на фильмы")
