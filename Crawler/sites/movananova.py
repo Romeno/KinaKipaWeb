@@ -7,7 +7,8 @@ import os
 import bs4
 import re
 from KinaKipaWeb.settings import BASE_DIR
-from time import sleep
+from time import sleep, ctime
+from random import randint
 from Crawler.sites.movananova_patterns import patterns
 from Crawler.models import Crawled_Film
 
@@ -46,7 +47,7 @@ class Library():
 
     def get_film_data(self, file_path):
         with open(file_path, 'r', encoding="UTF-8") as page:
-            crawled_items = {}
+            crawled_data = {}
             soup = bs4.BeautifulSoup(page, 'html.parser')
             content = Library.make_soup(soup.find('div', {'class':'content'}))
 
@@ -54,43 +55,32 @@ class Library():
             links = [link.attrs['href'] for link in content.findChildren('a')]
             links = list(filter(lambda st: st.endswith('.jpg'), links))
             link = links[0] if links else ''
-            crawled_items['image_url'] = link
+            crawled_data['image_url'] = link
 
             # find title
-            crawled_items['name'] = content.find('div', {'class': 'title'}).text
+            crawled_data['name'] = content.find('div', {'class': 'title'}).text
             # find video html
-            crawled_items['video_html'] = content.find('iframe')
+            crawled_data['video_html'] = content.find('iframe')
 
             # find other information from text only
             searched_with_patterns = Library.search_with_patterns(content)
-            crawled_items.update(searched_with_patterns)
+            crawled_data.update(searched_with_patterns)
 
-            return crawled_items
+            return crawled_data
 
     def store_in_model(self):
         for index, filename in enumerate(self.filenames):
-            print('Open:', filename)
+            try:
+                print(f'[{ctime()}] Open: {filename}')
+                film_data = self.get_film_data(filename)
 
-            film_data = self.get_film_data(filename)
-            for item, value in film_data.items():
-                print(item.ljust(15), value)
+                Crawled_Film.store_crawled(film_data)
+                with open('movananova_passed.log', 'a') as log:
+                    log.write(filename)
+            except:
+                with open('movananova_failed.log', 'a') as log:
+                    log.write(filename)
 
-            current_film = Crawled_Film.objects.create()
-            for item, value in film_data.items():
-                for attr in current_film.__dict__:
-                    if item == attr:
-                        current_film.__dict__[item] = str(value)
-
-            if current_film not in Crawled_Film.objects.all():
-                current_film.save()
-            else:
-                current_film.update_similar()
-                current_film.delete()
-
-            print(
-                f'Successfully stored {index}/{len(self.filenames)} \n',
-                ('*'*64).ljust(64)
-            )
 
 if __name__ == '__main__':
     lib = Library()

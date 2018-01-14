@@ -6,6 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from difflib import SequenceMatcher
+from Crawler.tools.html import clean_html
 
 # Create your models here.
 class Crawled_Film(models.Model):
@@ -61,6 +62,36 @@ class Crawled_Film(models.Model):
     def __str__(self):
         return f"{self.name} / {self.name_origin} / {self.year}"
 
+    def store_crawled(crawled_data):
+        # check whether crawled_data could be saved of not
+        temp_film = Crawled_Film.objects.create()
+        for item in crawled_data.keys():
+            if item not in temp_film.__dict__.keys():
+                temp_film.delete()
+                raise Exception
+        temp_film.delete()
+
+        print('*'*64, '\n')
+        for item, value in crawled_data.items():
+            print(' '*4,item.ljust(15), value)
+
+        current_film = Crawled_Film.objects.create()
+        for item, value in crawled_data.items():
+            for attr in current_film.__dict__:
+                if item == attr:
+                    current_film.__dict__[item] = str(value)
+
+        if current_film not in Crawled_Film.objects.all():
+            current_film.save()
+        else:
+            current_film.update_similar()
+            current_film.delete()
+
+        print(
+            f'\nSuccessfully stored.',
+            ('*' * 64).ljust(64), sep='\n'
+        )
+
     def get_similar(self):
         for film in Crawled_Film.objects.all():
             if film == self:
@@ -68,8 +99,8 @@ class Crawled_Film(models.Model):
 
     def update_similar(self):
         other = self.get_similar()
-        for key in other.__dict__.keys():
-            if key == '_state':
+        for key in self.__dict__.keys():
+            if key == '_state' or key == 'id':
                 continue
 
             old_value = other.__dict__[key]
@@ -82,5 +113,44 @@ class Crawled_Film(models.Model):
                 other.__dict__[key] = self.__dict__[key]
         other.save()
 
-class Library(models.Model):
-    film_lists = URLField(max_length=2000, help_text="Страницы, на которых находятся ссылки на фильмы")
+
+class Library():
+    def clean_data(*args):
+        for film in Crawled_Film.objects.all():
+            for key, value in film.__dict__.items():
+
+                if key == 'name' and not value:
+                    film.delete()
+                    break
+
+                if key == 'name_origin':
+                    has_stopword = False
+                    for stopword in ['rip', 'belsat','xvid', 'серы']:
+                        if stopword in value.lower():
+                            has_stopword = True
+
+                    if (value == None or has_stopword):
+                        film.__dict__[key] = ''
+                        film.save()
+
+                if key == 'description':
+                    film.__dict__[key] = clean_html(film.__dict__[key])
+                    film.save()
+
+    def check(self, film):
+        if not isinstance(film, Crawled_Film):
+            return False
+        if not film.name or not film.video_html:
+            return False
+        return True
+
+    def count_ok(self):
+        counter = 0
+        for film in Crawled_Film.objects.all():
+            counter += 1 if self.check(film) else 0
+        return counter
+
+    def send_to_db(self):
+        for film in Crawled_Film.objects.all():
+            if self.check(film):
+                pass
