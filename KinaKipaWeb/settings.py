@@ -47,8 +47,16 @@ INSTALLED_APPS = [
     'KinaKipa',
     'tinymce',
     'el_pagination',
+    'tagulous',
     'Crawler'
 ]
+
+SERIALIZATION_MODULES = {
+    'xml':    'tagulous.serializers.xml_serializer',
+    'json':   'tagulous.serializers.json',
+    'python': 'tagulous.serializers.python',
+    'yaml':   'tagulous.serializers.pyyaml',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
