@@ -6,6 +6,7 @@ from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from difflib import SequenceMatcher
+import re
 from Crawler.tools.html import clean_html
 
 # Create your models here.
@@ -123,6 +124,9 @@ class Library():
                     film.delete()
                     break
 
+                if not value:
+                    continue
+
                 if key == 'name_origin':
                     has_stopword = False
                     for stopword in ['rip', 'belsat','xvid', 'серы']:
@@ -134,8 +138,42 @@ class Library():
                         film.save()
 
                 if key == 'description':
-                    film.__dict__[key] = clean_html(film.__dict__[key])
+                    film.__dict__[key] = clean_html(value)
                     film.save()
+
+                if key == 'genres':
+                    film.__dict__[key] = Library.set_genre(value)
+                    film.save()
+
+    def set_genre(genres):
+        # returns a list of cleared genres
+
+        genres_text = genres.lower()
+        genres_map = {
+            'камедыя': r'кам[еэ]+',
+            'фантастыка': r'(ф[аэ]нт|місты)',
+            'гістарычны': r'гіст',
+            'біяграфія': r'біяг',
+            'дакументальны': r'дакумент',
+            'кароткамэтражны': r'кароткам',
+            'жахі': r'жах',
+            'мюзікл': r'(муз|м\'?юз)',
+            'драма': r'драм',
+            'баявік': r'баявік',
+            'прыгода': r'прыг',
+            'вэстэрн': r'в[еэ]ст[аэе]рн',
+            'дэтэктыў': r'дэтэктыу',
+            'крымінальны': r'крымін',
+            'серыял': r'сер.[а,я]л',
+            'анімэ': r'анімэ',
+        }
+
+        cleared_genres = []
+        for genre, pattern in genres_map.items():
+            found = re.findall(pattern, genres_text)
+            if found:
+                cleared_genres.append(genre)
+        return ', '.join(cleared_genres)
 
     def check(self, film):
         if not isinstance(film, Crawled_Film):
