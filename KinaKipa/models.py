@@ -8,10 +8,28 @@ from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 
+import tagulous.models
 
 IMAGE_STORAGE = FileSystemStorage(location='layout/image')
-VIDEO_STORAGE = FileSystemStorage(location='layout/video')
-
+FILM_IMAGE_STORAGE = FileSystemStorage(location='layout/image/poster')
+FILM_GENRES = [
+    'камедыя',
+    'фантастыка',
+    'гістарычны',
+    'біяграфія',
+    'дакументальны',
+    'кароткамэтражны',
+    'жахі',
+    'мюзікл',
+    'драма',
+    'баявік',
+    'прыгода',
+    'вэстэрн',
+    'дэтэктыў',
+    'крымінальны',
+    'серыял',
+    'анімэ'
+]
 
 class Article(models.Model):
 
@@ -19,7 +37,6 @@ class Article(models.Model):
     content = TextField(verbose_name=_('Article content'), help_text=_("Article content"))
     published_date = DateTimeField(default=timezone.now, verbose_name=_('Publication date'), help_text=_("Publication date"))
     image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Article image'), help_text=_("Image of article when viewing article list on index or news page"))
-    video = FileField(storage=VIDEO_STORAGE, blank=True, null=True, help_text="Відэа")
 
     def publish(self):
         self.published_date = timezone.now()
@@ -28,45 +45,58 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+class Genre(tagulous.models.TagTreeModel):
+    class TagMeta:
+        initial = FILM_GENRES
+        space_delimiter = False
+        autocomplete_view = 'film_genres_autocomplete'
 
 class Film(models.Model):
 
-    GENRES_CHOICES = (
-        ('action', 'Баявік'),
-        ('adventure', 'Прыгода'),
-        ('comedy', 'Камедыя'),
-        ('crime', 'Злачынства'),
-        ('drama', 'Драма'),
-        ('epics/historical', 'Эпас / Гістарычны'),
-        ('horror', 'Жахі'),
-        ('musicals', 'Мюзікл'),
-        ('science fiction', 'Навуковая фантастыка'),
-        ('war', 'Ваенны'),
-        ('westerns', 'Вестэрн')
-    )
+    # GENRES_CHOICES = (
+    #     ('action', 'Баявік'),
+    #     ('adventure', 'Прыгода'),
+    #     ('comedy', 'Камедыя'),
+    #     ('crime', 'Злачынства'),
+    #     ('drama', 'Драма'),
+    #     ('epics/historical', 'Эпас / Гістарычны'),
+    #     ('horror', 'Жахі'),
+    #     ('musicals', 'Мюзікл'),
+    #     ('science fiction', 'Навуковая фантастыка'),
+    #     ('war', 'Ваенны'),
+    #     ('westerns', 'Вестэрн')
+    # )
 
+    # @film's names
     name = CharField(max_length=200, verbose_name='film_name', help_text="Назва")
     name_origin = CharField(max_length=200, verbose_name='film_name_origin',
-                            default='',help_text="Назва арыгінала")
-    director = CharField(max_length=200, help_text="Рэжысёр")
-    year = PositiveSmallIntegerField(default=None, help_text="Год")
-    kp_rating = FloatField(null=True)
-    imdb_rating = FloatField(null=True)
-    genres = CharField(max_length=200, choices=GENRES_CHOICES, default='', help_text="Жанры")
-    stars = CharField(max_length=200, help_text="Акцёры", default="нет Iнфармацыi")
+                            default='', help_text="Назва арыгінала")
+
+    # @people
+    director = CharField(max_length=200, help_text="Рэжысёр", blank=True)
+    stars = CharField(max_length=800, help_text="Акцёры", blank=True)
+
+    # @text information
+    description = TextField(help_text="Апісанне", blank=True)
+    country = CharField(max_length=200, help_text="Краiна", default="", blank=True)
+
+    # @numeric values
+    # >>> ratings are currently optional
+    kp_rating = FloatField(default=0.0, blank=True)
+    imdb_rating = FloatField(default=0.0, blank=True)
+    year = CharField(max_length=4, help_text="Год", default="", blank=True)
+    length = CharField(max_length=30, help_text="Працягласць", default='', blank=True)
+
+    # @meta information
+    genres = tagulous.models.TagField(Genre, help_text='Жанры могут включать в себя пробелы')
     video_html = TextField(help_text="html-код для проигрывания видео", default='')
-    length = CharField(max_length=25, help_text="Працягласць", default='')
-    image_url = URLField(max_length=200, blank=True, help_text="Спасылка на карцiнку")
-    description = TextField(help_text="Апісанне")
-    country = CharField(max_length=200, help_text="Краiна", default="")
-    torrent_links = URLField(max_length=200, blank=True, help_text="Спасылка на торэнт")
+    image = ImageField(storage=FILM_IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Film image'))
+    torrent_links = URLField(max_length=2000, blank=True, help_text="Спасылка на торэнт")
 
     def __str__(self):
         return self.name
 
-
 class Event(models.Model):
-
     title = CharField(max_length=200, help_text="Назва")
     description = TextField(help_text="Апісанне")
     start_date = DateTimeField(help_text="Дата пачатку")
