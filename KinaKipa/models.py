@@ -47,7 +47,8 @@ class Article(models.Model):
 
 class Genre(tagulous.models.TagTreeModel):
     class TagMeta:
-        initial = FILM_GENRES
+        initial = ', '.join(FILM_GENRES)
+        force_lowercase = True
         space_delimiter = False
         autocomplete_view = 'film_genres_autocomplete'
 
@@ -70,7 +71,7 @@ class Film(models.Model):
     # @film's names
     name = CharField(max_length=200, verbose_name='film_name', help_text="Назва")
     name_origin = CharField(max_length=200, verbose_name='film_name_origin',
-                            default='', help_text="Назва арыгінала")
+                            default='', help_text="Назва арыгінала", blank= True)
 
     # @people
     director = CharField(max_length=200, help_text="Рэжысёр", blank=True)
@@ -88,10 +89,10 @@ class Film(models.Model):
     length = CharField(max_length=30, help_text="Працягласць", default='', blank=True)
 
     # @meta information
-    genres = tagulous.models.TagField(Genre, help_text='Жанры могут включать в себя пробелы')
+    genres = tagulous.models.TagField(to=Genre, help_text='Жанры могут включать в себя пробелы', blank=True)
     video_html = TextField(help_text="html-код для проигрывания видео", default='')
     image = ImageField(storage=FILM_IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Film image'))
-    torrent_links = URLField(max_length=2000, blank=True, help_text="Спасылка на торэнт")
+    torrent_link = URLField(max_length=2000, blank=True, help_text="Спасылка на торэнт")
 
     def __str__(self):
         return self.name

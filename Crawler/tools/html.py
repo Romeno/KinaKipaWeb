@@ -1,6 +1,13 @@
 import requests
+import urllib.request
 import bs4 as bs
+import os
 from time import sleep, time, ctime
+from KinaKipa.models import FILM_IMAGE_STORAGE
+from django.core.files import File
+import unidecode
+from django.core.files.base import ContentFile
+
 
 
 # SILENT defines whether or not parsing information is displayed
@@ -44,3 +51,18 @@ class Soup_opener():
         if not SILENT:
             time_passed = time() - self.time_opened
             print(f'[{ctime()}] Parsed successfully with {time_passed:.3} seconds\n')
+
+
+
+def store_img(url, other):
+    name = unidecode.unidecode(other.name)
+    img_format = (url[url.rfind('.'):])
+    filename = name + img_format
+
+    img_data = requests.get(url)
+    other.image.save(
+        filename,
+        ContentFile(img_data.content),
+        save=True
+    )
+    sleep(2)
