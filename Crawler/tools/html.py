@@ -1,7 +1,9 @@
 import requests
+import urllib.request
 import bs4 as bs
+import os
 from time import sleep, time, ctime
-
+from KinaKipa.models import FILM_IMAGE_STORAGE
 
 # SILENT defines whether or not parsing information is displayed
 SILENT = False
@@ -44,3 +46,16 @@ class Soup_opener():
         if not SILENT:
             time_passed = time() - self.time_opened
             print(f'[{ctime()}] Parsed successfully with {time_passed:.3} seconds\n')
+
+
+def store_img(img_url):
+    result = urllib.request.urlretrieve(img_url)
+    return result[0]
+    # r = requests.get(img_url)
+    # if not r.ok:
+    #     return None
+    # name = img_url[img_url.rfind('/')+1:]
+    # path = FILM_IMAGE_STORAGE.location
+    # full_path = os.path.join(path, name)
+    # open(full_path, 'wb').write(r.content)
+    # return full_path
