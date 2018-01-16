@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ flatpage.title }}</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 
-</head>
-<body>
-  <nav class="navbar navbar-default">
-    <ul class="navigation">
-              <li><a href="/">Галоуная</a></li>
-              <li><a href="/films/">Фiльмы</a></li>
-              <li><a href="/episodes/">Серыялы</a></li>
-              <li><a href="/pages/about/">Пра нас</a></li>
-              <li><a href="/find-us">Как нас найти</a></li>
-    </ul>
-  </nav>
-  <div class="container col-4">
-    {{ flatpage.content }}
-  </div>
-</body>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ flatpage.title }}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style-1.01.css' %}">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default">
+            <ul class="navigation">
+                <li><a href="/">Галоуная</a></li>
+                <li><a href="/films/">Фiльмы</a></li>
+                <li><a href="/episodes/">Серыялы</a></li>
+                <li><a href="/pages/about/">Пра нас</a></li>
+                <li><a href="/find-us">Как нас найти</a></li>
+            </ul>
+        </nav>
+        <div class="container col-4">
+            {{ flatpage.content }}
+        </div>
+    </body>
+
 </html>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -9,20 +11,15 @@
     </head>
 
     <body>
+        <ul class="navigation">
+            <li><a href="{% url 'index' %}">{% trans 'Index' %}</a></li>
+            <li><a href="{% url 'catalog' %}">{% trans 'Movies' %}</a></li>
+            <li><a href="{% url 'p_film' %}">{% trans 'Screenings' %}</a></li>
+            <li><a href="/pages/about/">{% trans 'About us' %}</a></li>
+        </ul>
 
+        {% block content %}
 
-
-    <ul class="navigation">
-      <li><a href="{% url 'index' %}">Галоуная</a></li>
-      <li><a href="{% url 'catalog' %}">Фiльмы</a></li>
-      <li><a href="{% url 'p_film' %}">Кино просмотры</a></li>
-      <li><a href="#">Серыялы</a></li>
-      <li><a href="/pages/about/">Пра нас</a></li>
-
-    </ul>
-
-    {% block content %}
-
-    {% endblock %}
+        {% endblock %}
     </body>
 </html>

@@ -78,6 +78,7 @@ class Event(models.Model):
 
 
 class Baner(models.Model):
+
     image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, help_text="")
     BANER_CHOICES = (
         ("baner_top" , "верхний банер"),

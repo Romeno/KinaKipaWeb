@@ -14,12 +14,13 @@ from .models import Baner
 # Create your views here.
 
 
-
 def index(req):
     return TemplateResponse(req, 'index.html', {})
 
+
 def news(request):
     return TemplateResponse(request, 'news.html', {})
+
 
 def test_trans(req):
     from django.utils.translation import activate, get_language_info
@@ -64,12 +65,13 @@ def last_film(request):
     film_cursor = Film.objects.last()
     return render(request, 'film_page.html', {'film': film_cursor})
 
+
 def catalog(requst):
     return TemplateResponse(requst, 'catalog.html')
 
-def p_film(request):
-    return  TemplateResponse(request,  'p_film.html')
 
+def p_film(request):
+    return TemplateResponse(request,  'p_film.html')
 
 
 def last_baner(request):
