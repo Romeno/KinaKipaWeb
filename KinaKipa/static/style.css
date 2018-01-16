@@ -104,8 +104,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .flex-item .film-1 image,
 .flex-item .film-2 image,
-.flex-item .film-3 image, 
-.flex-item .film-4 image,{
+.flex-item .film-3 image,
+.flex-item .film-4 image {
   display: flex;
   background-size: cover;
 }

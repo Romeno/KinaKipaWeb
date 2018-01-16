@@ -1,11 +1,15 @@
 import requests
 import bs4 as bs
-from time import sleep, time
+from time import sleep, time, ctime
 
 
 # SILENT defines whether or not parsing information is displayed
 SILENT = False
 
+def clean_html(text):
+    soup = bs.BeautifulSoup(text, 'html.parser')
+    clean_text = soup.text
+    return clean_text
 
 class Soup_opener():
     # This class allows to open urls as soup object.
@@ -29,7 +33,7 @@ class Soup_opener():
     def __enter__(self):
         url = self.url
         if not SILENT:
-            print('( -- Opening url: {} -- )'.format(url))
+            print(f'[{ctime()}] Opening url: {url}')
         self.time_opened = time()
 
         html = requests.get(url).text
@@ -38,4 +42,5 @@ class Soup_opener():
 
     def __exit__(self, *args, **kwargs):
         if not SILENT:
-            print('( -- Parsed successfully with {:.3} seconds -- )\n'.format(time() - self.time_opened))
+            time_passed = time() - self.time_opened
+            print(f'[{ctime()}] Parsed successfully with {time_passed:.3} seconds\n')

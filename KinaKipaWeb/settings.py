@@ -92,6 +92,7 @@ DATABASES = {
         'USER': settings_local.DATABASES['default']['USER'],
         'PASSWORD': settings_local.DATABASES['default']['PASSWORD'],
         'HOST': settings_local.DATABASES['default']['HOST'],
+        'PORT': settings_local.DATABASES['default']['PORT'],
     }
 }
 
