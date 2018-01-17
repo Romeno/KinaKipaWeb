@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('image', models.ImageField(blank=True, null=True, storage=django.core.files.storage.FileSystemStorage(location='layout/image'), upload_to='')),
-                ('baner', models.CharField(choices=[('baner_top', 'верхний банер'), ('baner_right', 'правый банер')], default='', help_text='банер', max_length=255)),
+                ('baner_model', models.CharField(choices=[('baner_top', 'верхний банер'), ('baner_right', 'правый банер')], default='', help_text='банер', max_length=255)),
             ],
         ),
         migrations.CreateModel(

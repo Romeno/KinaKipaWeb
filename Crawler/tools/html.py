@@ -1,7 +1,12 @@
 import requests
+import urllib.request
 import bs4 as bs
+import os
 from time import sleep, time, ctime
-
+from KinaKipa.models import FILM_IMAGE_STORAGE
+from django.core.files import File
+import unidecode
+from django.core.files.base import ContentFile
 
 # SILENT defines whether or not parsing information is displayed
 SILENT = False

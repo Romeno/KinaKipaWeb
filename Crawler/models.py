@@ -2,12 +2,16 @@ from django.db import models
 from django.db.models import (CharField, DateTimeField, FileField, ImageField,
                               PositiveSmallIntegerField, TextField, URLField,
                               FloatField)
+from django.core.files import File
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from difflib import SequenceMatcher
 import re
+import os
 from Crawler.tools.html import clean_html
+
+import KinaKipa.models
 
 # Create your models here.
 class Crawled_Film(models.Model):
@@ -114,6 +118,52 @@ class Crawled_Film(models.Model):
                 other.__dict__[key] = self.__dict__[key]
         other.save()
 
+    def is_valid(self):
+        if not isinstance(self, Crawled_Film):
+            return False
+        if not self.name or not self.video_html:
+            return False
+        return True
+
+    def send_to_site(self):
+        # check whether film  is already exist in db
+        found_similar = KinaKipa.models.Film.objects.filter(
+            name__exact=str(self.name)
+        )
+        if found_similar:
+            return None
+
+        # create instance of Film-model
+        other = KinaKipa.models.Film()
+        other.name = self.name
+
+        required_keys = list(other.__dict__.keys())
+        # image_url and genres keys are not in Film model
+        required_keys.extend(['image_url', 'genres'])
+
+        for key, value in self.__dict__.items():
+            if (
+                not value or
+                key not in required_keys or
+                key in ['id', '_state']
+            ):
+                continue
+
+            if key == 'genres':
+                other.genres = value
+                other.save()
+                continue
+
+            if key == 'image_url':
+                other.download_image(self.image_url)
+                continue
+
+            if not other.__dict__[key]:
+                other.__dict__[key] = self.__dict__[key]
+                other.save()
+
+
+
 
 class Library():
     def clean_data(*args):
@@ -146,7 +196,7 @@ class Library():
                     film.save()
 
     def set_genre(genres):
-        # returns a list of cleared genres
+        # returns a string of cleared genres
 
         genres_text = genres.lower()
         genres_map = {
@@ -175,20 +225,15 @@ class Library():
                 cleared_genres.append(genre)
         return ', '.join(cleared_genres)
 
-    def check(self, film):
-        if not isinstance(film, Crawled_Film):
-            return False
-        if not film.name or not film.video_html:
-            return False
-        return True
-
     def count_ok(self):
         counter = 0
         for film in Crawled_Film.objects.all():
-            counter += 1 if self.check(film) else 0
+            counter += 1 if film.is_valid() else 0
         return counter
 
-    def send_to_db(self):
-        for film in Crawled_Film.objects.all():
-            if self.check(film):
-                pass
+
+def send_valid_to_site():
+    films = Crawled_Film.objects.all()
+    for film in films:
+        if film.is_valid():
+            film.send_to_site()

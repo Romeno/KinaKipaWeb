@@ -47,8 +47,11 @@ INSTALLED_APPS = [
     'KinaKipa',
     'tinymce',
     'el_pagination',
+    'tagulous',
+    'unidecode',
     'Crawler'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -148,3 +151,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+# tagulous settings
+
+SERIALIZATION_MODULES = {
+    'xml':    'tagulous.serializers.xml_serializer',
+    'json':   'tagulous.serializers.json',
+    'python': 'tagulous.serializers.python',
+    'yaml':   'tagulous.serializers.pyyaml',
+}
+
+TAGULOUS_NAME_MAX_LENGTH=191

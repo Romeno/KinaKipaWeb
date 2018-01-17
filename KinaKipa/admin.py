@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 from django.contrib.flatpages.models import FlatPage
-from .models import Article, Event, Film, Baner
+from .models import Article, Event, Film, Baner, Genre
 from Crawler.models import Crawled_Film
 
 class TinyMCEAdmin(admin.ModelAdmin):
@@ -11,6 +11,9 @@ class TinyMCEAdmin(admin.ModelAdmin):
             '/static/js/tiny_mce/tiny_mce.js',
             '/static/js/tiny_mce/textareas.js',
         )
+
+# tagulous models
+admin.site.register(Genre)
 
 # tinymce models
 admin.site.unregister(FlatPage)

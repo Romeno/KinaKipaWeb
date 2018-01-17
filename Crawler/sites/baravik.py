@@ -51,7 +51,31 @@ class Library():
                 for url in urls:
                     if url not in self.film_urls:
                         self.film_urls.append(url)
-    
+
+    def get_film_images(self):
+        delimiter = '|||'
+        for film_url in self.film_urls:
+            try:
+                with Soup_opener(film_url) as soup:
+                    good_html = soup.find('div', {'class', 'entry-content'})
+                    img = good_html.find('img').attrs['src']
+
+                    this_film = Crawled_Film.objects.filter(torrent_link__exact=str(film_url))
+                    if this_film and img:
+                        this_film = this_film[0]
+                        this_film.image_url = str(img)
+                        this_film.save()
+                    print(f'>>> Image saved to {this_film.name}: {img}')
+                    with open('image_saved.log', 'a+') as file:
+                        file.write(str(film_url)+delimiter+str(img)+'\n')
+            except Exception as err:
+                print(film_url, f'Error: image wasn\'t saved: {img}')
+                print(err)
+                with open('image_not_saved.log', 'a+') as file:
+                    file.write(str(film_url) + delimiter + str(img) + '\n')
+            finally:
+                sleep(4)
+
     def get_film_data(self):
         # This function finds Film information from Crawled_Film.film_urls
         # Uses patterns from baravik_patterns.py file
@@ -141,3 +165,11 @@ def start_crawling():
     # lib.film_urls = [r'https://baravik.org/topic/1771/',]
     lib.get_film_urls()
     lib.get_film_data()
+
+def update_images():
+    lib = Library()
+    # lib.film_urls = [r'https://baravik.org/topic/1393/',
+    #                  r'https://baravik.org/topic/1394/']
+    lib.get_film_lists()
+    lib.get_film_urls()
+    lib.get_film_images()

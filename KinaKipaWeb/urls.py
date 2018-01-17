@@ -21,6 +21,10 @@ from django.contrib import admin
 from KinaKipa.views import (test_trans, get_server_info,
                             news, index, last_film, catalog, p_film, last_baner)
 
+import tagulous.views
+from KinaKipa.models import Genre
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
@@ -36,6 +40,15 @@ urlpatterns = [
     url(r'^test_trans/$', test_trans),
     url(r'^server_info/$', get_server_info),
     url(r'^catalog/$', catalog, name='catalog'),
+    url(r'^p_film/$', p_film, name='p_film'),
+
+    # Tagulous api to call autocomplete via JS
+    url(
+        r'^api/genres/$',
+        tagulous.views.autocomplete,
+        {'tag_model': Genre},
+        name='film_genres_autocomplete',
+    ),
 ]
 
 if settings.DEBUG:
