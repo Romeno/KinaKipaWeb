@@ -1,44 +1,78 @@
+import csv
 import vk
 import re
 import time
+import sys
+import os
 import requests
+sys.path.insert(0, os.getcwd())
+import crawl_sett
+
+count = crawl_sett.count_sett
+login = crawl_sett.login_sett
+
+def start_crawl(vkapi, csv_file, fields, patt, count, step, work_type):
+
+    if work_type == 'w':
+        with open(csv_file, work_type) as f:
+            writer = csv.DictWriter(f, delimiter=';', fieldnames=fields)
+            writer.writeheader()
+    for posts_offset in range(count, -1, -step):
+        posts = vkapi.wall.get(owner_id='-136884833', filter='owner', count=step, offset=posts_offset)
+        inf = search_in_posts(posts, patt, vkapi)
+        inf = del_not_film_posts(inf)
+        write_inf_to_csv(inf, path=csv_file, fields=fields)
+        time.sleep(4)
 
 
-login = input('vk_email: ')
-password = input('vk_password: ')
-vk_id = '6295734'
+def log_in(sett=login):
+    if sett:
+        session = vk.AuthSession(
+            sett.get('app_id'),
+            sett.get('user_login'),
+            sett.get('user_password'),
+            scope='wall,video'
+        )
+    else:
+        session = vk.AuthSession(
+            app_id=input('vk_id: '),
+            user_login=input('vk_email: '),
+            user_password=input('vk_password: '),
+            scope="wall,video"
+        )
+    vkApi = vk.API(session)
+    return vkApi
 
-title = ("title", r'(^[\w\d][\w\d\s!\?\+ch-]+)[\\|]')
-description = ("description", r'<br>[\s]{0,2}<br>([^</]*)<br>([^</]*)<br>[\s]{0,2}')
-year = ("year", r'\s(\d{4})')
-imdb = ("imdb", r'http[s]?://www.imdb.com[^\s<]*')
-kinopoisk = ("kinopoisk", r'http[s]?://www.kinopoisk.ru[^\s<]*')
-tags = ("tags", r'(#[\w]+)@')
-voice_over = ("voice_over", r'[АаSB\d][гa\dD]\w+[:]?\s*(http[s]?:[^\s<]*)')
-video_link = ("video_link", r'[Аа][н][л]\w+[:]?\s*(http[s]?:[^\s<]*)')
 
-patterns = [
-    title, description, year,
-    tags, kinopoisk, imdb,
-    voice_over, video_link
-]
+def set_crawl(sett=count):
+    if sett:
+        post_count = sett.get('post_count')
+        step = sett.get('step')
+    else:
+        post_count = input('post count: ')
+        step = sett.get('step: ')
 
-CSV_FILENAME = "kinakipa_films.csv"
+    work_type = ''
+    for _ in range(3):
+        work_type = input(
+            "Input 'a' to add new results\n" +
+            "or 'w' to erase all previous results and write again.\n" +
+            "To exit without changes press 'Enter'\n"
+            "Your input: "
+        )
 
-CSV_FIELDS = [
-    "id",
-    "title", "description", "year", "tags", "kinopoisk",
-    "imdb", "voice_over", "video_link", "full_text",
-    "src_small", "src", "src_big",
-    "src_xbig", "src_xxbig", "src_xxxbig",
-    "video"
-]
+        if work_type != 'a' and work_type != 'w' and work_type != '':
+            print('Error. Try again')
+        elif work_type == 'w':
+            with open('log.txt', 'w') as f:
+                f.write('last_id:0\n')
+            break
+        elif work_type == '':
+            exit()
+        else:
+            break
 
-session = vk.AuthSession(app_id=vk_id, user_login=login, user_password=password, scope='wall,video')
-vkApi = vk.API(session)
-POST_COUNT = 1000
-STEP = 20
-ID = 0
+    return post_count, step, work_type
 
 
 def search_in_posts(posts, patterns, vkapi):
@@ -98,6 +132,7 @@ def get_video(attachment, vkapi):
         try:
             link = get_video_link(owner_id, id, vkapi)
         except vk.exceptions.VkAPIError:
+            time.sleep(1)
             link = get_video_link(owner_id, id, vkapi)
             return '<iframe src="{0}" width="{1}" height="{2}" frameborder="0" allowfullscreen></iframe>'.format(link,
                                                                                                                  width,
@@ -153,29 +188,26 @@ def prepare_inf_to_csv(inf, patterns):
 
 
 def write_inf_to_csv(data, path, fields):
-    inf_to_write = prepare_inf_to_csv(data, patterns)
-    delimiter = ";"
-    with open(path, "a") as f:
+    inf_to_write = prepare_inf_to_csv(data, patts)
+    with open(path, 'a') as f:
+        writer = csv.DictWriter(f, delimiter=';', fieldnames=fields)
         for row in inf_to_write:
-            for field in fields:
-                try:
-                    if type(row[field]) != str:
-                        f.write("{0}{1}".format(str(row[field]), delimiter))
-                    elif field == 'video':
-                        f.write(row[field])
-                    else:
-                        f.write("{0}{1}".format(row[field], delimiter))
-                except (UnicodeEncodeError, KeyError):
-                    pass
-            f.write("\n")
+            try:
+                writer.writerow(row)
+            except UnicodeEncodeError:
+                pass
+    with open('log.txt', 'a') as f:
+        f.write('last_id:{0}\n'.format(ID))
 
 
 if __name__ == "__main__":
-    with open(CSV_FILENAME, "w") as f:
-        f.write("{0}\n".format(";".join(CSV_FIELDS)))
-    for posts_offset in range(0, POST_COUNT+1, STEP):
-        posts = vkApi.wall.get(owner_id='-136884833', filter='owner', count=STEP, offset=posts_offset)
-        inf = search_in_posts(posts, patterns, vkApi)
-        inf = del_not_film_posts(inf)
-        write_inf_to_csv(inf, path=CSV_FILENAME, fields=CSV_FIELDS)
-        time.sleep(4)
+
+    vkApi = log_in(sett=login)
+    settings = set_crawl(sett=count)
+
+    ID = crawl_sett.last_id
+    file = crawl_sett.csv_file
+    fields = crawl_sett.csv_fields
+    patts = crawl_sett.patterns
+
+    start_crawl(vkApi, file, fields, patts, *settings)
