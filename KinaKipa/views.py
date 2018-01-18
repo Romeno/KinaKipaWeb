@@ -14,8 +14,9 @@ from .models import Baner
 # Create your views here.
 
 
-def index(req):
-    return TemplateResponse(req, 'index.html', {})
+def index(request):
+    last_films = Film.objects.exclude(image=None)[:5]
+    return render(request, 'index.html', {'last_films':last_films})
 
 
 def news(request):

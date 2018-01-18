@@ -18,11 +18,18 @@
 			class films unused now 14.11
 		-->
 		<ul class="flex-container">
-			<li class="flex-item"><a href="film/{{ film.id }}" class="film-1"></a><image src="{% static 'img/1.jpg' %}"></li>
-			<li class="flex-item"><a href="#" class="film-2"></a><image src="{% static 'img/2.jpg' %}"></li>
-			<li class="flex-item"><a href="#" class="film-3"></a><image src="{% static 'img/3.jpg' %}"></li>
-			<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>
-			<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>
+			{% for film in last_films %}
+			<li class="flex-item" style="background-image: url('{{film.image.url}}');">
+				<a href='#' style="display: block;">
+					<h1 style="color: red">{{film.name}}</h1>
+				</a>
+			</li>
+			{% endfor %}
+			<!--<li class="flex-item"><a href="film/{{ film.id }}" class="film-1"></a><image src="{% static 'img/1.jpg' %}"></li>-->
+			<!--<li class="flex-item"><a href="#" class="film-2"></a><image src="{% static 'img/2.jpg' %}"></li>-->
+			<!--<li class="flex-item"><a href="#" class="film-3"></a><image src="{% static 'img/3.jpg' %}"></li>-->
+			<!--<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>-->
+			<!--<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>-->
 		</ul>
 	</div>
 
