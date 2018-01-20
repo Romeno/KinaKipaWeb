@@ -4,6 +4,7 @@ import requests
 import bs4
 from time import sleep
 
+
 def load_data(file_path):
     with open(file_path, 'r') as _file:
         return json.loads(_file.read())
@@ -18,8 +19,10 @@ def store_page(url, genre):
         _file.write(content)
     return storage
 
+
 def parse_page():
     pass
+
 
 urls = load_data('movananova_dict.json')
 downloaded_urls = dict.fromkeys(urls.keys(), [])

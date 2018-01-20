@@ -11,6 +11,7 @@ import crawl_sett
 count = crawl_sett.count_sett
 login = crawl_sett.login_sett
 
+
 def start_crawl(vkapi, csv_file, fields, patt, count, step, work_type):
 
     if work_type == 'w':
