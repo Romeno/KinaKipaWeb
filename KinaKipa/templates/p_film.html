@@ -1,150 +1,108 @@
 {% extends "base.html"%}
+
 {% load static %}
+
 {% block content %}
-<style>
-    .p_film {
-    }
-    .p_film .maps {
-        height: 300px;
-	    margin-top: 20px;
-	    padding-bottom: 20px;
-	    position: relative;
-	    display: block;
-        margin-left: 25%;
-        margin-right: 25%;
-        margin-bottom: 50px;
-        box-shadow: 0px 0px 5px 2.5px #ccc;
-     }
-    .p_film .maps img {
-        width: 235px;
-        height: auto;   
-        margin-left: 35%;
-    }
-    .p_film .block_news {
-        height: 300px;
-	    margin-top: 10px;
-	    padding-bottom: 20px;
-	    position: relative;
-	    display: block;
-        margin-left: 10%;
-        margin-right: 10%;
-        margin-bottom: 80px;
-
-    }
-    .p_film .block_news .news {
-        width: 200px;
-	    float: left;
-	    text-align: center;
-	    box-shadow: 0px 0px 5px 2.5px #ccc;
-	    height: 300px;
-	    margin-left: 5%;
-
-    }
-
-
-
-</style>
-
-<content class="p_film">
-    <div class="maps">
-        <img src="{% static 'img/pdoster.jpg' %}" alt="фон" class="m_img">
-    </div>
-    <div class="block_news">
-        <div class="news">
-
+    <content class="p_film">
+        <div class="maps">
+            <img src="{% static 'img/pdoster.jpg' %}" alt="фон" class="m_img">
         </div>
-        <div class="news">
+        <div class="block_news">
+            <div class="news">
 
+            </div>
+            <div class="news">
+
+            </div>
+            <div class="news">
+
+            </div>
+            <div class="news">
+
+            </div>
         </div>
-        <div class="news">
 
-        </div>
-        <div class="news">
-
-        </div>
-    </div>
-
-    <div class="cal">
-        <table cellspacing="0">
-            <thead>
-                <tr>
+        <div class="cal">
+            <table cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Mon</th><th>Tue</th><th>Wed</th>
+                        <th>Thu</th><th>Fri</th><th>Sat</th>
+                        <th>Sun</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="padding" colspan="3"></td>
+                        <td> 1</td>
+                        <td> 2</td>
+                        <td> 3</td>
+                        <td> 4</td>
+                    </tr>
+                    <tr>
+                        <td> 5</td>
+                        <td> 6</td>
+                        <td> 7</td>
+                        <td> 8</td>
+                        <td class="today"> 9</td>
+                        <td>10</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td class="date_has_event">
+                            13
+                        </td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td class="date_has_event">
+                            22
+                        </td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td class="padding"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
                     <th>Mon</th><th>Tue</th><th>Wed</th>
                     <th>Thu</th><th>Fri</th><th>Sat</th>
                     <th>Sun</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="padding" colspan="3"></td>
-                    <td> 1</td>
-                    <td> 2</td>
-                    <td> 3</td>
-                    <td> 4</td>
-                </tr>
-                <tr>
-                    <td> 5</td>
-                    <td> 6</td>
-                    <td> 7</td>
-                    <td> 8</td>
-                    <td class="today"> 9</td>
-                    <td>10</td>
-                    <td>11</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td class="date_has_event">
-                        13
-                    </td>
-                    <td>14</td>
-                    <td>15</td>
-                    <td>16</td>
-                    <td>17</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td>20</td>
-                    <td>21</td>
-                    <td class="date_has_event">
-                        22
-                    </td>
-                    <td>23</td>
-                    <td>24</td>
-                    <td>25</td>
-                </tr>
-                <tr>
-                    <td>26</td>
-                    <td>27</td>
-                    <td>28</td>
-                    <td>29</td>
-                    <td>30</td>
-                    <td>31</td>
-                    <td class="padding"></td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <th>Mon</th><th>Tue</th><th>Wed</th>
-                <th>Thu</th><th>Fri</th><th>Sat</th>
-                <th>Sun</th>
-            </tfoot>
-        </table>
-        <div class="events">
-            <ul>
-                <li>
-                      <span class="title">Event 1</span>
-                      <span class="desc">Lorem ipsum dolor sit amet, consectetu adipisicing elit.</span>
-                  </li>
-                  <li>
-                      <span class="title">Event 2</span>
-                      <span class="desc">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                </li>
-            </ul>
+                </tfoot>
+            </table>
+            <div class="events">
+                <ul>
+                    <li>
+                          <span class="title">Event 1</span>
+                          <span class="desc">Lorem ipsum dolor sit amet, consectetu adipisicing elit.</span>
+                      </li>
+                      <li>
+                          <span class="title">Event 2</span>
+                          <span class="desc">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</content>
+    </content>
 
-{#<div class="footer">#}
-{#    <h1>text</h1>#}
-{#</div>#}
+    {#<div class="footer">#}
+    {#    <h1>text</h1>#}
+    {#</div>#}
 
 {% endblock %}
