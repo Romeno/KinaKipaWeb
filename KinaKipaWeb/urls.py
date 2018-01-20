@@ -19,7 +19,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from KinaKipa.views import (test_trans, get_server_info,
-                            news, index, last_film, catalog, p_film, last_baner)
+                            news, index, last_film, catalog, p_film, last_banner)
 
 import tagulous.views
 from KinaKipa.models import Genre

@@ -9,7 +9,7 @@ from django.conf import settings
 from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
 from .models import Film
-from .models import Baner
+from .models import Banner
 
 # Create your views here.
 
@@ -66,14 +66,14 @@ def last_film(request):
     return render(request, 'film_page.html', {'film': film_cursor})
 
 
-def catalog(requst):
-    return TemplateResponse(requst, 'catalog.html')
+def catalog(request):
+    return TemplateResponse(request, 'catalog.html')
 
 
 def p_film(request):
     return TemplateResponse(request,  'p_film.html')
 
 
-def last_baner(request):
-    baner_cursor = Baner.objects.last()
-    return render(request, 'index.html', {'baner':baner_cursor})
+def last_banner(request):
+    banner_cursor = Banner.objects.last()
+    return render(request, 'index.html', {'banner': banner_cursor})

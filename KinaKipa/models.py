@@ -35,6 +35,7 @@ FILM_GENRES = [
     'анімэ'
 ]
 
+
 class Article(models.Model):
 
     title = CharField(max_length=200, verbose_name=_('Title'), help_text=_("Article title"))
@@ -49,12 +50,14 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+
 class Genre(tagulous.models.TagTreeModel):
     class TagMeta:
         initial = ', '.join(FILM_GENRES)
         force_lowercase = True
         space_delimiter = False
         autocomplete_view = 'film_genres_autocomplete'
+
 
 class Film(models.Model):
 
@@ -119,6 +122,7 @@ class Film(models.Model):
     def __str__(self):
         return f'{self.name} / {self.name_origin} / {self.year}'
 
+
 class Event(models.Model):
     title = CharField(max_length=200, help_text="Назва")
     description = TextField(help_text="Апісанне")
@@ -130,13 +134,13 @@ class Event(models.Model):
         return self.title
 
 
-class Baner(models.Model):
+class Banner(models.Model):
+    BANNER_CHOICES = (
+        ("index_top", _("top on index page")),
+        ("index_right", _("right on index page")),
+    )
 
     image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, help_text="")
-    BANER_CHOICES = (
-        ("baner_top" , "верхний банер"),
-        ("baner_right", "правый банер")
-    )
-    baner = models.CharField(max_length=255, choices=BANER_CHOICES, default='', help_text="банер")
-
+    position = models.CharField(max_length=255, choices=BANNER_CHOICES, default='',
+                                help_text=_("position for the banner"))
 
