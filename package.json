@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Django Web server for KinaKipa",
   "dependencies": {
+    "bootstrap": "^4.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-sass": "^2.3.2",
