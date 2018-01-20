@@ -160,4 +160,4 @@ SERIALIZATION_MODULES = {
     'yaml':   'tagulous.serializers.pyyaml',
 }
 
-TAGULOUS_NAME_MAX_LENGTH=191
+TAGULOUS_NAME_MAX_LENGTH = 191

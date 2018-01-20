@@ -13,6 +13,7 @@ from Crawler.tools.html import clean_html
 
 import KinaKipa.models
 
+
 # Create your models here.
 class Crawled_Film(models.Model):
 
@@ -161,8 +162,6 @@ class Crawled_Film(models.Model):
             if not other.__dict__[key]:
                 other.__dict__[key] = self.__dict__[key]
                 other.save()
-
-
 
 
 class Library():
