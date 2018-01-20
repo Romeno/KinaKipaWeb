@@ -39,13 +39,13 @@ install gettext cygwin package
 
 #### SCSS compilation
 
-When developing and making changes to look and feel of the pages inevitably you change css. 
+When developing and making changes to look and feel of the pages inevitably you change css code. 
 Project uses scss as the base language so you need to compile it into css code understood by browsers. 
-To do that run do the following:
+To do that do the following:
 
 ##### Install 
 * Ensure you have `node` installed
-* `cd` to the project folder and run `npm i`. This should install all project dependencies including `gulp`, `gulp-sass` and other stiff
+* `cd` to the project folder and run `npm i`. This should install all project dependencies including `gulp`, `gulp-sass` and other stuff
   * If you encounter errors when installing `gulp-sass` this is probably due to absense of Python27 on you machine. You need to install it along side with Python36.
   * Make sure the `PATH` is like you want it to be so that freshly installed Python27 wont mess things up.
 
