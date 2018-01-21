@@ -8,8 +8,7 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
-from .models import Film
-from .models import Banner
+from .models import Article, Banner, Film
 
 # Create your views here.
 
@@ -20,6 +19,11 @@ def index(req):
 
 def news(request):
     return TemplateResponse(request, 'news.html', {})
+
+
+def last_news(request):
+    l_news = Article.objects.last()
+    return render(request, 'news.html', {'last_news': l_news})
 
 
 def test_trans(req):

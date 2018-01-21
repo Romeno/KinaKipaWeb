@@ -161,3 +161,9 @@ SERIALIZATION_MODULES = {
 }
 
 TAGULOUS_NAME_MAX_LENGTH = 191
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 500,
+    'width': 700,
+    'theme': 'advanced'
+}

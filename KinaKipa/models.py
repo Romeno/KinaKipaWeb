@@ -8,6 +8,7 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.utils.translation import ugettext as _
+from tinymce.models import HTMLField
 import tagulous.models
 
 import requests
@@ -39,9 +40,12 @@ FILM_GENRES = [
 class Article(models.Model):
 
     title = CharField(max_length=200, verbose_name=_('Title'), help_text=_("Article title"))
-    content = TextField(verbose_name=_('Article content'), help_text=_("Article content"))
-    published_date = DateTimeField(default=timezone.now, verbose_name=_('Publication date'), help_text=_("Publication date"))
-    image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Article image'), help_text=_("Image of article when viewing article list on index or news page"))
+    content = HTMLField(
+        default='Content', verbose_name=_('Article content'), help_text=_("Article content")
+    )
+    published_date = DateTimeField(
+        default=timezone.now, verbose_name=_('Publication date'), help_text=_("Publication date")
+    )
 
     def publish(self):
         self.published_date = timezone.now()
