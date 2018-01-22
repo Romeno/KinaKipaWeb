@@ -10,11 +10,17 @@
             </h4>
         </div>
 
-        <div class="news-title">
-            <h4>{{last_news.title}}</h4>
-        </div>
+        <h4 class="news-title">{{last_news.title}}</h4>
+        <h5 class="news-date">{{time}}</h5>
+
         <div class="news_content">
-            {{last_news.content|safe}}
+            <div class="content-wrapper">
+                {{last_news.content|safe}}
+            </div>
+        </div>
+
+        <div class="news-video">
+            
         </div>
     </content>
 {% endblock %}

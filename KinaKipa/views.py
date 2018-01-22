@@ -14,16 +14,20 @@ from .models import Article, Banner, Film
 
 
 def index(req):
-    return TemplateResponse(req, 'index.html', {})
+    news = list(Article.objects.order_by('published_date'))[::-1]
+    if len(news) > 4:
+        news = news[:4]
+    return TemplateResponse(req, 'index.html', {'news': news})
 
 
 def news(request):
-    return TemplateResponse(request, 'news.html', {})
+    return TemplateResponse(request, 'news.html')
 
 
 def last_news(request):
     l_news = Article.objects.last()
-    return render(request, 'news.html', {'last_news': l_news})
+    format_time = l_news.published_date.strftime("%d-%m-%Y %H:%M")
+    return render(request, 'news.html', {'last_news': l_news, 'time': format_time})
 
 
 def test_trans(req):

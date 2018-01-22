@@ -31,4 +31,20 @@
 			<img class="btop_img" src="{{banner.image.url}}" alt="">
 		</div>
 	</content>
+
+    <h2>Апошнія навіны</h2>
+	<div class="news-block">
+	{% for n in news %}
+		<div class="news">
+			{% if n.news_icon %}
+				<img src="{{ n.news_icon.url }}">
+			{% else %}
+                <img src="{{ n.news_icon_link }}">
+			{% endif %}
+			<div class="news-title">
+				<h4>{{ n.title }}</h4>
+			</div>
+		</div>
+	{% endfor %}
+	</div>
 {% endblock %}

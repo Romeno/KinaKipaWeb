@@ -1,0 +1,41 @@
+.news-block {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  color: $white;
+  margin: 20px 5% 3% 5%;
+
+  .news {
+    position: relative;
+    margin: 5px 10px 10px 10px;
+  }
+
+  img {
+    width: 280px;
+    height: 170px;
+  }
+
+  .news-title {
+    @extend img;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: $blackout;
+
+    h4 {
+      text-align: center;
+      padding: 50px 5px 50px 5px;
+    }
+  }
+
+  .news-title:hover {
+    background-color: rgba(0,0,0,0.5);
+    transition: 0.5s;
+
+    h4 {
+      transform: translateY(-10%);
+      transition: 0.5s;
+    }
+  }
+}
