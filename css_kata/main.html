@@ -15,15 +15,17 @@
     <div class="logo">
         <a href="#">KinaKipa</a>
     </div>
-
+    <div class="search-button">
+        <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+    </div>
     <div id="menu">
         <button class="hamburger hamburger--3dxy js-hamburger" type="button">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
-</button>
+        </button>
     </div>
-    <nav class="is-opened">
+    <nav class="">
         <ul>
             <li>
                 <a href="#"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i>Фільмы</a>
@@ -45,12 +47,142 @@
 
 </header>
 
-<!-- just for fun -->
-<content style="overflow: hidden; display: block; height: 1200px; position: relative; top:0px;">
-    <div class="circle one"></div>
-    <div class="circle two"></div>
-    <div class="circle three"></div>
+<content>
+    <div class="carousel">
+        <img src="img/carousel.png">
+    </div>
+
+    <div class="news-gallery category">
+        <header>
+            <a href="#"><h1 class="category-name">Навіны</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    праглядзець астатняе <i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+        <!--
+            divs below are for news
+            required field are :
+            image, published date, title, text
+         -->
+        <div class="news-block">
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="#" class="image-wrapper">
+                        <img src="img/news0.jpg">
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>3</p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>2 гадзіны таму</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="#">
+                            Я, Тоня!
+                        </a>
+                        <p class="news-text">
+                            <a href="#">
+                                Хочаце сапраўды класны фільм на каляспартыўную тэматыку? Не пра баскетбол. А такі, дзе героі не плоскія, а ідэалагічнае выхаванне не з'яўляецца галоўнай задачай...</p>
+                            </a>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="#" class="image-wrapper">
+                        <img src="img/news2.jpg">
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>0</p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>5 гадзін таму</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="#">
+                            Форма вады
+                        </a>
+                        <p class="news-text">
+                            <a href="#">
+                            Хутка на Кінакіпа...
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+        </div>
+        <div class="news-block">
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="#" class="image-wrapper">
+                        <img src="img/news3.jpg">
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>1</p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>17 студзеня 2018</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="#">
+                            Сандэнс-2018
+                        </a>
+                        <p class="news-text">
+                            <a href="#">
+                            У амерыканскім Сандэнсе, штат Юта, 18 студзеня пачынаецца чарговы фестываль незалежнага кіно.
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="#" class="image-wrapper">
+                        <img src="img/news4.jpg">
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Кінапрагляд</p></a>
+                            <div>
+                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>0</p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>11 студзеня 2018</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="#">
+                            Хронікі Нарніі
+                        </a>
+                        <p class="news-text">
+                            <a href="#">
+                            Для менчукоў ёсць яшчэ адна магчымасць трапіць на паказ фільма Хронікі Нарніі.
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+        </div>
+    </div>
 </content>
+
+
+
+<!-- just for fun -->
+<!--<content style="overflow: hidden; display: block; height: 1200px; position: relative; top:0px;">-->
+    <!--<div class="circle one"></div>-->
+    <!--<div class="circle two"></div>-->
+    <!--<div class="circle three"></div>-->
+<!--</content>-->
 <!-- will be deleted -->
 
 <footer>
