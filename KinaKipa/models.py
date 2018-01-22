@@ -11,9 +11,10 @@ from django.utils.translation import ugettext as _
 from tinymce.models import HTMLField
 import tagulous.models
 
+import re
 import requests
 import unidecode
-from time import sleep
+from time import sleep, strftime
 
 IMAGE_STORAGE = FileSystemStorage(location='layout/image')
 FILM_IMAGE_STORAGE = FileSystemStorage(location='layout/image/poster')
@@ -40,6 +41,10 @@ FILM_GENRES = [
 class Article(models.Model):
 
     title = CharField(max_length=200, verbose_name=_('Title'), help_text=_("Article title"))
+    news_icon = ImageField(blank=True, verbose_name=_('News Icon'), help_text=_('Article news icon'))
+    news_icon_link = URLField(
+        max_length=500, blank=True,
+        verbose_name=_('Link to news icon'), help_text=_('Link to image for news icon'))
     content = HTMLField(
         default='Content', verbose_name=_('Article content'), help_text=_("Article content")
     )
@@ -47,9 +52,20 @@ class Article(models.Model):
         default=timezone.now, verbose_name=_('Publication date'), help_text=_("Publication date")
     )
 
+    video_link = CharField(
+        max_length=500, blank=True,
+        verbose_name=_('Video'), help_text=_('Link to video. Needs "iframe" tag'))
+
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+
+    def save(self, *args, **kwargs):
+        if not self.news_icon:
+            self.news_icon_link = re.findall("<img\s{0,2}src=\"([^\s]*)\"", str(self.content))[0]
+        else:
+            self.news_icon_link = "../static/img/kinakipa-logo.jpg"
+        super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
