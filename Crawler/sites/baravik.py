@@ -85,7 +85,7 @@ class Library():
                     # store all crawled info into crawled_items dict:
                     crawled_items = {}
                     crawled_items['torrent_link'] = film_url
-                    # 1) Somehow @Length isn't always could be founded
+                    # 1) Somehow @Length could not always be founded
                     #    with methods below. So we'll catch it in global-html
                     _length = re.findall(meta_patterns['length'], str(soup))
                     crawled_items['length'] = _length[0] if _length else ''

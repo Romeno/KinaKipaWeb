@@ -12,8 +12,8 @@ def load_data(file_path):
 
 def store_page(url, genre):
     filename = url[url.rfind('/')+1:]
-    storage = ( os.getcwd() + '\\medyateka\\' + 
-                genre.replace('/', '\\') + filename )
+    storage = (os.getcwd() + '\\medyateka\\' +
+                genre.replace('/', '\\') + filename)
     content = requests.get(url).text
     with open(storage, "w+", encoding='utf-8') as _file:
         _file.write(content)
@@ -30,4 +30,4 @@ for genre in urls:
     for url in urls[genre]:
         downloaded_urls[genre].append(store_page(url, genre))
         sleep(10)
-        print('Successefully stored:', url)
+        print('Successfully stored:', url)
