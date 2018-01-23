@@ -62,9 +62,10 @@ class Article(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.news_icon:
-            self.news_icon_link = re.findall("<img\s{0,2}src=\"([^\s]*)\"", str(self.content))[0]
-        else:
-            self.news_icon_link = "../static/img/kinakipa-logo.jpg"
+            try:
+                self.news_icon_link = re.findall("<img\s{0,2}src=\"([^\s]*)\"", str(self.content))[0]
+            except IndexError:
+                self.news_icon = "kinakipa-logo.png"
         super(Article, self).save(*args, **kwargs)
 
     def __str__(self):

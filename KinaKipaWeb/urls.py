@@ -33,7 +33,7 @@ urlpatterns = [
 
     # main web pages
     url(r'^$', index, name='index'),
-    url(r'^news/$', news),
+    url(r'^news/(?P<pk>\d+)/$', news, name='news_id'),
     url(r'^last_film/$', last_film),
     url(r'^p_film/$', p_film, name='p_film'),
     url(r'^last_news/$', last_news),

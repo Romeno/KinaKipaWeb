@@ -6,21 +6,21 @@
     <content class="news-group">
         <div class="news-navigation-strip">
             <h4>
-                <a href="#" class="main">Навiны кiно</a><span class="devider"> | </span><a href="#">{{last_news.title}}</a>
+                <a href="#" class="main">Навiны кiно</a><span class="devider"> | </span><a href="#">{{news.title}}</a>
             </h4>
         </div>
 
-        <h4 class="news-title">{{last_news.title}}</h4>
+        <h4 class="news-title">{{news.title}}</h4>
         <h5 class="news-date">{{time}}</h5>
 
         <div class="news_content">
             <div class="content-wrapper">
-                {{last_news.content|safe}}
+                {{news.content|safe}}
             </div>
         </div>
 
         <div class="news-video">
-            
+            {{news.video_link|safe}}
         </div>
     </content>
 {% endblock %}

@@ -3,7 +3,7 @@ import os
 import pip
 import requests
 import sys
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.conf import settings
 from django.template.response import TemplateResponse
@@ -20,8 +20,9 @@ def index(req):
     return TemplateResponse(req, 'index.html', {'news': news})
 
 
-def news(request):
-    return TemplateResponse(request, 'news.html')
+def news(request, pk):
+    news = get_object_or_404(Article, pk=pk)
+    return render(request, 'news.html', {'news': news})
 
 
 def last_news(request):

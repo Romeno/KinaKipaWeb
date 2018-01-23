@@ -27,6 +27,11 @@
       text-align: center;
       padding: 50px 5px 50px 5px;
     }
+
+    a {
+      text-decoration: none;
+      color: $white;
+    }
   }
 
   .news-title:hover {
