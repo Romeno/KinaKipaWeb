@@ -42,7 +42,7 @@
                 <img src="{{ n.news_icon_link }}">
 			{% endif %}
 			<div class="news-title">
-				<h4>{{ n.title }}</h4>
+				<h4><a href="{% url 'news_id' pk=n.pk %}">{{ n.title }}</a></h4>
 			</div>
 		</div>
 	{% endfor %}
