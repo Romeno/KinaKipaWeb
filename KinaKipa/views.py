@@ -4,7 +4,7 @@ import pip
 import requests
 import sys
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from django.template.response import TemplateResponse
 from django.utils.translation import ugettext as _
@@ -29,6 +29,10 @@ def last_news(request):
     l_news = Article.objects.last()
     format_time = l_news.published_date.strftime("%d-%m-%Y %H:%M")
     return render(request, 'news.html', {'last_news': l_news, 'time': format_time})
+
+
+def my_ajax(request):
+    return JsonResponse({'data': 'some data'})
 
 
 def test_trans(req):

@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from KinaKipa.views import (test_trans, get_server_info,
                             news, index, last_film, catalog, p_film,
-                            last_news)
+                            last_news, my_ajax)
 from filebrowser.sites import site
 import tagulous.views
 from KinaKipa.models import Genre
@@ -45,6 +45,8 @@ urlpatterns = [
     url(r'^server_info/$', get_server_info),
     url(r'^catalog/$', catalog, name='catalog'),
     url(r'^p_film/$', p_film, name='p_film'),
+
+    url(r'^my_ajax/$', my_ajax),
 
     # Tagulous api to call autocomplete via JS
     url(
