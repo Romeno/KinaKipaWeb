@@ -36,6 +36,8 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
+    'filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +51,7 @@ INSTALLED_APPS = [
     'el_pagination',
     'tagulous',
     'unidecode',
-    'Crawler'
+    'Crawler',
 ]
 
 
@@ -99,6 +101,19 @@ DATABASES = {
     }
 }
 
+
+FILEBROWSER_DIRECTORY = ''
+FILEBROWSER_MAX_UPLOAD_SIZE = 50*1024*1024
+FILEBROWSER_NORMALIZE_FILENAME = False
+FILEBROWSER_OVERWRITE_EXISTING = False
+FILEBROWSER_DEFAULT_PERMISSIONS = 0o766
+FILEBROWSER_EXTENSIONS = {
+    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff', ''],
+    'Document': ['.pdf', '.doc', '.rtf', '.txt', '.xls', '.csv', '.xlsx', '.docx', '.djvu', ''],
+    'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm', '.ogv'],
+    'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p', '.ogg'],
+    'None': [],
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
