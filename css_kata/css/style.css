@@ -11,7 +11,7 @@
 
 html, body {
     font-size: 16px;
-    font-family: 'HeliosCondRegular', sans-serif;
+    font-family: 'HeliosCond', sans-serif;
     color: #000;
     font-weight: 300;
     background: #fff;
@@ -59,7 +59,7 @@ header > #menu {
 header > nav a {
     /* FIX HERE TEXT-ALIGNMENT*/
     text-transform: uppercase;
-    font-family: 'HeliosCondRegular', sans-serif;
+    font-family: 'HeliosCond', sans-serif;
     font-weight: 300;
     line-height: 50px;
     color: white;
