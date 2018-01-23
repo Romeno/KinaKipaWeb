@@ -1,50 +1,38 @@
 {% extends "base.html" %}
 
 {% load static %}
-
 {% block content %}
-	<content class="film-group recent">
-		<header class="header">
-			<div class="title item"><h2>Апошняе</h2></div>
-			<div class="devider item">|</div>
-			<a href="#" class="see-all item">Праглядзець астатняе</a>
-		</header>
+<content class="film-group recent">
+	<header class="header">
+		<div class="title item"><h2>Апошняе</h2></div>
+		<div class="devider item">|</div>
+		<a href="#" class="see-all item">Праглядзець астатняе</a>
+	</header>
 
-		<div class="b_bottom">
-			<img class="btop_img" src="{{banner.image.url}}"  alt="">
-		</div>
-
-		<div id="films">
-			<!--
-				class films unused now 14.11
-			-->
-			<ul class="flex-container">
-				<li class="flex-item"><a href="film/{{ film.id }}" class="film-1"></a><image src="{% static 'img/1.jpg' %}"></li>
-				<li class="flex-item"><a href="#" class="film-2"></a><image src="{% static 'img/2.jpg' %}"></li>
-				<li class="flex-item"><a href="#" class="film-3"></a><image src="{% static 'img/3.jpg' %}"></li>
-				<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>
-				<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>
-			</ul>
-		</div>
-
-		<div class="btop">
-			<img class="btop_img" src="{{banner.image.url}}" alt="">
-		</div>
-	</content>
-
-    <h2>Апошнія навіны</h2>
-	<div class="news-block">
-	{% for n in news %}
-		<div class="news">
-			{% if n.news_icon %}
-				<img src="{{ n.news_icon.url }}">
-			{% else %}
-                <img src="{{ n.news_icon_link }}">
-			{% endif %}
-			<div class="news-title">
-				<h4><a href="{% url 'news_id' pk=n.pk %}">{{ n.title }}</a></h4>
-			</div>
-		</div>
-	{% endfor %}
+    <div class="b_bottom">
+		{% for baners in baner %}
+		<img class="btop_img" src="{{baners.image.url}}"  alt="baner" width="100" height="100">
+    	{% endfor %}
 	</div>
+
+	<div id="films">
+		<!--
+			class films unused now 14.11
+		-->
+		<ul class="flex-container">
+			<li class="flex-item"><a href="film/{{ film.id }}" class="film-1"></a><image src="{% static 'img/1.jpg' %}"></li>
+			<li class="flex-item"><a href="#" class="film-2"></a><image src="{% static 'img/2.jpg' %}"></li>
+			<li class="flex-item"><a href="#" class="film-3"></a><image src="{% static 'img/3.jpg' %}"></li>
+			<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>
+			<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>
+		</ul>
+	</div>
+
+    <div class="btop">
+		{% for baners in baner %}
+		<img class="btop_img" src="{{baners.image.url}}"  alt="baner" width="100" height="100">
+    	{% endfor %}
+
+	</div>
+</content>
 {% endblock %}

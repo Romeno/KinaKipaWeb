@@ -95,7 +95,7 @@ DATABASES = {
         'USER': settings_local.DATABASES['default']['USER'],
         'PASSWORD': settings_local.DATABASES['default']['PASSWORD'],
         'HOST': settings_local.DATABASES['default']['HOST'],
-        'PORT': settings_local.DATABASES['default']['PORT'],
+
     }
 }
 
@@ -147,7 +147,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/static/img/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 

@@ -19,8 +19,7 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from KinaKipa.views import (test_trans, get_server_info,
-                            news, index, last_film, catalog, p_film,
-                            last_news)
+                            news, index, last_film, catalog, p_film)
 
 import tagulous.views
 from KinaKipa.models import Genre
@@ -33,10 +32,9 @@ urlpatterns = [
 
     # main web pages
     url(r'^$', index, name='index'),
-    url(r'^news/(?P<pk>\d+)/$', news, name='news_id'),
+    url(r'^news/$', news),
     url(r'^last_film/$', last_film),
     url(r'^p_film/$', p_film, name='p_film'),
-    url(r'^last_news/$', last_news),
 
     # development tests
     url(r'^test_trans/$', test_trans),

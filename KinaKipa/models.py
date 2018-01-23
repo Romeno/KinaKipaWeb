@@ -10,6 +10,8 @@ from django.utils import timezone
 from django.utils.translation import ugettext as _
 from tinymce.models import HTMLField
 import tagulous.models
+from tinymce import models as tinymce_models
+
 
 import re
 import requests
@@ -145,11 +147,12 @@ class Film(models.Model):
 
 
 class Event(models.Model):
-    title = CharField(max_length=200, help_text="Назва")
-    description = TextField(help_text="Апісанне")
-    start_date = DateTimeField(help_text="Дата пачатку")
-    end_date = DateTimeField(help_text="Дата канца")
-    location = CharField(max_length=250, help_text="Адрас")
+    title       = CharField(max_length=200, help_text="Назва")
+    start_date  = DateTimeField(help_text="Дата пачатку")
+    end_date    = DateTimeField(help_text="Дата канца")
+    location    = CharField(max_length=250, help_text="Адрас")
+    address     = CharField(max_length=200, help_text="адресс",  default="")
+    description = tinymce_models.HTMLField()
 
     def __str__(self):
         return self.title
