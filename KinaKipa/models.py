@@ -8,7 +8,9 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.utils.translation import ugettext as _
+from django.conf import settings
 from tinymce.models import HTMLField
+from filebrowser.fields import FileBrowseField
 import tagulous.models
 
 import re
@@ -41,10 +43,12 @@ FILM_GENRES = [
 class Article(models.Model):
 
     title = CharField(max_length=200, verbose_name=_('Title'), help_text=_("Article title"))
-    news_icon = ImageField(blank=True, verbose_name=_('News Icon'), help_text=_('Article news icon'))
-    news_icon_link = URLField(
-        max_length=500, blank=True,
-        verbose_name=_('Link to news icon'), help_text=_('Link to image for news icon'))
+    badge_image = FileBrowseField(_("Badge image"), max_length=500, directory="images/",
+                                extensions=settings.FILEBROWSER_EXTENSIONS['Image'],
+                                help_text=_('Article badge image'))
+    # news_icon_link = URLField(
+    #     max_length=500, blank=True,
+    #     verbose_name=_('Link to news icon'), help_text=_('Link to image for news icon'))
     content = HTMLField(
         default='Content', verbose_name=_('Article content'), help_text=_("Article content")
     )
@@ -60,12 +64,12 @@ class Article(models.Model):
         self.published_date = timezone.now()
         self.save()
 
-    def save(self, *args, **kwargs):
-        if not self.news_icon:
-            self.news_icon_link = re.findall("<img\s{0,2}src=\"([^\s]*)\"", str(self.content))[0]
-        else:
-            self.news_icon_link = "../static/img/kinakipa-logo.jpg"
-        super(Article, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.news_icon:
+    #         self.news_icon_link = re.findall("<img\s{0,2}src=\"([^\s]*)\"", str(self.content))[0]
+    #     else:
+    #         self.news_icon_link = "../static/img/kinakipa-logo.jpg"
+    #     super(Article, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

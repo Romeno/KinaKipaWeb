@@ -21,12 +21,14 @@ from django.contrib import admin
 from KinaKipa.views import (test_trans, get_server_info,
                             news, index, last_film, catalog, p_film,
                             last_news)
-
+from filebrowser.sites import site
 import tagulous.views
 from KinaKipa.models import Genre
 
 
 urlpatterns = [
+    url(r'^admin/filebrowser/', include(site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
