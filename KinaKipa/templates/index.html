@@ -1,50 +1,127 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content %}
-	<content class="film-group recent">
-		<header class="header">
-			<div class="title item"><h2>Апошняе</h2></div>
-			<div class="devider item">|</div>
-			<a href="#" class="see-all item">Праглядзець астатняе</a>
-		</header>
 
-		<div class="b_bottom">
-			<img class="btop_img" src="{{banner.image.url}}"  alt="">
-		</div>
+<content>
+    <div class="carousel">
+        <img src="{% static 'img/carousel.png' %}">
+    </div>
 
-		<div id="films">
-			<!--
-				class films unused now 14.11
-			-->
-			<ul class="flex-container">
-				<li class="flex-item"><a href="film/{{ film.id }}" class="film-1"></a><image src="{% static 'img/1.jpg' %}"></li>
-				<li class="flex-item"><a href="#" class="film-2"></a><image src="{% static 'img/2.jpg' %}"></li>
-				<li class="flex-item"><a href="#" class="film-3"></a><image src="{% static 'img/3.jpg' %}"></li>
-				<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>
-				<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>
-			</ul>
-		</div>
+    <div class="news-gallery category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'News' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    праглядзець астатняе <i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
 
-		<div class="btop">
-			<img class="btop_img" src="{{banner.image.url}}" alt="">
-		</div>
-	</content>
+        <div class="news-block">
+        {% for n in news1 %}
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="{% url 'news_id' pk=n.pk %}" class="image-wrapper" style="background-image: url({{ n.badge_image.url }})">
 
-    <h2>Апошнія навіны</h2>
-	<div class="news-block">
-	{% for n in news %}
-		<div class="news">
-			{% if n.news_icon %}
-				<img src="{{ n.news_icon.url }}">
-			{% else %}
-                <img src="{{ n.news_icon_link }}">
-			{% endif %}
-			<div class="news-title">
-				<h4><a href="{% url 'news_id' pk=n.pk %}">{{ n.title }}</a></h4>
-			</div>
-		</div>
-	{% endfor %}
-	</div>
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>3</p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date }}</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
+                            {{ n.title }}
+                        </a>
+                        <p class="news-text">
+                            <a href="{% url 'news_id' pk=n.pk %}">
+                                Хочаце сапраўды класны фільм на каляспартыўную тэматыку? Не пра баскетбол. А такі, дзе героі не плоскія...
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="news-block">
+        {% for n in news2 %}
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="{% url 'news_id' pk=n.pk %}" class="image-wrapper" style="background-image: url({{ n.badge_image.url }})">
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>3</p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date }}</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
+                            {{ n.title }}
+                        </a>
+                        <p class="news-text">
+                            <a href="{% url 'news_id' pk=n.pk %}">
+                                Хочаце сапраўды класны фільм на каляспартыўную тэматыку? Не пра баскетбол. А такі, дзе героі не плоскія...
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">Драмы</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    праглядзець астатняе <i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+
+
+        <div class="news-block">
+        {% for film in test_films %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url({{ film.image.url }})">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for film in test_films %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url({{ film.image.url }})">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+    </div>
+</content>
 {% endblock %}
