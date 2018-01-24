@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'flatblocks',
     'KinaKipa',
     'tinymce',
     'el_pagination',
