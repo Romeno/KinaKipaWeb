@@ -181,5 +181,22 @@ TAGULOUS_NAME_MAX_LENGTH = 191
 TINYMCE_DEFAULT_CONFIG = {
     'height': 500,
     'width': 700,
-    'theme': 'advanced'
+    'theme': 'advanced',
+    'skin': "o2k7",
+    'skin_variant': "silver",
+    'plugins': "contextmenu,media,paste,preview,searchreplace,spellchecker,style,visualchars,wordcount,table",
+    'theme_advanced_toolbar_location': "top",
+    'theme_advanced_toolbar_align': "left",
+    'theme_advanced_statusbar_location': "bottom",
+    'theme_advanced_resizing': True,
+    'theme_advanced_buttons1_add': 'fontselect,fontsizeselect',
+    'theme_advanced_buttons2_add': 'pastetext,pasteword,selectall',
+    'theme_advanced_buttons3_add': 'styleprops,media',
+    # Text styles
+    'style_formats': [
+        {'title': 'KinaKipaParagraph', 'block': 'p',
+         'styles': {'font-size': '12px', 'text-align': 'left', 'color': '#333'}
+         },
+        {'title': 'BoldText', 'inline': 'b'}
+    ]
 }

@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.conf import settings
 from django.template.response import TemplateResponse
+from django.utils import timezone
 from django.utils.translation import ugettext as _
 from .models import Article, Banner, Film
 
@@ -14,10 +15,13 @@ from .models import Article, Banner, Film
 
 
 def index(req):
-    news = list(Article.objects.order_by('published_date'))[::-1]
+    news = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     if len(news) > 4:
         news = news[:4]
-    return TemplateResponse(req, 'index.html', {'news': news})
+    news1, news2 = news[:2], news[2:4]
+    t_film = Film.objects.last()
+    films = [f for _ in range(2) for f in [t_film]]
+    return TemplateResponse(req, 'index.html', {'news1': news1, 'news2': news2, 'test_films': films})
 
 
 def news(request, pk):
@@ -28,7 +32,7 @@ def news(request, pk):
 def last_news(request):
     l_news = Article.objects.last()
     format_time = l_news.published_date.strftime("%d-%m-%Y %H:%M")
-    return render(request, 'news.html', {'last_news': l_news, 'time': format_time})
+    return render(request, 'news.html', {'last_news': l_news, 'time': format_time, 'range': range(0, 2)})
 
 
 def test_trans(req):

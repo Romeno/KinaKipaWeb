@@ -122,7 +122,9 @@ class Film(models.Model):
     # @meta information
     genres = tagulous.models.TagField(to=Genre, help_text='Жанры могут включать в себя пробелы', blank=True)
     video_html = TextField(help_text="html-код для проигрывания видео", default='')
-    image = ImageField(storage=FILM_IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Film image'))
+    image = FileBrowseField(_("Poster"), max_length=500, directory="images/poster", null=True,
+                            blank=True, extensions=settings.FILEBROWSER_EXTENSIONS['Image'],
+                            help_text=_('Film poster'))
     torrent_link = URLField(max_length=2000, blank=True, help_text="Спасылка на торэнт")
 
     def download_image(self, url):
