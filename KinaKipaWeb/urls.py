@@ -61,7 +61,7 @@ urlpatterns += i18n_patterns(
     url(r'^server_info/$', get_server_info),
     url(r'^catalog/$', catalog, name='catalog'),
     url(r'^p_film/$', p_film, name='p_film'),
-]
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

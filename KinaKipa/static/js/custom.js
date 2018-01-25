@@ -5,7 +5,7 @@
 
 
 $().ready(function () {
-    $('.navigation').click(function(event) {
+    $('body > header').click(function(event) {
         console.log('clicked');
 
         $.ajax( {
