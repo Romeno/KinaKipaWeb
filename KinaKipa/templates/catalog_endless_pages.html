@@ -1,0 +1,11 @@
+{% load el_pagination_tags %}
+
+{% paginate films %}
+{% for f in films%}
+
+    <h1>{{ f.name }}</h1>
+    <ul>
+        <li><img src="{{ f.image.url }}"></li>
+    </ul>
+{% endfor %}
+{% show_more %}
