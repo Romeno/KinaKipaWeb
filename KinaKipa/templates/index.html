@@ -14,7 +14,7 @@
         <header>
             <a href="#"><h1 class="category-name">{% trans 'News' %}</h1></a>
             <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
-                    праглядзець астатняе <i class="fa fa-window-restore" aria-hidden="true"></i>
+                    {% trans 'View more' %}<i class="fa fa-window-restore" aria-hidden="true"></i>
                 </h3>
             </a>
         </header>
@@ -49,6 +49,7 @@
             </div>
         {% endfor %}
         </div>
+
         <div class="news-block">
         {% for n in news2 %}
             <div>
@@ -58,7 +59,7 @@
                     </a>
                     <div>
                         <div class="news-meta">
-                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <a href="#"><p class="category-link">{% trans 'News' %}</p></a>
                             <div>
                                 <p><i class="fa fa-commenting-o" aria-hidden="true"></i>3</p>
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date }}</p>
@@ -82,9 +83,9 @@
 
     <div class="category">
         <header>
-            <a href="#"><h1 class="category-name">Драмы</h1></a>
+            <a href="#"><h1 class="category-name">{% trans 'Dramas' %}</h1></a>
             <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
-                    праглядзець астатняе <i class="fa fa-window-restore" aria-hidden="true"></i>
+                    {% trans 'View more' %} <i class="fa fa-window-restore" aria-hidden="true"></i>
                 </h3>
             </a>
         </header>
