@@ -43,22 +43,19 @@ FILM_GENRES = [
 class Article(models.Model):
 
     title = CharField(max_length=200, verbose_name=_('Title'), help_text=_("Article title"))
-    badge_image = FileBrowseField(_("Badge image"), max_length=500, directory="images/",
-                                extensions=settings.FILEBROWSER_EXTENSIONS['Image'],
-                                help_text=_('Article badge image'))
+    badge_image = FileBrowseField(max_length=500, extensions=settings.FILEBROWSER_EXTENSIONS['Image'],
+                                  directory="images/", verbose_name=_('Badge image'),
+                                  help_text=_('Image for the article that will be used on all list pages'))
     # news_icon_link = URLField(
     #     max_length=500, blank=True,
     #     verbose_name=_('Link to news icon'), help_text=_('Link to image for news icon'))
-    content = HTMLField(
-        default='Content', verbose_name=_('Article content'), help_text=_("Article content")
-    )
-    published_date = DateTimeField(
-        default=timezone.now, verbose_name=_('Publication date'), help_text=_("Publication date")
-    )
+    content = HTMLField(verbose_name=_('Article content'), help_text=_('Article content'))
+    published_date = DateTimeField(default=timezone.now, verbose_name=_('Publication date'),
+                                   help_text=_('Publication date'))
 
-    video_link = CharField(
-        max_length=500, blank=True,
-        verbose_name=_('Video'), help_text=_('Link to video. Needs "iframe" tag'))
+    # video_link = CharField(
+    #     max_length=500, blank=True,
+    #     verbose_name=_('Video'), help_text=_('Link to video. Needs "iframe" tag'))
 
     def publish(self):
         self.published_date = timezone.now()
@@ -85,45 +82,38 @@ class Genre(tagulous.models.TagTreeModel):
 
 class Film(models.Model):
 
-    # GENRES_CHOICES = (
-    #     ('action', 'Баявік'),
-    #     ('adventure', 'Прыгода'),
-    #     ('comedy', 'Камедыя'),
-    #     ('crime', 'Злачынства'),
-    #     ('drama', 'Драма'),
-    #     ('epics/historical', 'Эпас / Гістарычны'),
-    #     ('horror', 'Жахі'),
-    #     ('musicals', 'Мюзікл'),
-    #     ('science fiction', 'Навуковая фантастыка'),
-    #     ('war', 'Ваенны'),
-    #     ('westerns', 'Вестэрн')
-    # )
-
     # @film's names
-    name = CharField(max_length=200, verbose_name='film_name', help_text="Назва", unique=True)
-    name_origin = CharField(max_length=200, verbose_name='film_name_origin',
-                            default='', help_text="Назва арыгінала", blank=True)
+    name = CharField(max_length=200, verbose_name=_('Movie name'), help_text=_('Movie name'), unique=True)
+    name_origin = CharField(max_length=200, verbose_name=_('Original movie name'),
+                            help_text=_('Name of the movie in the language of the original'), blank=True)
 
     # @people
-    director = CharField(max_length=200, help_text="Рэжысёр", blank=True)
-    stars = CharField(max_length=800, help_text="Акцёры", blank=True)
+    director = CharField(max_length=200, verbose_name=_('Director'), blank=True)
+    stars = CharField(max_length=800, verbose_name=_('Actors'), blank=True)
 
     # @text information
-    description = TextField(help_text="Апісанне", blank=True)
-    country = CharField(max_length=200, help_text="Краiна", default="", blank=True)
+    description = TextField(verbose_name=_('Description'), blank=True)
+    country = CharField(max_length=200, verbose_name=_('Country'), help_text=_('Country of production'),blank=True)
 
     # @numeric values
     # >>> ratings are currently optional
-    kp_rating = FloatField(default=0.0, blank=True)
-    imdb_rating = FloatField(default=0.0, blank=True)
-    year = CharField(max_length=4, help_text="Год", default="", blank=True)
-    length = CharField(max_length=30, help_text="Працягласць", default='', blank=True)
+    kp_rating = FloatField(default=0.0, verbose_name=_('Kinopoisk rating'),
+                           help_text=_('Film ratings on kinopoisk.ru'), blank=True)
+    imdb_rating = FloatField(default=0.0, verbose_name=_('Imdb rating'),
+                             help_text=_('Film ratings on imdb.com'), blank=True)
+    year = CharField(max_length=4, verbose_name=_('Year'),
+                     help_text=_('Year of creation'), blank=True)
+    length = CharField(max_length=30, verbose_name=_('Length'), help_text=_('Movie length'), blank=True)
 
     # @meta information
-    genres = tagulous.models.TagField(to=Genre, help_text='Жанры могут включать в себя пробелы', blank=True)
-    video_html = TextField(help_text="html-код для проигрывания видео", default='')
-    image = ImageField(storage=FILM_IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Film image'))
-    torrent_link = URLField(max_length=2000, blank=True, help_text="Спасылка на торэнт")
+    genres = tagulous.models.TagField(to=Genre, verbose_name=_('Movie genres'),
+                                      help_text=_('Genres can include spaces. Used like tags.'), blank=True)
+    video_html = TextField(verbose_name=_('Video html code'),
+                           help_text=_('html code for displaying the video'), blank=True)
+    image = FileBrowseField(max_length=500, directory="images/poster", null=True, blank=True,
+                            extensions=settings.FILEBROWSER_EXTENSIONS['Image'], verbose_name=_('Image'),
+                            help_text=_('Image for the movie that will be used on all list pages'))
+    torrent_link = URLField(max_length=2000, blank=True, verbose_name=_('Torrent link'), help_text=_('Torrent link'))
 
     def download_image(self, url):
         name = unidecode.unidecode(self.name)
@@ -148,11 +138,11 @@ class Film(models.Model):
 
 
 class Event(models.Model):
-    title = CharField(max_length=200, help_text="Назва")
-    description = TextField(help_text="Апісанне")
-    start_date = DateTimeField(help_text="Дата пачатку")
-    end_date = DateTimeField(help_text="Дата канца")
-    location = CharField(max_length=250, help_text="Адрас")
+    title = CharField(max_length=200, verbose_name=_('Title'), help_text=_('Event title'))
+    description = TextField(verbose_name=_('Description'), help_text=_('Event description'))
+    start_date = DateTimeField(verbose_name=_('Start date'), help_text=_('Date and time when the event starts'))
+    end_date = DateTimeField(verbose_name=_('End date'), help_text=_('Date and time when the event ends'))
+    location = CharField(max_length=250, verbose_name=_('Location'), help_text=_('Event\s location'))
 
     def __str__(self):
         return self.title
@@ -164,7 +154,8 @@ class Banner(models.Model):
         ("index_right", _("right on index page")),
     )
 
-    image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, help_text="")
-    position = models.CharField(max_length=255, choices=BANNER_CHOICES, default='',
-                                help_text=_("position for the banner"))
+    image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Banner image'), help_text=_('Banner consists of image and link'))
+    url = URLField(verbose_name=_('Url'), help_text=_('Url where banner will lead to'))
+    position = models.CharField(max_length=255, choices=BANNER_CHOICES, verbose_name=_('Banner position'),
+                                help_text=_("On which pages and where this banner will be positioned"))
 

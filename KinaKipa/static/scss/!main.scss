@@ -1,8 +1,11 @@
 // generic
 @import "variables";
 @import "general";
+@import "fonts";
 
 // pages
 // here goes the styles for separate pages
+@import "base";
+
 @import "pages/index";
 @import "pages/news"

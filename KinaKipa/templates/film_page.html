@@ -8,6 +8,7 @@
             <div class="devider">|</div>
             <div>{{ film.name_origin }}</div>
         </header>
+
         <div class="film-plate">
             <aside></aside>
             <div class="poster"></div>
@@ -23,23 +24,23 @@
                     <div class="film-info">
                         <table>
                             <tr>
-                                <td>Жанр:</td>
+                                <td>{% trans 'Genre' %}:</td>
                                 <td>{{ film.genres }}</td>
                             </tr>
                             <tr>
-                                <td>Рэжысёр:</td>
+                                <td>{% trans 'Director' %}:</td>
                                 <td>{{ film.director }}</td>
                             </tr>
                             <tr>
-                                <td>Акцёры:</td>
+                                <td>{% trans 'Actors' %}:</td>
                                 <td>{{ film.stars }}</td>
                             </tr>
                             <tr>
-                                <td>Працягласць:</td>
+                                <td>{% trans 'Length %}:</td>
                                 <td>{{ film.length }} хвіл.</td>
                             </tr>
                             <tr>
-                                <td>Апісанне:</td>
+                                <td>{% trans 'Description' %}:</td>
                                 <td>{{ film.description }}</td>
                             </tr>
                         </table>

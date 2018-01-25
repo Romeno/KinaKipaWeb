@@ -9,3 +9,4 @@ bs4
 Unidecode==1.0.22
 django-grappelli==2.10.1
 django-filebrowser==3.9.1
+django-flatblocks==0.9.4

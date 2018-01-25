@@ -1,0 +1,21 @@
+/*
+ * Styles for base.html template
+ */
+
+.lang-block {
+  margin-right: 40px;
+
+  ul {
+    li {
+      a {
+        margin: 0 5px;
+        font-size: 14px;
+
+        &:hover {
+          background-color: transparent;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 09:41+0300\n"
+"POT-Creation-Date: 2018-01-25 08:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,19 +32,109 @@ msgstr ""
 msgid "Article title"
 msgstr ""
 
+msgid "Badge image"
+msgstr ""
+
+msgid "Image for the article that will be used on all list pages"
+msgstr ""
+
 msgid "Article content"
 msgstr ""
 
 msgid "Publication date"
 msgstr ""
 
-msgid "Article image"
+msgid "Movie name"
 msgstr ""
 
-msgid "Image of article when viewing article list on index or news page"
+msgid "Original movie name"
 msgstr ""
 
-msgid "Film image"
+msgid "Name of the movie in the language of the original"
+msgstr ""
+
+msgid "Director"
+msgstr ""
+
+msgid "Actors"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Country of production"
+msgstr ""
+
+msgid "Kinopoisk rating"
+msgstr ""
+
+msgid "Film ratings on kinopoisk.ru"
+msgstr ""
+
+msgid "Imdb rating"
+msgstr ""
+
+msgid "Film ratings on imdb.com"
+msgstr ""
+
+msgid "Year"
+msgstr ""
+
+msgid "Year of creation"
+msgstr ""
+
+msgid "Length"
+msgstr ""
+
+msgid "Movie length"
+msgstr ""
+
+msgid "Movie genres"
+msgstr ""
+
+msgid "Genres can include spaces. Used like tags."
+msgstr ""
+
+msgid "Video html code"
+msgstr ""
+
+msgid "html code for displaying the video"
+msgstr ""
+
+msgid "Image"
+msgstr ""
+
+msgid "Image for the movie that will be used on all list pages"
+msgstr ""
+
+msgid "Torrent link"
+msgstr ""
+
+msgid "Event title"
+msgstr ""
+
+msgid "Event description"
+msgstr ""
+
+msgid "Start date"
+msgstr ""
+
+msgid "Date and time when the event starts"
+msgstr ""
+
+msgid "End date"
+msgstr ""
+
+msgid "Date and time when the event ends"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Event\\s location"
 msgstr ""
 
 msgid "top on index page"
@@ -53,19 +143,34 @@ msgstr ""
 msgid "right on index page"
 msgstr ""
 
-msgid "position for the banner"
+msgid "Banner image"
 msgstr ""
 
-msgid "Index"
+msgid "Banner consists of image and link"
+msgstr ""
+
+msgid "Url"
+msgstr ""
+
+msgid "Url where banner will lead to"
+msgstr ""
+
+msgid "Banner position"
+msgstr ""
+
+msgid "On which pages and where this banner will be positioned"
 msgstr ""
 
 msgid "Movies"
 msgstr ""
 
-msgid "Screenings"
+msgid "News"
 msgstr ""
 
 msgid "About us"
+msgstr ""
+
+msgid "Contacts"
 msgstr ""
 
 msgid "Administration"

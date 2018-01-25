@@ -18,6 +18,7 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 from KinaKipa.views import (test_trans, get_server_info,
                             news, index, last_film, catalog, p_film,
                             last_news, my_ajax)
@@ -31,6 +32,21 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
+
+    url(r'^my_ajax/$', my_ajax),
+
+    # Tagulous api to call autocomplete via JS
+    url(
+        r'^api/genres/$',
+        tagulous.views.autocomplete,
+        {'tag_model': Genre},
+        name='film_genres_autocomplete',
+    ),
+]
+
+# These urls will lead to pages that will be dependant on Language chosen by user
+# Language setting will be in URL
+urlpatterns += i18n_patterns(
     url(r'^pages/', include('django.contrib.flatpages.urls')),
 
     # main web pages
@@ -45,16 +61,6 @@ urlpatterns = [
     url(r'^server_info/$', get_server_info),
     url(r'^catalog/$', catalog, name='catalog'),
     url(r'^p_film/$', p_film, name='p_film'),
-
-    url(r'^my_ajax/$', my_ajax),
-
-    # Tagulous api to call autocomplete via JS
-    url(
-        r'^api/genres/$',
-        tagulous.views.autocomplete,
-        {'tag_model': Genre},
-        name='film_genres_autocomplete',
-    ),
 ]
 
 if settings.DEBUG:
