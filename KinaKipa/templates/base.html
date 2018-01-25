@@ -31,6 +31,21 @@
                 </span>
                 </button>
             </div>
+
+            <nav class="lang-block">
+                <ul>
+                    <li>
+                        <a href="/be{{ request.path|slice:'3:' }}">БЕЛ</a>
+                    </li>
+                    <li>
+                        <a href="/en{{ request.path|slice:'3:' }}">EN</a>
+                    </li>
+                    <li>
+                        <a href="/ru{{ request.path|slice:'3:' }}">РУ</a>
+                    </li>
+                </ul>
+            </nav>
+
             <nav class="">
                 <ul>
                     <li>
