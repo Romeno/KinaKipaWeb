@@ -6,8 +6,26 @@
 {% block content %}
 
 <content>
-    <div class="carousel">
-        <img src="{% static 'img/carousel.png' %}">
+
+    <div class="carousel-wrapper">
+        <div class="carousel">
+            <div class="hero-slide" style="background-image: url({% static 'img/thegoodson-1920x1080.jpg' %})">
+                <div class="hero-info">
+                    <div class="title">The Good Son</div>
+                    <div class="length">89 {% trans 'min' %} | </div>
+                    <div class="year">2013 | </div>
+                    <div class="genres">{% trans 'Sports' %}</div>
+                </div>
+                <div style="clear:both;"></div>
+                <a class="hero-go-button" href="#">{% trans 'Watch now' %}</a>
+            </div>
+            <div class="hero-slide" style="background-image: url({% static 'img/thegoodson-1920x1080.jpg' %})">
+
+            </div>
+            <div class="hero-slide" style="background-image: url({% static 'img/thegoodson-1920x1080.jpg' %})">
+
+            </div>
+        </div>
     </div>
 
     <div class="news-gallery category">

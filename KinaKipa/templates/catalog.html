@@ -12,7 +12,6 @@
     {% include page_template %}
         {% block js %}
             {{ block.super }}
-            <script src="{% static 'js/jquery-1.11.1.js' %}"></script>
             <script src="{% static 'js/el-pagination/js/el-pagination.js' %}"></script>
             <script>
                 $.endlessPaginate({
