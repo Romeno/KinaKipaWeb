@@ -9,10 +9,10 @@ from django.conf import settings
 from django.template.response import TemplateResponse
 from django.utils import timezone
 from django.utils.translation import ugettext as _
+from el_pagination.decorators import page_template
 from .models import Article, Banner, Film
 
 # Create your views here.
-
 
 def index(req):
     news = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -83,8 +83,16 @@ def last_film(request):
     return render(request, 'film_page.html', {'film': film_cursor})
 
 
-def catalog(request):
-    return TemplateResponse(request, 'catalog.html')
+@page_template('catalog_endless_pages.html')
+def catalog(request, template='catalog.html', extra_context=None):
+    film = Film.objects.last()
+    films = [f for x in range(200) for f in [film]]
+    context = {
+        'films': films,
+    }
+    if extra_context is not None:
+        context.update(extra_context)
+    return render(request, template, context)
 
 
 def p_film(request):

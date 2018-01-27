@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 08:13+0300\n"
+"POT-Creation-Date: 2018-01-26 05:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,10 +34,10 @@ msgid "Article title"
 msgstr "Назва артыкула"
 
 msgid "Badge image"
-msgstr ""
+msgstr "Малюнак плашчака"
 
 msgid "Image for the article that will be used on all list pages"
-msgstr ""
+msgstr "Малюнак артыкула для ўсіх старонак са спісамі артыкулаў"
 
 msgid "Article content"
 msgstr "Змеціва артыкула"
@@ -45,104 +45,98 @@ msgstr "Змеціва артыкула"
 msgid "Publication date"
 msgstr "Дата публікацыі"
 
-#, fuzzy
-#| msgid "Movies"
 msgid "Movie name"
-msgstr "Фільмы"
+msgstr "Назва фільма"
 
 msgid "Original movie name"
-msgstr ""
+msgstr "Арыгінальная назва фільма"
 
 msgid "Name of the movie in the language of the original"
-msgstr ""
+msgstr "Назва фільма на мове арыгіналу"
 
 msgid "Director"
-msgstr ""
+msgstr "Рэжысёр"
 
 msgid "Actors"
-msgstr ""
+msgstr "Акцёры"
 
 msgid "Description"
-msgstr ""
+msgstr "Апісанне"
 
 msgid "Country"
-msgstr ""
+msgstr "Краіна"
 
 msgid "Country of production"
-msgstr ""
+msgstr "Краіна вытворчасці"
 
-#, fuzzy
-#| msgid "Administration"
 msgid "Kinopoisk rating"
-msgstr "Адміністрація"
+msgstr "Рэйтынг Кінапошуку"
 
 msgid "Film ratings on kinopoisk.ru"
-msgstr ""
+msgstr "Рэйтынг фільма на kinopoisk.ru"
 
 msgid "Imdb rating"
-msgstr ""
+msgstr "Imdb рэйтынг"
 
 msgid "Film ratings on imdb.com"
-msgstr ""
+msgstr "Рэйтынг фільма на imdb.com"
 
 msgid "Year"
-msgstr ""
+msgstr "Год"
 
 msgid "Year of creation"
-msgstr ""
+msgstr "Год вытворчасці"
 
 msgid "Length"
-msgstr ""
+msgstr "Працягласць"
 
 msgid "Movie length"
-msgstr ""
+msgstr "Працягласць фільма"
 
-#, fuzzy
-#| msgid "Movies"
 msgid "Movie genres"
-msgstr "Фільмы"
+msgstr "Жанры фільма"
 
 msgid "Genres can include spaces. Used like tags."
-msgstr ""
+msgstr "Жанры могуць уключаць прагалы. Выкарыстоўваюцца як тэгі."
 
 msgid "Video html code"
-msgstr ""
+msgstr "Html код відэа"
 
 msgid "html code for displaying the video"
-msgstr ""
+msgstr "Html код для адлюстравання відэа"
 
 msgid "Image"
-msgstr ""
+msgstr "Малюнак"
 
 msgid "Image for the movie that will be used on all list pages"
-msgstr ""
+msgstr "Малюнак фільма для ўсіх старонак са спісамі фільмаў"
 
 msgid "Torrent link"
-msgstr ""
+msgstr "Torrent спаслыка"
 
 msgid "Event title"
-msgstr ""
+msgstr "Назва мерапрыемства"
 
 msgid "Event description"
-msgstr ""
+msgstr "Апісанне мерапрыемства"
 
 msgid "Start date"
-msgstr ""
+msgstr "Час пачатку мерапрыемства"
 
 msgid "Date and time when the event starts"
-msgstr ""
+msgstr "Дата і час, калі мерапрыемства пачнецца"
 
 msgid "End date"
-msgstr ""
+msgstr "Час сканчэння мерапрыемства"
 
 msgid "Date and time when the event ends"
-msgstr ""
+msgstr "Дата і час, калі мерапрыемтсва скончыцца"
 
 msgid "Location"
-msgstr ""
+msgstr "Месца"
 
 msgid "Event\\s location"
-msgstr ""
+msgstr "Месца правядзення мерапрыемства"
 
 msgid "top on index page"
 msgstr "верхні на галоўнай"
@@ -151,37 +145,55 @@ msgid "right on index page"
 msgstr "правы на галоўнай"
 
 msgid "Banner image"
-msgstr ""
+msgstr "Малюнак баннера"
 
 msgid "Banner consists of image and link"
-msgstr ""
+msgstr "Баннер складаецца з малюнка і спасылкі"
 
 msgid "Url"
-msgstr ""
+msgstr "Спасылка"
 
 msgid "Url where banner will lead to"
-msgstr ""
+msgstr "Спаслыку куды баннер будзе весці"
 
 msgid "Banner position"
-msgstr ""
+msgstr "Месцазнаходжанне баннера"
 
 msgid "On which pages and where this banner will be positioned"
-msgstr ""
+msgstr "На якой старнке і дзе баннер будзе знаходзіцца"
+
+msgid "KinaKipa"
+msgstr "КінаКіпа"
 
 msgid "Movies"
 msgstr "Фільмы"
 
 msgid "News"
-msgstr ""
+msgstr "Навіны"
+
+msgid "Movie screenings"
+msgstr "Кінапрагляды"
 
 msgid "About us"
 msgstr "Пра нас"
 
 msgid "Contacts"
-msgstr ""
+msgstr "Кантакты"
+
+msgid "Genre"
+msgstr "Жанр"
+
+msgid "View more"
+msgstr "Праглядзець астатняе"
+
+msgid "Dramas"
+msgstr "Драмы"
+
+msgid "Moive news"
+msgstr "Навіны кіно"
 
 msgid "Administration"
-msgstr "Адміністрація"
+msgstr "Адміністрацыя"
 
 #~ msgid "Article image"
 #~ msgstr "Малюнак артыкула"

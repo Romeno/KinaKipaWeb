@@ -558,7 +558,118 @@ a.film:hover {
     bottom: 0;
 }
 
+.carousel-wrapper {
+  $slide-height: 750px;
+  $dots-overlay-height: 48px;
+  $arrow-size: 48px;
+  //$slider-indigo-color: #0089d8;
+  $slider-indigo-color: #4c03bd;
 
-.carousel {
-  display: block;
+  width: 100%;
+
+  .hero-slide {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: $slide-height;
+
+    .hero-info {
+      display: block;
+      margin-top: 530px;
+      margin-left: 50px;
+      text-align: left;
+
+      > div {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 60px;
+        color: white;
+        margin-left: 10px;
+      }
+
+      .length,
+      .year,
+      .genres {
+        font-size: 30px;
+        font-weight: 400;
+        opacity: 0.65;
+      }
+
+      &:after {
+        clear: both;
+        content: "";
+      }
+    }
+
+    .hero-go-button {
+      margin-top: 10px;
+      margin-left: 60px;
+      display: block;
+      width: 200px;
+      height: 48px;
+      line-height: 48px;
+      background-color: #0089d8;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .slick-slide {
+    > div {
+      height: $slide-height;
+    }
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    color: $slider-indigo-color;
+    font-family: FontAwesome;
+    font-size: $arrow-size;
+  }
+
+  .slick-prev:before {
+    content: '\f104';
+  }
+
+  .slick-next:before {
+    content: '\f105';
+  }
+
+  .slick-prev,
+  .slick-next {
+    z-index: 2000;
+    top: auto;
+    bottom: $dots-overlay-height / 4  + $arrow-size / 8 + 1px;
+  }
+
+  .slick-prev {
+      left: 40%;
+      left: calc(50% - 125px);
+  }
+
+  .slick-next {
+      right: 40%;
+      right: calc(50% - 125px);
+  }
+
+  .kinakipa-slick-dots {
+    background-color: rgba(255, 255, 255, 0.5);
+    bottom: 0;
+    height: $dots-overlay-height;
+
+    > li {
+      top: -13px + $dots-overlay-height / 2;
+
+      button {
+        &:before{
+          font-size: 7px;
+        }
+      }
+    }
+  }
 }
+
