@@ -10,8 +10,11 @@ from django.utils import timezone
 from django.utils.translation import ugettext as _
 from django.conf import settings
 from tinymce.models import HTMLField
+from filebrowser.base import FileObject
 from filebrowser.fields import FileBrowseField
 import tagulous.models
+import os
+from KinaKipaWeb.settings import BASE_DIR
 
 import re
 import requests
@@ -117,21 +120,34 @@ class Film(models.Model):
 
     def download_image(self, url):
         name = unidecode.unidecode(self.name)
+        name = name.replace(' ', '_')
+        print(self.name, name)
+
         format_position = url.rfind('.')
         img_format = url[format_position:]
         filename = name + img_format
-
+        print(filename)
         img_data = requests.get(url)
         if not img_data.ok:
+            with open('save_logger.log', 'a') as file:
+                file.write(
+                    f'{self.__dict__} wasnt saved properly.Error while dowloading image \n'
+                )
             return None
 
-        self.image.save(
-            filename,
-            ContentFile(img_data.content),
-            save=True
-        )
-        self.save()
-        sleep(5)
+        full_path = os.path.join(BASE_DIR, 'media', 'poster', filename)
+        try:
+            with open(full_path, 'wb') as img_file:
+                img_file.write(img_data.content)
+
+            self.image = FileObject('poster/'+filename)
+            self.save()
+            print('>>> successfully dowloaded image <<<')
+            sleep(20)
+        except Exception as err:
+            with open('NOT_DOWNLOADED.log', 'a+') as file:
+                file.write(f'{filename}\n')
+            pass
 
     def __str__(self):
         return f'{self.name} / {self.name_origin} / {self.year}'
