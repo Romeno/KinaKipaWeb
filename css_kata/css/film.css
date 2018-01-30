@@ -1,0 +1,50 @@
+.film-wrapper {
+    font-size: 20px;
+    color: white;
+    width: 100%;
+    min-height: 600px;
+    padding: 40px 60px 50px;
+    
+    background: radial-gradient(circle farthest-corner at 50% 50%, #222, #000);
+    
+    
+    display: flex;
+    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.film-poster {
+    display: flex;
+    
+    width: 280px;
+    height: 450px;
+    background: url('../img/film2.jpg') center;
+    background-size: cover;
+}
+
+.film-meta {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.film-information {
+    float: right;
+    width: 500px;
+    display: inline-block;
+    height: 450px;
+    margin-left: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+.watch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

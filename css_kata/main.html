@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/hamburgers.css">
     <link rel="stylesheet" type="text/css" href="css/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/circles.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/search.css">
+    <script type="text/javascript" src="scripts/search.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    
     <script src="https://use.fontawesome.com/fcd25faebd.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
     <script type="text/javascript" src="scripts/hamburgers.js"></script>
@@ -16,17 +24,17 @@
         <a href="#">KinaKipa</a>
     </div>
     <div class="search-button">
-        <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+        <a href="#" onclick='showSearch()'><i class="fa fa-search" aria-hidden="true"></i></a>
     </div>
     <div id="menu">
-        <button class="hamburger hamburger--3dxy js-hamburger" type="button">
+        <button class="hamburger hamburger--3dxy js-hamburger" type="button" onclick='menu()'>
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
         </button>
     </div>
-    <nav class="">
-        <ul>
+    <nav>
+        <ul class="">
             <li>
                 <a href="#"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i>Фільмы</a>
             </li>
@@ -43,6 +51,12 @@
                 <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>Кантакты</a>
             </li>
         </ul>
+        <div class="search">
+            <input type="search" placeholder="Blah-blah text!">
+            <a class="submit" href="#">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </a>
+        </div>
     </nav>
 
 </header>
@@ -71,7 +85,7 @@
                         <div class="news-meta">
                             <a href="#"><p class="category-link">Навіны</p></a>
                             <div>
-                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>3</p>
+                                
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i>2 гадзіны таму</p>
                             </div>
                         </div>
@@ -97,7 +111,7 @@
                         <div class="news-meta">
                             <a href="#"><p class="category-link">Навіны</p></a>
                             <div>
-                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>0</p>
+                                
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i>5 гадзін таму</p>
                             </div>
                         </div>
@@ -125,7 +139,7 @@
                         <div class="news-meta">
                             <a href="#"><p class="category-link">Навіны</p></a>
                             <div>
-                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>1</p>
+                                
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i>17 студзеня 2018</p>
                             </div>
                         </div>
@@ -151,7 +165,7 @@
                         <div class="news-meta">
                             <a href="#"><p class="category-link">Кінапрагляд</p></a>
                             <div>
-                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>0</p>
+                                
                                 <p><i class="fa fa-clock-o" aria-hidden="true"></i>11 студзеня 2018</p>
                             </div>
                         </div>
@@ -239,7 +253,12 @@
  <!--will be deleted-->
 
 <footer>
-
+    <div>
+    
+        <h1><a class='vk-logo' href='#'></a>KinaKipa</h1>
+        <p class='description'>Фільмы, перакладзеныя на мову</p>
+        <p>Калі вы знайшлі памылку ў матэрыяле, ці ў вас не працуе нейкая частка сайта, калі ласка, паведаміце нас праз пошту: <a href="email:kinakipa@gmail.com">kinakipa@gmail.com</a></p>
+    </div>
 </footer>
 
 </body>

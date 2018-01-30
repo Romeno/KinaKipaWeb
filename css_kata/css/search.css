@@ -1,0 +1,111 @@
+nav {
+    overflow: hidden;
+    margin-right: 0px !important;
+}
+
+nav li:last-child {
+    padding-right: 10px;
+}
+
+ul.hidden {
+    height: 50px;
+    overflow: hidden;
+    animation-name: horisontal-hide;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes horisontal-hide {
+    0% {opacity: 1; margin-right: 0px;}
+    100% {opacity: 0; margin-right: 500px; width: 0px;}
+}
+
+.search {
+    display: none;
+}
+
+
+.search.visible {
+    position: relative;
+    top: -50px;
+    height: 50px;
+    display: block;
+    overflow: hidden !important;
+    animation-name: horisontal-show;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes horisontal-show {
+    0% {right: -500px; opacity: 0;}
+    100% {right: 0; opacity: 1;}
+}
+
+.search.visible input[type='search'] {
+    border: 0px;
+    border-bottom: 2px solid #999999;
+    position: absolute;
+    right: 50px;
+    width: 400px;
+    
+    background-color: inherit;
+    color: white;
+    font: inherit;
+    display: block;
+    margin: 10px 10px;
+    height: 30px;
+}
+
+#Search::-webkit-search-cancel-button{
+    position:relative;
+    right:20px;    
+}
+
+
+.search.visible input:focus {
+    outline: none;
+    border-color: #8cd5d7;
+}
+
+
+.search.visible a.submit {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    height: 50px;
+    width: 50px;
+
+}
+
+.search.visible a.submit:hover {
+    background-color: inherit;
+}
+
+.search.visible a.submit i {
+    font-size: 26px;
+    color: #8cd5d7;
+    padding: 13px;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+@media all and (max-width: 700px){
+    .search.visible a.submit {
+        padding: 0;
+        margin-right: 5px;
+    }
+}
+
+@media all and (max-width: 700px){
+    nav {
+        overflow: initial !important;
+    }
+    
+    .search.visible input[type='search'] {
+        min-width: 70%;
+        max-width: 75%;
+        margin-left: 0px;
+        margin-right: 10px;
+        left: 60px;
+    }
+}
