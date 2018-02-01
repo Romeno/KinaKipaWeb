@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 09:55+0300\n"
+"POT-Creation-Date: 2018-02-01 19:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,6 +183,15 @@ msgstr "Контакты"
 msgid "Genre"
 msgstr "Жанр"
 
+msgid "min"
+msgstr ""
+
+msgid "Sports"
+msgstr ""
+
+msgid "Watch now"
+msgstr ""
+
 msgid "View more"
 msgstr "Просмотреть больше"
 
@@ -196,9 +205,11 @@ msgid "Crimes"
 msgstr "Криминальные"
 
 msgid "Fiction"
-msgstr "Фантастыка"
+msgstr "Фантастика"
 
-msgid "Movie news"
+#, fuzzy
+#| msgid "Movie news"
+msgid "Moive news"
 msgstr "Новости кино"
 
 msgid "Administration"

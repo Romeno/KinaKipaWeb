@@ -33,12 +33,6 @@ def index(req):
     )
 
 
-def cut_to_four(objects):
-    if len(objects) > 4:
-        objects = objects[:4]
-    return objects
-
-
 def news(request, pk):
     news = get_object_or_404(Article, pk=pk)
     return render(request, 'news.html', {'news': news})
