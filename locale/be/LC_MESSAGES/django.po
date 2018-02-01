@@ -189,7 +189,16 @@ msgstr "Праглядзець астатняе"
 msgid "Dramas"
 msgstr "Драмы"
 
-msgid "Moive news"
+msgid "Comedies"
+msgstr "Камедыі"
+
+msgid "Crimes"
+msgstr "Крымінальныя"
+
+msgid "Fiction"
+msgstr "Фантастыка"
+
+msgid "Movie news"
 msgstr "Навіны кіно"
 
 msgid "Administration"

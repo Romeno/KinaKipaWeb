@@ -14,14 +14,29 @@ from .models import Article, Banner, Film
 
 # Create your views here.
 
+
 def index(req):
-    news = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    if len(news) > 4:
-        news = news[:4]
-    news1, news2 = news[:2], news[2:4]
-    t_film = Film.objects.last()
-    films = [f for _ in range(2) for f in [t_film]]
-    return TemplateResponse(req, 'index.html', {'news1': news1, 'news2': news2, 'test_films': films})
+    news = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date')[:4]
+    films = Film.objects.order_by("id").reverse()
+    drama = films.filter(genres__name__in=['драма'])[:4]
+    comedies = films.filter(genres__name__in=['камедыя']).exclude(genres__name__in=['драма'])[:4]
+    crimes = films.filter(genres__name__in=['крымінальны']).exclude(genres__name__in=['камедыя'])[:4]
+    fiction = films.filter(genres__name__in=['фантастыка']).exclude(genres__name__in=['крымінальны'])[:4]
+    return TemplateResponse(
+        req, 'index.html',{
+            'news1': news[:2], 'news2': news[2:4],
+            'drama1': drama[:2], 'drama2': drama[2:4],
+            'comedies1': comedies[:2], 'comedies2': comedies[2:4],
+            'crimes1': crimes[:2], 'crimes2': crimes[2:4],
+            'fiction1': fiction[:2], 'fiction2': fiction[2:4]
+        }
+    )
+
+
+def cut_to_four(objects):
+    if len(objects) > 4:
+        objects = objects[:4]
+    return objects
 
 
 def news(request, pk):

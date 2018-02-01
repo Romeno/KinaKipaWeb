@@ -99,6 +99,7 @@
         </div>
     </div>
 
+
     <div class="category">
         <header>
             <a href="#"><h1 class="category-name">{% trans 'Dramas' %}</h1></a>
@@ -108,9 +109,8 @@
             </a>
         </header>
 
-
         <div class="news-block">
-        {% for film in test_films %}
+        {% for film in drama1 %}
             <div>
                 <div class="news">
 
@@ -126,7 +126,7 @@
         </div>
 
         <div class="news-block">
-        {% for film in test_films %}
+        {% for film in drama2 %}
             <div>
                 <div class="news">
 
@@ -140,7 +140,136 @@
             </div>
         {% endfor %}
         </div>
-
     </div>
+
+
+    <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'Comedies' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more' %} <i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+
+        <div class="news-block">
+        {% for film in comedies1 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url({{ film.image.url }})">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for film in comedies2 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url({{ film.image.url }})">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+     <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'Crimes' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more' %} <i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+
+        <div class="news-block">
+        {% for film in crimes1 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url({{ film.image.url }})">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for film in crimes2 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url({{ film.image.url }})">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'Fiction' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more' %} <i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+
+        <div class="news-block">
+        {% for film in fiction1 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url({{ film.image.url }})">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for film in fiction2 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url({{ film.image.url }})">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
 </content>
 {% endblock %}
