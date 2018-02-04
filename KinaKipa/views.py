@@ -16,7 +16,7 @@ from .models import Article, Banner, Film
 
 
 def index(req):
-    news = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date')[:4]
+    news = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date').reverse()[:4]
     films = Film.objects.order_by("id").reverse()
     drama = films.filter(genres__name__in=['драма'])[:4]
     comedies = films.filter(genres__name__in=['камедыя']).exclude(genres__name__in=['драма'])[:4]
@@ -94,10 +94,9 @@ def last_film(request):
 
 @page_template('catalog_endless_pages.html')
 def catalog(request, template='catalog.html', extra_context=None):
-    film = Film.objects.last()
-    films = [f for x in range(200) for f in [film]]
+    films = Film.objects.order_by("id").reverse()
     context = {
-        'films': films,
+        'films': films
     }
     if extra_context is not None:
         context.update(extra_context)

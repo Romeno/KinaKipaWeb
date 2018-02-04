@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load i18n %}
+{% load kinakipa_extras %}
 
 {% block content %}
 
@@ -49,18 +50,19 @@
                         <div class="news-meta">
                             <a href="#"><p class="category-link">Навіны</p></a>
                             <div>
-                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>3</p>
-                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date }}</p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date|format_date }}</p>
                             </div>
                         </div>
-                        <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
-                            {{ n.title }}
-                        </a>
-                        <p class="news-text">
-                            <a href="{% url 'news_id' pk=n.pk %}">
-                                Хочаце сапраўды класны фільм на каляспартыўную тэматыку? Не пра баскетбол. А такі, дзе героі не плоскія...
+                        <div class="news-text-wrapper">
+                            <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
+                                {{ n.title }}
                             </a>
-                        </p>
+                            <p class="news-text">
+                                <a href="{% url 'news_id' pk=n.pk %}">
+                                    {{ n.content|clean_text|safe  }}
+                                </a>
+                            </p>
+                        </div>
                     </div>
                     <!-- news items ends-->
                 </div>
@@ -79,18 +81,19 @@
                         <div class="news-meta">
                             <a href="#"><p class="category-link">{% trans 'News' %}</p></a>
                             <div>
-                                <p><i class="fa fa-commenting-o" aria-hidden="true"></i>3</p>
-                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date }}</p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date|format_date }}</p>
                             </div>
                         </div>
-                        <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
-                            {{ n.title }}
-                        </a>
-                        <p class="news-text">
-                            <a href="{% url 'news_id' pk=n.pk %}">
-                                Хочаце сапраўды класны фільм на каляспартыўную тэматыку? Не пра баскетбол. А такі, дзе героі не плоскія...
+                        <div class="news-text-wrapper">
+                            <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
+                                {{ n.title }}
                             </a>
-                        </p>
+                            <p class="news-text">
+                                <a href="{% url 'news_id' pk=n.pk %}">
+                                    {{ n.content|clean_text|safe  }}
+                                </a>
+                            </p>
+                        </div>
                     </div>
                     <!-- news items ends-->
                 </div>
