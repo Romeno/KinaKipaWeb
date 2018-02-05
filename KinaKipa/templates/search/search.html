@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+{% load kinakipa_extras %}
+
 {% block content %}
-    <h2>Search</h2>
 
     <form method="get" action=".">
     <div class="search-menu">
@@ -21,19 +23,55 @@
     </div>
         {% if query %}
             <h3>Results</h3>
+            <div class="search-results-block">
 
             {% for result in page.object_list %}
-                <p>
                     {% if result.model_name == "article" %}
-                        <a href="{% url 'news_id' pk=result.object.pk %}">{{ result.object.title }}</a>
+                       <div>
+                            <div class="news">
+                                <!-- news items starts-->
+                                <a href="{% url 'news_id' pk=result.object.pk %}" class="image-wrapper" style="background-image: url('{{ result.object.badge_image.url }}')">
+                                </a>
+                                <div>
+                                    <div class="news-meta">
+                                        <a href="#"><p class="category-link">{% trans 'News' %}</p></a>
+                                        <div>
+                                            <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ result.object.published_date|format_date }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="news-text-wrapper">
+                                        <a class="news-title" href="{% url 'news_id' pk=result.object.pk %}">
+                                            {{ result.object.title }}
+                                        </a>
+                                        <p class="news-text">
+                                            <a href="{% url 'news_id' pk=result.object.pk %}">
+                                                {{ result.object.content|clean_text|safe  }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- news items ends-->
+                            </div>
+                        </div>
                     {% endif %}
+
                     {% if result.model_name == "film" %}
-                        <a href="">{{ result.object.name }}{% if result.object.name_origin %} | {{ result.object.name_origin}}{% endif %}</a>
+                        <div>
+                            <div class="news">
+
+                                <a class="film" href="#" style="background-image: url('{{ result.object.image.url }}')">
+                                    <div class="film-info">
+                                        <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                                        <h1 class="film-name">{{ result.name }} </h1>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     {% endif %}
-                </p>
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}
+            </div>
 
             {% if page.has_previous or page.has_next %}
                 <div>

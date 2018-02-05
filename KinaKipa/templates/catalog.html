@@ -3,20 +3,64 @@
 {% load static %}
 
 {% block content %}
-    <content class="catalog">
-        <div class="film">
-            <span>welcome</span>
-        </div>
-    </content>
 
-    {% include page_template %}
-        {% block js %}
-            {{ block.super }}
-            <script src="{% static 'js/el-pagination/js/el-pagination.js' %}"></script>
-            <script>
-                $.endlessPaginate({
-                    paginateOnScroll: true
-                });
-            </script>
-        {% endblock %}
+    <form method="get" action="{% url 'search' %}" role="search">
+    <div class="search-menu">
+        <input class="search-pole" type="search" name="q" placeholder="Search.." id="id_q">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <div class="additional-search-menu">
+            <label>Search In:</label>fs
+            <ul id="id_models">
+                <li>
+                    <label for="id_models_0"><input type="checkbox" name="models" value="KinaKipa.article" id="id_models_0">Articles</label>
+                </li>
+                <li>
+                    <label for="id_models_1"><input type="checkbox" name="models" value="KinaKipa.film" id="id_models_1" checked="">Films</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+        {% if query %}
+            <h3>Results</h3>
+
+            {% for result in page.object_list %}
+                <p>
+                    {% if result.model_name == "article" %}
+                        <a href="{% url 'news_id' pk=result.object.pk %}">{{ result.object.title }}</a>
+                    {% endif %}
+                    {% if result.model_name == "film" %}
+                        <a href="">{{ result.object.name }}{% if result.object.name_origin %} | {{ result.object.name_origin}}{% endif %}</a>
+                    {% endif %}
+                </p>
+            {% empty %}
+                <p>No results found.</p>
+            {% endfor %}
+
+            {% if page.has_previous or page.has_next %}
+                <div>
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            {# Show some example queries to run, maybe query syntax, something else? #}
+        {% endif %}
+    </form>
+
+
+    <div class="films-catalog-block">
+        {% include page_template %}
+            {% block js %}
+                {{ block.super }}
+                <script src="{% static 'js/el-pagination/js/el-pagination.js' %}"></script>
+                <script>
+                    $.endlessPaginate({
+                        paginateOnScroll: true,
+                        paginateOnScrollMargin: 420,
+                        paginateOnScrollChunkSize: 4
+                    });
+                </script>
+            {% endblock %}
+    </div>
 {% endblock %}

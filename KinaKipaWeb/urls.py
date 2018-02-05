@@ -25,6 +25,7 @@ from KinaKipa.views import (test_trans, get_server_info,
 from filebrowser.sites import site
 import tagulous.views
 from KinaKipa.models import Genre
+from haystack.views import SearchView
 
 
 urlpatterns = [
@@ -61,7 +62,7 @@ urlpatterns += i18n_patterns(
     url(r'^server_info/$', get_server_info),
     url(r'^catalog/$', catalog, name='catalog'),
     url(r'^p_film/$', p_film, name='p_film'),
-    url(r'^search/', include('haystack.urls'))
+    url(r'^search/$', SearchView(), name='search')
 )
 
 if settings.DEBUG:
