@@ -38,18 +38,23 @@ function init(){
         }
     });
 
-    // var marks = [{
-    //     title: "Наўсікая з Даліны Вятроў",
-    //     description: "Наўсікая з Даліны Вятроў на беларускай мове!",
-    //     location: "Минск",
-    //     start_date: "19:00 10 студзеня",
-    //     end_date: "22:00 10 студзеня"
-    // },];
-
-    // myPlacemark = new ymaps.Placemark([53.9,27.56659], {
-    //     hintContent: 'Москва!',
-    //     balloonContent: 'Столица России'
-    // });
+    // var events = {"events": [{
+    //         title: "Наўсікая з Даліны Вятроў",
+    //         description: "Наўсікая з Даліны Вятроў на беларускай мове!",
+    //         location: "Минск, Фабрициуса, 4",
+    //         start_date: "19:00 10 студзеня",
+    //         end_date: "22:00 10 студзеня"
+    //     },
+    //     {
+    //         title: "Хадзячы Замак Хаула",
+    //         description: "Хадзячы Замак Хаула на беларускай мове!",
+    //         location: "Минск, пр. Победителей, 47/1",
+    //         start_date: "19:00 12 студзеня",
+    //         end_date: "22:00 12 студзеня"
+    //     }
+    // ]};
     //
-    // myMap.geoObjects.add(myPlacemark);
+    // for (var i = 0; i < events.events.length; i++) {
+    //     addMovieScreening(events.events[i]);
+    // }
 }
