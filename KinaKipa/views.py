@@ -16,8 +16,8 @@ from .models import Article, Banner, Film
 
 
 def index(req):
-    news = Article.objects.filter(published_date__lte=timezone.now()).order_by('published_date').reverse()[:4]
-    films = Film.objects.order_by("id").reverse()
+    news = Article.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:4]
+    films = Film.objects.order_by("-id")
     drama = films.filter(genres__name__in=['драма'])[:4]
     comedies = films.filter(genres__name__in=['камедыя']).exclude(genres__name__in=['драма'])[:4]
     crimes = films.filter(genres__name__in=['крымінальны']).exclude(genres__name__in=['камедыя'])[:4]

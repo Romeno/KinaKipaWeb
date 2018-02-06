@@ -85,28 +85,32 @@
 
 @media only screen and (max-device-width : 420px) {
   .films-catalog-block {
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 60px 0 0 0;
   }
 
   .films-catalog-block > div {
-      width: 70%;
-      height: 720px;
-      padding: 2% 3% 1% 2%;
+      width: 100%;
+      height: 600px;
+      padding: 20px 5px;
     }
 }
 
 @media only screen and (min-device-width : 421px) and (max-device-width: 768px){
   .films-catalog-block {
+    width: 100%;
     justify-content: center;
     align-items: center;
+    margin: 60px 0 0 0;
   }
 
   .films-catalog-block > div {
       width: 50%;
-      height: 530px;
-      padding: 2% 3% 1% 2%;
+      height: 450px;
+      padding: 20px 6%;
     }
 }
 
