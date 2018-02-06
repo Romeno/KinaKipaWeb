@@ -116,6 +116,8 @@ def put_events_on_map(request):
     events = Event.objects.all()
     result = []
     for event in events:
+        if event.end_date < timezone.now():
+            continue
         result.append({
             'id': event.id,
             'title': event.title,
