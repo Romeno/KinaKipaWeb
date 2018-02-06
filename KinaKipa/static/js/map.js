@@ -7,16 +7,8 @@ function init(){
         zoom: 6
     });
 
-    var marks = [{
-        title: "Наўсікая з Даліны Вятроў",
-        description: "Наўсікая з Даліны Вятроў на беларускай мове!",
-        location: "Минск",
-        start_date: "19:00 10 студзеня",
-        end_date: "22:00 10 студзеня"
-    },];
-
     function addMovieScreening(screening) {
-        ymaps.geocode("Минск").then(
+        ymaps.geocode(screening.location).then(
             function (res) {
                 var placemark = new ymaps.Placemark(res.geoObjects.get(0).geometry.getCoordinates(), {
                     hintContent: screening.title,
@@ -34,9 +26,25 @@ function init(){
         );
     }
 
-    for (var i = 0; i < marks.length; i++) {
-        addMovieScreening(marks[i]);
-    }
+    $.ajax({
+        url: '/ajax_put_events_on_map',
+        method: 'GET',
+        complete: function(xhrRes, status) {
+            var events = xhrRes.responseJSON.events;
+
+            for (var i = 0; i < events.length; i++) {
+                addMovieScreening(events[i]);
+            }
+        }
+    });
+
+    // var marks = [{
+    //     title: "Наўсікая з Даліны Вятроў",
+    //     description: "Наўсікая з Даліны Вятроў на беларускай мове!",
+    //     location: "Минск",
+    //     start_date: "19:00 10 студзеня",
+    //     end_date: "22:00 10 студзеня"
+    // },];
 
     // myPlacemark = new ymaps.Placemark([53.9,27.56659], {
     //     hintContent: 'Москва!',
