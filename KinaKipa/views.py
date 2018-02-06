@@ -10,7 +10,7 @@ from django.template.response import TemplateResponse
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from el_pagination.decorators import page_template
-from .models import Article, Banner, Film
+from .models import Article, Banner, Film, Event
 
 # Create your views here.
 
@@ -110,3 +110,19 @@ def p_film(request):
 def last_banner(request):
     banner_cursor = Banner.objects.last()
     return render(request, 'index.html', {'banner': banner_cursor})
+
+
+def put_events_on_map(request):
+    events = Event.objects.all()
+    result = []
+    for event in events:
+        result.append({
+            'id': event.id,
+            'title': event.title,
+            'description': event.description,
+            'start_date': event.start_date,
+            'end_date': event.end_date,
+            'location': event.location
+        })
+    return JsonResponse(result)
+
