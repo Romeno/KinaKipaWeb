@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
 
-    url(r'^my_ajax/$', my_ajax),
+    # url(r'^my_ajax/$', my_ajax),
 
     # Tagulous api to call autocomplete via JS
     url(
