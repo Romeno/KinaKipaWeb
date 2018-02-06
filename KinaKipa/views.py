@@ -114,15 +114,17 @@ def last_banner(request):
 
 def put_events_on_map(request):
     events = Event.objects.all()
-    result = []
+    collected_events = {}
     for event in events:
-        result.append({
-            'id': event.id,
+        if event.end_date < timezone.now():
+            continue
+        collected_events.update({
+            'id': event.pk,
             'title': event.title,
             'description': event.description,
             'start_date': event.start_date,
             'end_date': event.end_date,
             'location': event.location
         })
-    return JsonResponse(result)
+    return JsonResponse(collected_events)
 

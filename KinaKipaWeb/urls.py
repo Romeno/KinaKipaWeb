@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
-    url('r^ajax_put_events_on_map/$', put_events_on_map),
+    url(r'^ajax_put_events_on_map/$', put_events_on_map),
 
     # url(r'^my_ajax/$', my_ajax),
 
