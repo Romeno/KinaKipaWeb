@@ -7,7 +7,7 @@ from django.utils.translation import ugettext as _
 register = template.Library()
 
 
-@register.filter(name='format_date')
+@register.filter(name='format_latest_date')
 def format_news_date(date):
     if (timezone.now() - date).days > 0:
         return date.strftime("%d.%m.%Y %H:%M")

@@ -20,10 +20,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from KinaKipa.views import (test_trans, get_server_info,
-                             news, index,
-                            last_film,
-                            catalog, p_film,
-                            last_news, my_ajax)
+                            news, index, last_film, catalog, p_film,
+                            last_news, my_ajax, put_events_on_map)
 from filebrowser.sites import site
 import tagulous.views
 from KinaKipa.models import Genre
