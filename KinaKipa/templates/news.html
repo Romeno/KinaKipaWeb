@@ -2,14 +2,16 @@
 
 {% load static %}
 {% load i18n %}
+{% load kinakipa_extras %}
 
 {% block content %}
+    <div class="news-navigation-strip">
+        <h4>
+            <a href="#" class="main">{% trans 'Movie news' %}</a><span class="divider">&nbsp; ||&nbsp;  </span><a href="#">{{news.published_date|format_latest_date}}</a>
+        </h4>
+    </div>
+
     <content class="news-group">
-        <div class="news-navigation-strip">
-            <h4>
-                <a href="#" class="main">{% trans 'Moive news' %}</a><span class="devider"> | </span><a href="#">{{news.title}}</a>
-            </h4>
-        </div>
 
         <h4 class="news-title">{{news.title}}</h4>
         <h5 class="news-date">{{time}}</h5>

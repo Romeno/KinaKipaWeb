@@ -197,7 +197,15 @@ TINYMCE_DEFAULT_CONFIG = {
     # Text styles
     'style_formats': [
         {'title': 'KinaKipaParagraph', 'block': 'p',
-         'styles': {'font-size': '12px', 'text-align': 'left', 'color': '#333'}
+         'styles': {
+             'font-family': '\'HeliosCond\', sans-serif',
+             'font-size': '16px',
+             'font-weight': '300',
+             'text-align': 'left',
+             ''
+             'text-decoration': 'none',
+             'color': '#111'
+         }
          },
         {'title': 'BoldText', 'inline': 'b'}
     ]
