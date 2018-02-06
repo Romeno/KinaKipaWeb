@@ -33,7 +33,6 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^ajax_put_events_on_map/$', put_events_on_map),
 
     # url(r'^my_ajax/$', my_ajax),
 
@@ -63,7 +62,8 @@ urlpatterns += i18n_patterns(
     url(r'^server_info/$', get_server_info),
     url(r'^catalog/$', catalog, name='catalog'),
     url(r'^p_film/$', p_film, name='p_film'),
-    url(r'^search/$', SearchView(), name='search')
+    url(r'^search/$', SearchView(), name='search'),
+    url(r'^ajax_put_events_on_map/$', put_events_on_map),
 )
 
 if settings.DEBUG:

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-04 13:41+0300\n"
+"POT-Creation-Date: 2018-02-06 21:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,7 +206,7 @@ msgstr ""
 msgid "Fiction"
 msgstr ""
 
-msgid "Moive news"
+msgid "Movie news"
 msgstr ""
 
 msgid "hours ago"
@@ -216,6 +216,42 @@ msgid "minutes ago"
 msgstr ""
 
 msgid "just now"
+msgstr ""
+
+msgid "january"
+msgstr ""
+
+msgid "february"
+msgstr ""
+
+msgid "march"
+msgstr ""
+
+msgid "april"
+msgstr ""
+
+msgid "may"
+msgstr ""
+
+msgid "june"
+msgstr ""
+
+msgid "july"
+msgstr ""
+
+msgid "august"
+msgstr ""
+
+msgid "september"
+msgstr ""
+
+msgid "october"
+msgstr ""
+
+msgid "november"
+msgstr ""
+
+msgid "december"
 msgstr ""
 
 msgid "Administration"
