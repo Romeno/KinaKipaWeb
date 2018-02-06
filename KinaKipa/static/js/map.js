@@ -7,18 +7,21 @@ function init(){
         zoom: 6
     });
 
-    function addMovieScreening(screening) {
-        ymaps.geocode(screening.location).then(
+    function createScreeningPlacemark(screening) {
+        return ymaps.geocode(screening.location).then(
             function (res) {
-                var placemark = new ymaps.Placemark(res.geoObjects.get(0).geometry.getCoordinates(), {
+                var coords = res.geoObjects.get(0).geometry.getCoordinates();
+                var placemark = new ymaps.Placemark(coords, {
                     hintContent: screening.title,
                     balloonContent: screening.description
                 });
 
-                kkMap.geoObjects.add(placemark);
+                // kkMap.geoObjects.add(placemark);
                 // kkMap.geoObjects.add(res.geoObjects);
                 // // Выведем в консоль данные, полученные в результате геокодирования объекта.
                 // console.log(res.geoObjects.get(0).properties.get('metaDataProperty').getAll());
+
+                return [placemark, coords];
             },
             function (err) {
                 console.error("Error loading data for screening", screening, err);
@@ -32,8 +35,31 @@ function init(){
         complete: function(xhrRes, status) {
             var events = xhrRes.responseJSON.events;
 
+            var promises = [];
             for (var i = 0; i < events.length; i++) {
-                addMovieScreening(events[i]);
+                promises.push(createScreeningPlacemark(events[i]));
+
+                Promise.all(promises).then(function(placemarksAndCoords) {
+                    var myGeoObjects = new ymaps.GeoObjectCollection({}, {
+                        // preset: "islands#redCircleIcon",
+                        // strokeWidth: 4,
+                        // geodesic: true
+                    });
+
+                    for (var i = 0; i < placemarksAndCoords.length; i++) {
+                        myGeoObjects.add(placemarksAndCoords[i][0]);
+                    }
+
+                    // Добавляем коллекцию на карту.
+                    kkMap.geoObjects.add(myGeoObjects);
+
+                    // ymaps.getZoomRange('yandex#map', placemarksAndCoords[0][1]).then(function (zoomRange) {
+                    //     kkMap.setZoom(zoomRange[1]-2);
+                    // });
+
+                    // Устанавливаем карте центр и масштаб так, чтобы охватить коллекцию целиком.
+                    kkMap.setBounds(myGeoObjects.getBounds(), {'checkZoomRange': true});
+                });
             }
         }
     });
