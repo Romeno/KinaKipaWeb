@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-04 13:41+0300\n"
+"POT-Creation-Date: 2018-02-06 21:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,7 +209,7 @@ msgstr "Фантастыка"
 
 #, fuzzy
 #| msgid "Movie news"
-msgid "Moive news"
+msgid "Movie news"
 msgstr "Навіны кіно"
 
 msgid "hours ago"
@@ -220,6 +220,42 @@ msgstr "хв. таму"
 
 msgid "just now"
 msgstr "толькі што"
+
+msgid "january"
+msgstr "cтудзень"
+
+msgid "february"
+msgstr "люты"
+
+msgid "march"
+msgstr "сакавiк"
+
+msgid "april"
+msgstr "красавiк"
+
+msgid "may"
+msgstr "май"
+
+msgid "june"
+msgstr "чэрвень"
+
+msgid "july"
+msgstr "ліпень"
+
+msgid "august"
+msgstr "жнівень"
+
+msgid "september"
+msgstr "верасень"
+
+msgid "october"
+msgstr "кастрычнік"
+
+msgid "november"
+msgstr "лістапад"
+
+msgid "december"
+msgstr "снежань"
 
 msgid "Administration"
 msgstr "Адміністрацыя"
