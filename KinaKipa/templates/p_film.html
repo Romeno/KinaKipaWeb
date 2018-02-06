@@ -1,92 +1,54 @@
 {% extends "base.html"%}
 
 {% load static %}
+{% load i18n %}
+{% load kinakipa_extras %}
 
 {% block content %}
     <content class="p_film">
         <div class="maps">
-            <div div id="map" style="width: 600px; height: 400px"></div>
+            <div id="map" style="width: 600px; height: 400px"></div>
             <script src="{% static 'js/map.js' %}" type="text/javascript" ></script>
         </div>
-        <div class="block_news">
-            <div class="news">
+        <div class="news-gallery category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'News' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more' %}<i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
 
+        <div class="news-block">
+        {% for n in news1 %}
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="{% url 'news_id' pk=n.pk %}" class="image-wrapper" style="background-image: url({{ n.badge_image.url }})">
+
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date|format_latest_date }}</p>
+                            </div>
+                        </div>
+                        <div class="news-text-wrapper">
+                            <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
+                                {{ n.title }}
+                            </a>
+                            <p class="news-text">
+                                <a href="{% url 'news_id' pk=n.pk %}">
+                                    {{ n.content|clean_text|safe  }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- news items ends-->
+                </div>
             </div>
-            <div class="news">
-
-            </div>
-            <div class="news">
-
-            </div>
-            <div class="news">
-
-            </div>
-        </div>
-
-        <div class="cal">
-            <table cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Mon</th><th>Tue</th><th>Wed</th>
-                        <th>Thu</th><th>Fri</th><th>Sat</th>
-                        <th>Sun</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="padding" colspan="3"></td>
-                        <td> 1</td>
-                        <td> 2</td>
-                        <td> 3</td>
-                        <td> 4</td>
-                    </tr>
-                    <tr>
-                        <td> 5</td>
-                        <td> 6</td>
-                        <td> 7</td>
-                        <td> 8</td>
-                        <td class="today"> 9</td>
-                        <td>10</td>
-                        <td>11</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td class="date_has_event">
-                            13
-                        </td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td class="date_has_event">
-                            22
-                        </td>
-                        <td>23</td>
-                        <td>24</td>
-                        <td>25</td>
-                    </tr>
-                    <tr>
-                        <td>26</td>
-                        <td>27</td>
-                        <td>28</td>
-                        <td>29</td>
-                        <td>30</td>
-                        <td>31</td>
-                        <td class="padding"></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <th>Mon</th><th>Tue</th><th>Wed</th>
-                    <th>Thu</th><th>Fri</th><th>Sat</th>
-                    <th>Sun</th>
-                </tfoot>
-            </table>
+        {% endfor %}
             <div class="events">
                 <ul>
                     <li>
@@ -99,6 +61,7 @@
                     </li>
                 </ul>
             </div>
+        </div>
         </div>
     </content>
 
