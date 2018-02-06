@@ -38,29 +38,29 @@ function init(){
             var promises = [];
             for (var i = 0; i < events.length; i++) {
                 promises.push(createScreeningPlacemark(events[i]));
-
-                Promise.all(promises).then(function(placemarksAndCoords) {
-                    var myGeoObjects = new ymaps.GeoObjectCollection({}, {
-                        // preset: "islands#redCircleIcon",
-                        // strokeWidth: 4,
-                        // geodesic: true
-                    });
-
-                    for (var i = 0; i < placemarksAndCoords.length; i++) {
-                        myGeoObjects.add(placemarksAndCoords[i][0]);
-                    }
-
-                    // Добавляем коллекцию на карту.
-                    kkMap.geoObjects.add(myGeoObjects);
-
-                    // ymaps.getZoomRange('yandex#map', placemarksAndCoords[0][1]).then(function (zoomRange) {
-                    //     kkMap.setZoom(zoomRange[1]-2);
-                    // });
-
-                    // Устанавливаем карте центр и масштаб так, чтобы охватить коллекцию целиком.
-                    kkMap.setBounds(myGeoObjects.getBounds(), {'checkZoomRange': true});
-                });
             }
+
+            Promise.all(promises).then(function(placemarksAndCoords) {
+                var myGeoObjects = new ymaps.GeoObjectCollection({}, {
+                    // preset: "islands#redCircleIcon",
+                    // strokeWidth: 4,
+                    // geodesic: true
+                });
+
+                for (var i = 0; i < placemarksAndCoords.length; i++) {
+                    myGeoObjects.add(placemarksAndCoords[i][0]);
+                }
+
+                // Добавляем коллекцию на карту.
+                kkMap.geoObjects.add(myGeoObjects);
+
+                // ymaps.getZoomRange('yandex#map', placemarksAndCoords[0][1]).then(function (zoomRange) {
+                //     kkMap.setZoom(zoomRange[1]-2);
+                // });
+
+                // Устанавливаем карте центр и масштаб так, чтобы охватить коллекцию целиком.
+                kkMap.setBounds(myGeoObjects.getBounds(), {'checkZoomRange': true});
+            });
         }
     });
 
