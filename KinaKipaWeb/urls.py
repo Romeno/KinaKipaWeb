@@ -56,7 +56,7 @@ urlpatterns += i18n_patterns(
     url(r'^last_film/$', last_film),
     url(r'^p_film/$', p_film, name='p_film'),
     url(r'^last_news/$', last_news),
-    url(r'^film/(?P<film_id>[0-9]+)$', film),
+    url(r'^film/(?P<film_id>[0-9]+)$', film, name='film_id'),
 
     # development tests
     url(r'^test_trans/$', test_trans),

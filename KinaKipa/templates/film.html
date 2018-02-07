@@ -7,10 +7,15 @@
 
     <div class="film-wrapper">
         <!--<div class="film-meta"><p>Брат майго каханага / Love's Brother / 2004</p></div>-->
-        <div class="film-meta"><p> {{ film.name }}
-            {% if film.name_origin %}/ {{ film.name_origin }} {% endif %}
-            {% if film.year %}/ {{ film.year }} {% endif %}
-        </p></div>
+        <div class="film-meta">
+            <p>
+                <a href="{% url 'film_id' film_id=film.id %}">
+                    {{ film.name }}
+                    {% if film.name_origin %}/ {{ film.name_origin }} {% endif %}
+                    {% if film.year %}/ {{ film.year }} {% endif %}
+                </a>
+            </p>
+        </div>
         <div class="film-row">
             {% if film.image %}
                 <div class="film-poster" style="background-image: url('{{ film.image.url }}');"></div>

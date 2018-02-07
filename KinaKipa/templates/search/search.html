@@ -59,7 +59,7 @@
                         <div>
                             <div class="news">
 
-                                <a class="film" href="#" style="background-image: url('{{ result.object.image.url }}')">
+                                <a class="film" href="{% url 'film_id' film_id=result.object.id %}" style="background-image: url('{{ result.object.image.url }}')">
                                     <div class="film-info">
                                         <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                                         <h1 class="film-name">{{ result.name }} </h1>

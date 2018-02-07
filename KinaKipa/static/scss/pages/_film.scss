@@ -8,11 +8,17 @@
 
   .film-meta {
     text-align: center;
+    margin-bottom: 35px;
     font: {
       size: 48px;
       weight: 300;
     }
-    margin-bottom: 35px;
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: inherit;
+    }
   }
 
   .film-row {
