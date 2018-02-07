@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="content">
+
+    <div class="film-wrapper">
+        <!--<div class="film-meta"><p>Брат майго каханага / Love's Brother / 2004</p></div>-->
+        <div class="film-meta"><p> {{ film.name }}
+            {% if film.name_origin %}/ {{ film.name_origin }} {% endif %}
+            {% if film.year %}/ {{ film.year }} {% endif %}
+        </p></div>
+        <div class="film-row">
+            {% if film.image %}
+                <div class="film-poster" style="background-image: url('{{ film.image.url }}');"></div>
+            {% endif %}
+            <div class="film-information">
+                <p>
+                    {% if film.country %}<b>Краіна:</b> {{ film.country }}<br>{% endif %}
+                    {% if film.director %}<b>Рэжысёр:</b> {{ film.director }}<br>{% endif %}
+                    {% if film.stars %}<b>Акцёры:</b> {{ film.stars }}<br>{% endif %}
+                    {% if film.length %}<b>Працягласць:</b> {{ film.length }}<br>{% endif %}
+                    {% if film.genres %}<b>Жанры:</b> {{ film.genres }}<br>{% endif %}
+                    {% if film.description %}
+                        <b>Пра фільм:</b> <br>
+                        {{ film.description }}
+                    {% endif %}
+
+                    <!--Краіна: Вялікая Брытанія<br>-->
+                    <!--Працягласць: 1:38:46<br>-->
+                    <!--Рэжысёр: Джэн Сардзі<br>-->
+                    <!--<br>-->
+                    <!--Пра фільм:-->
+                    <!--тальянскімі каранямі. Але яны вымушаны адкласці вяселле, пакуль старэйшы брат не ажаніўся. У роспачы Анджэла пасылае апошні ліст, у які замест свайго фотаздымка ўкладае фота прыгажуна Джына. Цяпер Анджэла атрымлівае згоду і шлюбную клятву ад Разэты. Калі Разэта прыяжджае ў далёкую Аўстралію, выяўляецца, што яна павінна стаць жонкаю не таго, у каго закахалася. У фільме яскрава паказана жыцьцё італьянскай пасляваеннай эміграцыі.-->
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="watch">
+        {{ film.video_html | safe }}
+    </div>
+
+</div>
+
+
+
+{#<div class="footer">#}
+{#    <h1>text</h1>#}
+{#</div>#}
+
+
+{% endblock %}
