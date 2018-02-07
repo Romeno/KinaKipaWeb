@@ -30,7 +30,7 @@ function init(){
     }
 
     $.ajax({
-        url: '/ajax_put_events_on_map',
+        url: '/api/events',
         method: 'GET',
         complete: function(xhrRes, status) {
             var events = xhrRes.responseJSON.events;

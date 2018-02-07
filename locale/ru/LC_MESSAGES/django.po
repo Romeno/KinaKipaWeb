@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-06 21:47+0300\n"
+"POT-Creation-Date: 2018-02-07 11:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -221,6 +221,9 @@ msgstr "мин. назад"
 msgid "just now"
 msgstr "только что"
 
+msgid "Administration"
+msgstr "Администрация"
+
 msgid "january"
 msgstr "январь"
 
@@ -256,9 +259,6 @@ msgstr "ноябрь"
 
 msgid "december"
 msgstr "декабрь"
-
-msgid "Administration"
-msgstr "Администрация"
 
 #~ msgid "Article image"
 #~ msgstr "Картинка статьи"
