@@ -7,6 +7,7 @@
  * @link https://github.com/jonsuh/hamburgers
  */
 .hamburger {
+  outline: none !important;
   height: 50px; /* added */
   width: 50px; /*modificated*/
   padding: 13px 6px; /*modificated*/
@@ -213,7 +214,7 @@ header > nav li i {
     display: none !important;
 }
 
-@media all and (max-width: 700px){
+@media all and (max-width: 840px){
     header > .logo {
         /*position: inherit;*/
         float: right;
