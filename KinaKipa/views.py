@@ -114,7 +114,7 @@ def last_banner(request):
 
 MONTHS = {
     1: _('january'), 2: _('february'), 3: _('march'),
-    4: _('april'), 5: _('may'),6: _('june'),
+    4: _('april'), 5: _('may'), 6: _('june'),
     7: _('july'), 8: _('august'), 9: _('september'),
     10: _('october'), 11: _('november'), 12: _('december')
 }
@@ -125,9 +125,10 @@ def get_events(request):
     result = []
     for event in events:
         result.append({
-            'pk': event.pk,
+            'id': event.pk,
             'title': event.title,
-            'description': event.description,
+            'balloon_description': event.balloon_description,
+            'full_description': event.full_description,
             'start_date': event.start_date.strftime('%H:%M %d.{0}.%Y').format(_(MONTHS[event.start_date.month])),
             'end_date': event.end_date.strftime('%H:%M %d.{0}.%Y').format(_(MONTHS[event.end_date.month])),
             'location': event.location

@@ -3,6 +3,7 @@
 /static/
 /KinaKipaWeb/settings_local.py
 /venv
+/locale/django.pot
 
 package-lock.json
 node_modules

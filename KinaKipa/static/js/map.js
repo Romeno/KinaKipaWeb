@@ -13,7 +13,8 @@ function init(){
                 var coords = res.geoObjects.get(0).geometry.getCoordinates();
                 var placemark = new ymaps.Placemark(coords, {
                     hintContent: screening.title,
-                    balloonContent: screening.description
+                    balloonContentHeader: screening.title,
+                    balloonContentBody: screening.balloon_description,
                 });
 
                 // kkMap.geoObjects.add(placemark);

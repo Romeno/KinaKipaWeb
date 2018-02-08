@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-07 11:15+0300\n"
+"POT-Creation-Date: 2018-02-07 19:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,14 +129,14 @@ msgstr "Дата и время, когда мероприятие начнётс
 msgid "End date"
 msgstr "Время окончания"
 
-msgid "Date and time when the event ends"
-msgstr "Дата и время, когда мероприятие завершится"
+msgid "Date and time when the event ends. NOTE: only future events will be shown on the map"
+msgstr "Дата и время, когда мероприятие завершится. ВНИМАНИЕ: только будущие мероприятия будут показаны на карте"
 
 msgid "Location"
 msgstr "Место"
 
-msgid "Event\\s location"
-msgstr "Место проведения мероприятия"
+msgid "Event's location. Should be a string which can be geocoded by Yandex Maps. After creating an Event please check whether it is shown on map if it is geodecoding was successfull"
+msgstr "Место проведения мероприятия. Должна быть строка, которую Яндекс Карты смогут геодекодировать. Послео того, как добавите Мероприятие, пожалуйста, проверьте, что оно отображается на карте. Если так, то строка удачно декодировалась"
 
 msgid "top on index page"
 msgstr "верхний на главной"
@@ -207,8 +207,6 @@ msgstr "Криминальные"
 msgid "Fiction"
 msgstr "Фантастика"
 
-#, fuzzy
-#| msgid "Movie news"
 msgid "Movie news"
 msgstr "Новости кино"
 

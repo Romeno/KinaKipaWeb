@@ -155,10 +155,11 @@ class Film(models.Model):
 
 class Event(models.Model):
     title = CharField(max_length=200, verbose_name=_('Title'), help_text=_('Event title'))
-    description = TextField(verbose_name=_('Description'), help_text=_('Event description'))
+    balloon_description = HTMLField(verbose_name=_('Balloon description'), help_text=_('Short description for balloon on the map'))
+    full_description = HTMLField(verbose_name=_('Description'), help_text=_('Event description'))
     start_date = DateTimeField(verbose_name=_('Start date'), help_text=_('Date and time when the event starts'))
-    end_date = DateTimeField(verbose_name=_('End date'), help_text=_('Date and time when the event ends'))
-    location = CharField(max_length=250, verbose_name=_('Location'), help_text=_('Event\s location'))
+    end_date = DateTimeField(verbose_name=_('End date'), help_text=_('Date and time when the event ends. NOTE: only future events will be shown on the map'))
+    location = CharField(max_length=250, verbose_name=_('Location'), help_text=_('Event\'s location. Should be a string which can be geocoded by Yandex Maps. After creating an Event please check whether it is shown on map if it is geodecoding was successfull'))
 
     def __str__(self):
         return self.title
