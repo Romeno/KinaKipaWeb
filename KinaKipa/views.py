@@ -10,7 +10,7 @@ from django.template.response import TemplateResponse
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from el_pagination.decorators import page_template
-from .models import Article, Banner, Film, Event
+from .models import Article, Banner, Film, Event, HeroSlide, MovieHeroSlide
 
 # Create your views here.
 
@@ -22,8 +22,10 @@ def index(req):
     comedies = films.filter(genres__name__in=['камедыя']).exclude(genres__name__in=['драма'])[:4]
     crimes = films.filter(genres__name__in=['крымінальны']).exclude(genres__name__in=['камедыя'])[:4]
     fiction = films.filter(genres__name__in=['фантастыка']).exclude(genres__name__in=['крымінальны'])[:4]
+    hero_slides = list(HeroSlide.objects.all()) + list(MovieHeroSlide.objects.all())
     return TemplateResponse(
-        req, 'index.html',{
+        req, 'index.html', {
+            'hero_slides': hero_slides,
             'news1': news[:2], 'news2': news[2:4],
             'drama1': drama[:2], 'drama2': drama[2:4],
             'comedies1': comedies[:2], 'comedies2': comedies[2:4],

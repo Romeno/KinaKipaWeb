@@ -171,8 +171,30 @@ class Banner(models.Model):
         ("index_right", _("right on index page")),
     )
 
-    image = ImageField(storage=IMAGE_STORAGE, blank=True, null=True, verbose_name=_('Banner image'), help_text=_('Banner consists of image and link'))
+    image = FileBrowseField(max_length=500, directory="images/", null=True, blank=True,
+                            extensions=settings.FILEBROWSER_EXTENSIONS['Image'], verbose_name=_('Banner image'),
+                            help_text=_('Banner consists of image and link'))
     url = URLField(verbose_name=_('Url'), help_text=_('Url where banner will lead to'))
     position = models.CharField(max_length=255, choices=BANNER_CHOICES, verbose_name=_('Banner position'),
                                 help_text=_("On which pages and where this banner will be positioned"))
+
+
+class HeroSlideBase(models.Model):
+    class Meta:
+        abstract = True
+
+    image = FileBrowseField(max_length=500, directory="images/", null=True, blank=True,
+                            extensions=settings.FILEBROWSER_EXTENSIONS['Image'], verbose_name=_('Hero slide image'),
+                            help_text=_('Hero slide image'))
+    url = URLField(verbose_name=_('Url'), help_text=_('Url where banner will lead to'))
+
+
+class HeroSlide(HeroSlideBase):
+    content = HTMLField(verbose_name=_('Hero slide text'), help_text=_('Hero slide text'))
+    button_caption = CharField(max_length=200, verbose_name=_('Button caption'), help_text=_("Button caption"))
+
+
+class MovieHeroSlide(HeroSlideBase):
+    movie = models.ForeignKey(Film, verbose_name=_('Hero movie'))
+
 

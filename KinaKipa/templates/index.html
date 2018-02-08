@@ -10,22 +10,25 @@
 
     <div class="carousel-wrapper">
         <div class="carousel">
-            <div class="hero-slide" style="background-image: url({% static 'img/thegoodson-1920x1080.jpg' %})">
-                <div class="hero-info">
-                    <div class="title">The Good Son</div>
-                    <div class="length">89 {% trans 'min' %} | </div>
-                    <div class="year">2013 | </div>
-                    <div class="genres">{% trans 'Sports' %}</div>
+            {% for hero_slide in hero_slides %}
+                <div class="hero-slide" style="background-image: url({{hero_slide.image.url}})">
+                    <div class="hero-info">
+                        {% if hero_slide|get_model_name == 'MovieHeroSlide' %}
+                            {% include 'includes/hero_content.html' %}
+                        {% else %}
+                            {{ hero_slide.content|safe }}
+                        {% endif %}
+                    </div>
+                    <div style="clear:both;"></div>
+                    <a class="hero-go-button" href="#">
+                        {% if hero_slide|get_model_name == 'MovieHeroSlide' %}
+                            {% trans 'Watch now' %}
+                        {% else %}
+                            {{ hero_slide.button_caption }}
+                        {% endif %}
+                    </a>
                 </div>
-                <div style="clear:both;"></div>
-                <a class="hero-go-button" href="#">{% trans 'Watch now' %}</a>
-            </div>
-            <div class="hero-slide" style="background-image: url({% static 'img/thegoodson-1920x1080.jpg' %})">
-
-            </div>
-            <div class="hero-slide" style="background-image: url({% static 'img/thegoodson-1920x1080.jpg' %})">
-
-            </div>
+            {% endfor %}
         </div>
     </div>
 

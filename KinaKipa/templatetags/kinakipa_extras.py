@@ -32,3 +32,8 @@ def clean_text(html_field):
         "", html_field
     )
     return re.sub(r"[\n]{1,5}", "<br />", html_field)
+
+
+@register.filter
+def get_model_name(value):
+    return value.__class__.__name__

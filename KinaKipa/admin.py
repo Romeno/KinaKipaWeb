@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 from django.contrib.flatpages.models import FlatPage
-from .models import Article, Event, Film, Banner, Genre
+from .models import Article, Event, Film, Banner, Genre, HeroSlide, MovieHeroSlide
 from Crawler.models import Crawled_Film
 from flatblocks.models import FlatBlock
 from flatblocks.forms import FlatBlockForm
@@ -57,6 +57,8 @@ admin.site.register(Article, TinyMCEAdmin)
 admin.site.register(Film, TinyMCEAdmin)
 admin.site.register(Event, TinyMCEAdmin)
 admin.site.register(Banner)
+admin.site.register(HeroSlide)
+admin.site.register(MovieHeroSlide)
 
 # # crawler
 # admin.site.register(Crawled_Film)
