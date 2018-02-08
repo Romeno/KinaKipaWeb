@@ -15,6 +15,7 @@ function init(){
                     hintContent: screening.title,
                     balloonContentHeader: screening.title,
                     balloonContentBody: screening.balloon_description,
+                    balloonContentFooter: screening.start_date + " - " + screening.end_date,
                 });
 
                 // kkMap.geoObjects.add(placemark);

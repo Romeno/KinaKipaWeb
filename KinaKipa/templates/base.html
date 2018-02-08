@@ -15,70 +15,74 @@
     </head>
 
     <body>
-        <header>
+        <div class="wrapper">
+            <div class="all-content">
+                <header class="main-header">
 
-            <div class="logo">
-                <a href="{% url 'index' %}">{% trans 'KinaKipa' %}</a>
+                    <div class="logo">
+                        <a href="{% url 'index' %}">{% trans 'KinaKipa' %}</a>
+                    </div>
+                    <div class="search-button">
+                        <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    </div>
+                    <div id="menu">
+                        <button class="hamburger hamburger--3dxy js-hamburger" type="button">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                        </button>
+                    </div>
+
+                    <nav class="lang-block">
+                        <ul>
+                            <li>
+                                <a href="/be{{ request.path|slice:'3:' }}">БЕЛ</a>
+                            </li>
+                            <li>
+                                <a href="/en{{ request.path|slice:'3:' }}">EN</a>
+                            </li>
+                            <li>
+                                <a href="/ru{{ request.path|slice:'3:' }}">РУ</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <nav class="">
+                        <ul>
+                            <li>
+                                <a href="{% url 'catalog' %}"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i>{% trans 'Movies' %}</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i>{% trans 'News' %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'movie_screenings' %}"><i class="fa fa-map-marker" aria-hidden="true"></i>{% trans 'Movie screenings' %}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'django.contrib.flatpages.views.flatpage' 'about/' %}"><i class="fa fa-info-circle" aria-hidden="true"></i>{% trans 'About us' %}</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>{% trans 'Contacts' %}</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </header>
+
+                {% block content %}
+
+                {% endblock %}
             </div>
-            <div class="search-button">
-                <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-            </div>
-            <div id="menu">
-                <button class="hamburger hamburger--3dxy js-hamburger" type="button">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-                </button>
-            </div>
 
-            <nav class="lang-block">
-                <ul>
-                    <li>
-                        <a href="/be{{ request.path|slice:'3:' }}">БЕЛ</a>
-                    </li>
-                    <li>
-                        <a href="/en{{ request.path|slice:'3:' }}">EN</a>
-                    </li>
-                    <li>
-                        <a href="/ru{{ request.path|slice:'3:' }}">РУ</a>
-                    </li>
-                </ul>
-            </nav>
+            <footer>
+                <div>
 
-            <nav class="">
-                <ul>
-                    <li>
-                        <a href="{% url 'catalog' %}"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i>{% trans 'Movies' %}</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i>{% trans 'News' %}</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'movie_screenings' %}"><i class="fa fa-map-marker" aria-hidden="true"></i>{% trans 'Movie screenings' %}</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'django.contrib.flatpages.views.flatpage' 'about/' %}"><i class="fa fa-info-circle" aria-hidden="true"></i>{% trans 'About us' %}</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>{% trans 'Contacts' %}</a>
-                    </li>
-                </ul>
-            </nav>
-
-        </header>
-
-        {% block content %}
-
-        {% endblock %}
-
-        <footer>
-            <div>
-
-                <h1><a class='vk-logo' href='#' style="background-image: url({% static 'img/vk-com.png' %})"></a>KinaKipa</h1>
-                <p class='description'>Фільмы, перакладзеныя на мову</p>
-                <p>Калі вы знайшлі памылку ў матэрыяле, ці ў вас не працуе нейкая частка сайта, калі ласка, паведаміце нас праз пошту: <a href="mailto:kinakipa@gmail.com">kinakipa@gmail.com</a></p>
-            </div>
-        </footer>
+                    <h1><a class='vk-logo' href='#' style="background-image: url({% static 'img/vk-com.png' %})"></a>KinaKipa</h1>
+                    <p class='description'>Фільмы, перакладзеныя на мову</p>
+                    <p>Калі вы знайшлі памылку ў матэрыяле, ці ў вас не працуе нейкая частка сайта, калі ласка, паведаміце нас праз пошту: <a href="mailto:kinakipa@gmail.com">kinakipa@gmail.com</a></p>
+                </div>
+            </footer>
+        </div>
 
         <script src="https://use.fontawesome.com/4cf55deffb.js"></script>
         <script src="{% static 'js/jquery-1.11.1.js' %}" type="text/javascript" ></script>
