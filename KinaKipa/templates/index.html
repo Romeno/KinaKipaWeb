@@ -33,7 +33,7 @@
         <header>
             <a href="#"><h1 class="category-name">{% trans 'News' %}</h1></a>
             <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
-                    {% trans 'View more' %}<i class="fa fa-window-restore" aria-hidden="true"></i>
+                    {% trans 'View more' %}<i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </h3>
             </a>
         </header>
@@ -107,7 +107,7 @@
         <header>
             <a href="#"><h1 class="category-name">{% trans 'Dramas' %}</h1></a>
             <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
-                    {% trans 'View more' %} <i class="fa fa-window-restore" aria-hidden="true"></i>
+                    {% trans 'View more' %}<i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </h3>
             </a>
         </header>
@@ -117,7 +117,7 @@
             <div>
                 <div class="news">
 
-                    <a class="film" href="#" style="background-image: url('{{ film.image.url }}')">
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
                         <div class="film-info">
                             <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                             <h1 class="film-name">{{ film.name }} </h1>
@@ -133,7 +133,7 @@
             <div>
                 <div class="news">
 
-                    <a class="film" href="#" style="background-image: url('{{ film.image.url }}')">
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
                         <div class="film-info">
                             <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                             <h1 class="film-name">{{ film.name }} </h1>
@@ -150,7 +150,7 @@
         <header>
             <a href="#"><h1 class="category-name">{% trans 'Comedies' %}</h1></a>
             <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
-                    {% trans 'View more' %} <i class="fa fa-window-restore" aria-hidden="true"></i>
+                    {% trans 'View more' %}<i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </h3>
             </a>
         </header>
@@ -160,7 +160,7 @@
             <div>
                 <div class="news">
 
-                    <a class="film" href="#" style="background-image: url('{{ film.image.url }}')">
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
                         <div class="film-info">
                             <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                             <h1 class="film-name">{{ film.name }} </h1>
@@ -176,7 +176,7 @@
             <div>
                 <div class="news">
 
-                    <a class="film" href="#" style="background-image: url('{{ film.image.url }}')">
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
                         <div class="film-info">
                             <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                             <h1 class="film-name">{{ film.name }} </h1>
@@ -193,7 +193,7 @@
         <header>
             <a href="#"><h1 class="category-name">{% trans 'Crimes' %}</h1></a>
             <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
-                    {% trans 'View more' %} <i class="fa fa-window-restore" aria-hidden="true"></i>
+                    {% trans 'View more' %}<i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </h3>
             </a>
         </header>
@@ -203,7 +203,7 @@
             <div>
                 <div class="news">
 
-                    <a class="film" href="#" style="background-image: url('{{ film.image.url }}')">
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
                         <div class="film-info">
                             <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                             <h1 class="film-name">{{ film.name }} </h1>
@@ -219,7 +219,7 @@
             <div>
                 <div class="news">
 
-                    <a class="film" href="#" style="background-image: url('{{ film.image.url }}')">
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
                         <div class="film-info">
                             <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                             <h1 class="film-name">{{ film.name }} </h1>
@@ -236,7 +236,7 @@
         <header>
             <a href="#"><h1 class="category-name">{% trans 'Fiction' %}</h1></a>
             <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
-                    {% trans 'View more' %} <i class="fa fa-window-restore" aria-hidden="true"></i>
+                    {% trans 'View more'%}<i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </h3>
             </a>
         </header>
@@ -246,7 +246,7 @@
             <div>
                 <div class="news">
 
-                    <a class="film" href="#" style="background-image: url('{{ film.image.url }}')">
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
                         <div class="film-info">
                             <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                             <h1 class="film-name">{{ film.name }} </h1>
@@ -262,7 +262,7 @@
             <div>
                 <div class="news">
 
-                    <a class="film" href="#" style="background-image: url('{{ film.image.url }}')">
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
                         <div class="film-info">
                             <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
                             <h1 class="film-name">{{ film.name }} </h1>

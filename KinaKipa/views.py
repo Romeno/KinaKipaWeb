@@ -134,3 +134,15 @@ def get_events(request):
             'location': event.location
         })
     return JsonResponse({'events': result})
+
+
+def film(request, film_id):
+    found = Film.objects.filter(id__exact=film_id)
+    if not found:
+        # return 404
+        pass
+    film = found[0] # for filter returns queryset, but film needed
+
+
+
+    return render(request, 'film.html', {'film': film})

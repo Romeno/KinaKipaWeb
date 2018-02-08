@@ -7,6 +7,7 @@
  * @link https://github.com/jonsuh/hamburgers
  */
 .hamburger {
+  outline: none !important;
   height: 50px; /* added */
   width: 50px; /*modificated*/
   padding: 13px 6px; /*modificated*/
@@ -213,7 +214,7 @@ header > nav li i {
     display: none !important;
 }
 
-@media all and (max-width: 700px){
+@media all and (max-width: 840px){
     header > .logo {
         /*position: inherit;*/
         float: right;
@@ -335,6 +336,8 @@ header > .logo > a:hover {
 
 .category > header {
     /*padding-left: 20px;*/
+    position: relative;
+    text-align: left;
     margin-right: 14px;
     border-bottom: solid 2px #6886c2;
     margin-bottom: 40px;
@@ -361,14 +364,24 @@ header > .logo > a:hover {
 
 .category .category-view-all {
     display: inline-block;
-    float: right;
-    margin-top: 13.5px;
-    margin-right: 5px;
+    position: absolute;
+    right: 0;
+    margin: 27px 5px 0px;
+    //margin-top: 27px;
+    //margin-right: 5px;
     /*font-style: italic;*/
     font-weight: 600;
     color: #999999;
-}
+    text-transform: lowercase;
 
+    .fa {
+      display: inline-block;
+      margin-left: 5px;
+      position: relative;
+      font-size: 0.9em;
+      bottom: 0.05em;
+    }
+}
 
 
 .news-block {
