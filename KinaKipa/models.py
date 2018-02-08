@@ -169,6 +169,7 @@ class Banner(models.Model):
     BANNER_CHOICES = (
         ("index_top", _("top on index page")),
         ("index_right", _("right on index page")),
+        ("article_right", _("right on article page")),
     )
 
     image = FileBrowseField(max_length=500, directory="images/", null=True, blank=True,
