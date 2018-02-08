@@ -18,6 +18,7 @@ class FilmIndex(indexes.SearchIndex, indexes.Indexable):
     name = indexes.CharField(model_attr='name')
     name_origin = indexes.CharField(model_attr='name_origin')
     year = indexes.CharField(model_attr='year')
+    genres = indexes.MultiValueField(model_attr='genres__name')
 
     def get_model(self):
         return Film
