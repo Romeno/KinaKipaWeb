@@ -425,7 +425,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: -10px;
 }
 
-.film-info table tr{
+.film-info table tr {
   vertical-align: top;
 }
 
@@ -440,44 +440,41 @@ h1, h2, h3, h4, h5, h6 {
 
 //////////////     FROM    root of p_film.html       ///////////////
 
-.p_film {
-
-}
-
-.p_film .maps {
-  height: 300px;
-  margin-top: 20px;
-  padding-bottom: 20px;
-  position: relative;
-  display: block;
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-bottom: 50px;
-}
-
-.p_film .maps img {
-    width: 235px;
-    height: auto;
-    margin-left: 35%;
-}
-
-.p_film .block_news {
+.movie_screenings {
+  .maps {
+    display: block;
     height: 300px;
-  margin-top: 10px;
-  padding-bottom: 20px;
-  position: relative;
-  display: block;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 80px;
+    padding-bottom: 20px;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 50px;
 
-}
+    img {
+      width: 235px;
+      height: auto;
+      margin-left: 35%;
+    }
 
-.p_film .block_news .news {
-  width: 200px;
-  float: left;
-  text-align: center;
-  box-shadow: 0px 0px 5px 2.5px #ccc;
-  height: 300px;
-  margin-left: 5%;
+    .block_news {
+      height: 300px;
+      margin-top: 10px;
+      padding-bottom: 20px;
+      position: relative;
+      display: block;
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-bottom: 80px;
+
+      .news {
+        width: 200px;
+        float: left;
+        text-align: center;
+        box-shadow: 0 0 5px 2.5px #ccc;
+        height: 300px;
+        margin-left: 5%;
+      }
+    }
+  }
 }
