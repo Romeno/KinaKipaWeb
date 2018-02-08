@@ -16,6 +16,10 @@ class TinyMCEAdmin(admin.ModelAdmin):
             '/static/js/tiny_mce/textareas.js',
         )
 
+        css = {
+            'all': ('/static/css/content-1.01.css',),
+        }
+
 
 class FlatBlockForm2(FlatBlockForm):
     class Meta:
@@ -25,6 +29,16 @@ class FlatBlockForm2(FlatBlockForm):
 
 
 class FlatBlockAdmin(admin.ModelAdmin):
+    class Media:
+        js = (
+            '/static/js/tiny_mce/tiny_mce.js',
+            '/static/js/tiny_mce/textareas.js',
+        )
+
+        css = {
+            'all': ('/static/css/content-1.01.css',),
+        }
+
     ordering = ['slug', ]
     list_display = ('slug', 'header')
     search_fields = ('slug', 'header', 'content')
@@ -40,8 +54,8 @@ admin.site.register(FlatPage, TinyMCEAdmin)
 admin.site.register(Article, TinyMCEAdmin)
 
 # django models
-admin.site.register(Film)
-admin.site.register(Event)
+admin.site.register(Film, TinyMCEAdmin)
+admin.site.register(Event, TinyMCEAdmin)
 admin.site.register(Banner)
 
 # # crawler

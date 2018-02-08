@@ -203,7 +203,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme_advanced_resizing': True,
 
     'theme_advanced_font_sizes': "9px,10px,11px,12px,13px,14px,15px,16px,17px,18px,20px,22px,24px,26px,28px,30px,36px,54px,72px",
-    'theme_advanced_fonts': "Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats",
+    'theme_advanced_fonts': "Helios Cond=HeliosCond;Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats",
 
     'width': '90%',
     'height': 700,
@@ -212,7 +212,7 @@ TINYMCE_DEFAULT_CONFIG = {
     # 'theme_advanced_styles': "Header 1=header1;Header 2=header2;Header 3=header3;Table Row=tableRow1",
     'theme_advanced_blockformats': "p,div,h1,h2,h3,h4,h5,h6,blockquote",
 
-    # 'content_css': "/static/css/content-1.01.css",
+    'content_css': "/static/css/content-1.01.css",
 
     # Drop lists for link/image/media/template dialogs
     'external_link_list_url': "lists/link_list.js",
