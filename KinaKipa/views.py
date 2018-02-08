@@ -148,3 +148,14 @@ def film(request, film_id):
 
 
     return render(request, 'film.html', {'film': film})
+
+
+@page_template('news_endless_pages.html')
+def news_gallery(request, template='news_gallery.html', extra_context=None):
+    all_news = Article.objects.all().order_by('-published_date')
+    context = {
+        'news': all_news
+    }
+    if extra_context is not None:
+        context.update(extra_context)
+    return render(request, template, context)

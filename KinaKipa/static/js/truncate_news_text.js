@@ -1,4 +1,4 @@
-var base_height = $('.news-block > div')[0].offsetHeight * 0.45;
+var base_height = $('.news')[0].offsetHeight * 0.45;
 
 
 var elements = $('.news-text > a');
