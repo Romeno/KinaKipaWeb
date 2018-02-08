@@ -105,8 +105,8 @@ def catalog(request, template='catalog.html', extra_context=None):
     return render(request, template, context)
 
 
-def p_film(request):
-    return TemplateResponse(request,  'p_film.html')
+def movie_screenings(request):
+    return TemplateResponse(request,  'movie_screenings.html')
 
 
 def last_banner(request):

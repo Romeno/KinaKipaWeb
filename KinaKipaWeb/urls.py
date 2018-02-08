@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from KinaKipa.views import (test_trans, get_server_info,
-                            news, index, last_film, catalog, p_film,
+                            news, index, last_film, catalog, movie_screenings,
                             last_news, my_ajax, get_events, film)
 from filebrowser.sites import site
 import tagulous.views
@@ -53,18 +53,25 @@ urlpatterns += i18n_patterns(
     # main web pages
     url(r'^$', index, name='index'),
     url(r'^news/(?P<pk>\d+)/$', news, name='news_id'),
-    url(r'^last_film/$', last_film),
-    url(r'^p_film/$', p_film, name='p_film'),
-    url(r'^last_news/$', last_news),
+    url(r'^events/$', movie_screenings, name='movie_screenings'),
     url(r'^film/(?P<film_id>[0-9]+)$', film, name='film_id'),
+    url(r'^catalog/$', catalog, name='catalog'),
+    url(r'^search/$', SearchView(), name='search'),
+
+    # ajax
+    url(r'^api/events/$', get_events),
+
+
+
+
+
 
     # development tests
     url(r'^test_trans/$', test_trans),
     url(r'^server_info/$', get_server_info),
-    url(r'^catalog/$', catalog, name='catalog'),
-    url(r'^p_film/$', p_film, name='p_film'),
-    url(r'^search/$', SearchView(), name='search'),
-    url(r'^api/events/$', get_events),
+
+    url(r'^last_news/$', last_news),
+    url(r'^last_film/$', last_film),
 )
 
 if settings.DEBUG:
