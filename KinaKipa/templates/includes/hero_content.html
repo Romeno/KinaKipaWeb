@@ -1,0 +1,12 @@
+{% load i18n %}
+
+{{ LANGUAGE_CODE }}
+
+    {% if LANGUAGE_CODE == 'en' %}
+        <div class="title">hero_slide.movie.name_origin</div>
+    {% else %}
+        <div class="title">hero_slide.movie.name</div>
+    {% endif %}
+    <div class="length">hero_slide.movie.length {% trans 'min' %} | </div>
+    <div class="year">hero_slide.movie.year | </div>
+    {# <div class="genres">{% trans hero_slide.movie.genres %}</div> #}

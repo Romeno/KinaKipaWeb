@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-16 07:15+0300\n"
+"POT-Creation-Date: 2018-02-07 19:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,29 +33,245 @@ msgstr "Назва"
 msgid "Article title"
 msgstr "Назва артыкула"
 
+msgid "Badge image"
+msgstr "Малюнак плашчака"
+
+msgid "Image for the article that will be used on all list pages"
+msgstr "Малюнак артыкула для ўсіх старонак са спісамі артыкулаў"
+
 msgid "Article content"
 msgstr "Змеціва артыкула"
 
 msgid "Publication date"
 msgstr "Дата публікацыі"
 
-msgid "Article image"
-msgstr "Малюнак артыкула"
+msgid "Movie name"
+msgstr "Назва фільма"
 
-msgid "Image of article when viewing article list on index or news page"
-msgstr "Малюнак артыкула для старонкі спіса артыкулаў на галоўнай і на news"
+msgid "Original movie name"
+msgstr "Арыгінальная назва фільма"
 
-msgid "Index"
-msgstr "Галоўная"
+msgid "Name of the movie in the language of the original"
+msgstr "Назва фільма на мове арыгіналу"
+
+msgid "Director"
+msgstr "Рэжысёр"
+
+msgid "Actors"
+msgstr "Акцёры"
+
+msgid "Description"
+msgstr "Апісанне"
+
+msgid "Country"
+msgstr "Краіна"
+
+msgid "Country of production"
+msgstr "Краіна вытворчасці"
+
+msgid "Kinopoisk rating"
+msgstr "Рэйтынг Кінапошуку"
+
+msgid "Film ratings on kinopoisk.ru"
+msgstr "Рэйтынг фільма на kinopoisk.ru"
+
+msgid "Imdb rating"
+msgstr "Imdb рэйтынг"
+
+msgid "Film ratings on imdb.com"
+msgstr "Рэйтынг фільма на imdb.com"
+
+msgid "Year"
+msgstr "Год"
+
+msgid "Year of creation"
+msgstr "Год вытворчасці"
+
+msgid "Length"
+msgstr "Працягласць"
+
+msgid "Movie length"
+msgstr "Працягласць фільма"
+
+msgid "Movie genres"
+msgstr "Жанры фільма"
+
+msgid "Genres can include spaces. Used like tags."
+msgstr "Жанры могуць уключаць прагалы. Выкарыстоўваюцца як тэгі."
+
+msgid "Video html code"
+msgstr "Html код відэа"
+
+msgid "html code for displaying the video"
+msgstr "Html код для адлюстравання відэа"
+
+msgid "Image"
+msgstr "Малюнак"
+
+msgid "Image for the movie that will be used on all list pages"
+msgstr "Малюнак фільма для ўсіх старонак са спісамі фільмаў"
+
+msgid "Torrent link"
+msgstr "Torrent спаслыка"
+
+msgid "Event title"
+msgstr "Назва мерапрыемства"
+
+msgid "Event description"
+msgstr "Апісанне мерапрыемства"
+
+msgid "Start date"
+msgstr "Час пачатку мерапрыемства"
+
+msgid "Date and time when the event starts"
+msgstr "Дата і час, калі мерапрыемства пачнецца"
+
+msgid "End date"
+msgstr "Час сканчэння мерапрыемства"
+
+msgid "Date and time when the event ends. NOTE: only future events will be shown on the map"
+msgstr "Дата і час, калі мерапрыемтсва скончыцца. ЗАЎВАГА: толькі будучыя мерапрыемствы будуць паказаныя на карце"
+
+msgid "Location"
+msgstr "Месца"
+
+msgid "Event's location. Should be a string which can be geocoded by Yandex Maps. After creating an Event please check whether it is shown on map if it is geodecoding was successfull"
+msgstr "Месца правядзення мерапрыемства. Радок які Yandex Maps зможа геадэкадаваць. Пасля таго як вы дадзеце мерапрыемства, калі ласка паглядзіце ці знаходзіцца яно на карце. Калі яно там будзе, значыць геадэкадаванне было пасьпяховым"
+
+msgid "top on index page"
+msgstr "верхні на галоўнай"
+
+msgid "right on index page"
+msgstr "правы на галоўнай"
+
+msgid "Banner image"
+msgstr "Малюнак баннера"
+
+msgid "Banner consists of image and link"
+msgstr "Баннер складаецца з малюнка і спасылкі"
+
+msgid "Url"
+msgstr "Спасылка"
+
+msgid "Url where banner will lead to"
+msgstr "Спаслыку куды баннер будзе весці"
+
+msgid "Banner position"
+msgstr "Месцазнаходжанне баннера"
+
+msgid "On which pages and where this banner will be positioned"
+msgstr "На якой старнке і дзе баннер будзе знаходзіцца"
+
+msgid "KinaKipa"
+msgstr "КінаКіпа"
 
 msgid "Movies"
 msgstr "Фільмы"
 
-msgid "Screenings"
-msgstr "Кінапаказы"
+msgid "News"
+msgstr "Навіны"
+
+msgid "Movie screenings"
+msgstr "Кінапрагляды"
 
 msgid "About us"
 msgstr "Пра нас"
 
+msgid "Contacts"
+msgstr "Кантакты"
+
+msgid "Genre"
+msgstr "Жанр"
+
+msgid "min"
+msgstr "хв"
+
+msgid "Sports"
+msgstr "Спартыўныя"
+
+msgid "Watch now"
+msgstr "Глядзець"
+
+msgid "View more"
+msgstr "Праглядзець астатняе"
+
+msgid "Dramas"
+msgstr "Драмы"
+
+msgid "Comedies"
+msgstr "Камедыі"
+
+msgid "Crimes"
+msgstr "Крымінальныя"
+
+msgid "Fiction"
+msgstr "Фантастыка"
+
+msgid "Movie news"
+msgstr "Навіны кіно"
+
+msgid "hours ago"
+msgstr "гадз. таму"
+
+msgid "minutes ago"
+msgstr "хв. таму"
+
+msgid "just now"
+msgstr "толькі што"
+
 msgid "Administration"
-msgstr "Адміністрація"
+msgstr "Адміністрацыя"
+
+msgid "january"
+msgstr "студзень"
+
+msgid "february"
+msgstr "люты"
+
+msgid "march"
+msgstr "сакавік"
+
+msgid "april"
+msgstr "красавік"
+
+msgid "may"
+msgstr "май"
+
+msgid "june"
+msgstr "чэрвень"
+
+msgid "july"
+msgstr "ліпень"
+
+msgid "august"
+msgstr "жнівень"
+
+msgid "september"
+msgstr "верасень"
+
+msgid "october"
+msgstr "кастрычнік"
+
+msgid "november"
+msgstr "лістапад"
+
+msgid "december"
+msgstr "снежань"
+
+#~ msgid "Article image"
+#~ msgstr "Малюнак артыкула"
+
+#~ msgid "Image of article when viewing article list on index or news page"
+#~ msgstr "Малюнак артыкула для старонкі спіса артыкулаў на галоўнай і на news"
+
+#~ msgid "Film image"
+#~ msgstr "Малюнак фільма"
+
+#~ msgid "position for the banner"
+#~ msgstr "пазіцыя банера"
+
+#~ msgid "Index"
+#~ msgstr "Галоўная"
+
+#~ msgid "Screenings"
+#~ msgstr "Кінапаказы"

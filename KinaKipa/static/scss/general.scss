@@ -1,0 +1,480 @@
+
+//////////////    FROM master.css   ////////////////
+
+* {
+	/* old-style reset here :) */
+	border: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: Helvetica, "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	background: white;
+	text-align: center;
+	background: url(../img/body.png) repeat-x;
+}
+
+body h1 {
+	padding-top: 20px;
+	font-size: 26px;
+	color: #335;
+}
+
+table {
+	border-collapse: separate;
+	border: 1px solid #9DABCE;
+	border-width: 0px 0px 1px 1px;
+	margin: 10px auto;
+	font-size: 20px;
+}
+
+td, th {
+	width: 81px;
+	height: 81px;
+	text-align: center;
+	vertical-align: middle;
+	background: url(../img/cells.png);
+	color: #444;
+	position: relative;
+}
+
+th {
+	height: 30px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+td:hover, th:hover {
+	background-position: 0px -81px;
+	color: #222;
+}
+
+td.date_has_event {
+	background-position: 162px 0px;
+	color: white;
+}
+
+td.date_has_event:hover {
+	background-position: 162px -81px;
+}
+
+td.padding {
+	background: url(../img/calpad.jpg);
+}
+
+td.today {
+	background-position: 81px 0px;
+	color: white;
+}
+
+td.today:hover {
+	background-position: 81px -81px;
+}
+
+.events {
+	position: relative;
+}
+
+.events ul {
+	text-align: left;
+	position: absolute;
+	display: none;
+	z-index: 1000;
+	padding: 15px;
+	background: #E7ECF2 url(../img/popup.png) no-repeat;
+	color: white;
+	border: 1px solid white;
+	font-size: 15px;
+	width: 200px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-border-radius: 3px;
+	list-style: none;
+	color: #444444;
+	-webkit-box-shadow: 0px 8px 8px #333;
+}
+
+.events li {
+	padding-bottom: 5px;
+}
+
+.events li span {
+	display: block;
+	font-size: 12px;
+	text-align: justify;
+	color: #555;
+}
+
+.events li span.title {
+	font-weight: bold;
+	color: #222;
+}
+
+
+
+/*
+////////////       FROM style.css      /////////////
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'helioscondcregular', sans-serif;
+  color: #000;
+  font-weight: 300;
+  background: #eee;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ position: relative;
+ font-family: 'league_gothicregular', sans-serif;
+ font-weight: normal;
+}
+
+.title h2 {
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.navigation {
+  list-style: none;
+  margin: 0;
+
+  background: #222;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+.navigation a:hover {
+  background: tomato;
+}
+
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .navigation {
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
+}
+#films {
+  width: 79%;
+  font-size: 12px;
+}
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 0;
+  margin-bottom: 15px;
+  width: 210px;
+  height: 310px;
+  line-height: 310px;
+  color: white;
+  font-weight: bold;
+  font-size: 0;
+  text-align: center;
+  text-decoration: none;
+}
+
+.flex-item:hover {
+  opacity: 0.6;
+}
+
+.flex-item .film-1 image,
+.flex-item .film-2 image,
+.flex-item .film-3 image,
+.flex-item .film-4 image {
+  display: flex;
+  background-size: cover;
+}
+
+.p-t-50 {
+  padding-top: 50px;
+}
+
+
+.film-group header {
+  display: inline-block;
+  width: 100%;
+  padding: 0 0 15px;
+}
+
+
+.film-group {
+  display: block;
+  margin: 35px 5%;
+}
+
+.film-group header .title {
+  display: inline-block !important;
+  font-size: 28px !important;
+  line-height: normal !important;
+  margin-left: 0 !important;
+  text-transform: none !important;
+  font-weight: bold !important;
+}
+
+.film-group header .devider {
+  background: none repeat scroll 0 0 silver;
+  color: #a4a4a4;
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 400 !important;
+  height: 25px;
+  margin: 0 10px;
+  overflow: hidden;
+  position: relative;
+  top: 3px;
+  width: 1px;
+}
+
+.film-group header .see-all {
+  color: tomato !important;
+  display: inline-block !important;
+  float: none !important;
+  font-size: 20px !important;
+  position: relative !important;
+  right: auto !important;
+  top: -2px !important;
+  text-decoration: none !important;
+  line-height: 20px;
+}
+
+.films {
+  width: 70%;
+  font-size: 12px;
+}
+
+.btop {
+  width: 200px;
+  margin-left: 40px;
+  min-height: 600px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+  //background: black;
+}
+
+.b_bottom {
+  width: 100%;
+  min-height: 135px;
+  display: inline-block;
+  font-size: 0;
+  //background: #ffffff;
+
+}
+*/
+
+
+////////////         FROM film-styles.css          ////////////////
+
+
+.film-plate {
+  min-height: 450px;
+  background: white;
+}
+
+.film-names {
+  margin: 0px;
+  padding: 0px;
+}
+
+.film-names {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-left: 78px;
+  font-size: 36px;
+}
+
+.film-names div:nth-child(1) {
+  color: tomato;
+}
+
+.film-names div:nth-child(3) {
+  color: #999;
+}
+
+.film-page header {
+  margin-left: 100px;
+}
+
+.film-page header h1 {
+  display: inline-block;
+}
+
+.film-plate {
+  width: 100%;
+}
+
+.film-plate aside {
+  display: block;
+  float: left;
+  height: 450px;
+  width: 60px;
+  background-color: #222;
+}
+
+.film-plate .poster {
+  padding: 0;
+  float: left;
+  background: url("img/poster.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 300px;
+  height: 450px;
+  margin: 0 15px;
+}
+
+.film-plate main {
+  background: url("img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+
+
+  display: block;
+  margin-left: 390px;
+  height: 450px;
+  min-width: 550px;
+  background-color: #222;
+}
+
+.info-container {
+  margin: 25px 50px;
+  height: 380px;
+  min-width: 400px;
+  max-width: 600px;
+  /*background-color: rgba(255, 0, 0, 0.2);*/
+}
+
+.info-container .film-info-container {
+  min-height: 55px;
+  width: 100%;
+}
+
+.film-info-container div {
+  float: left;
+  font-size: 36px;
+}
+
+.film-info-container .film-year {
+  width: 138px;
+  margin-top: -8px;
+  font-size: 50px;
+  font-weight: 500;
+  color: white;
+}
+
+.film-info-container .film-rating {
+  margin-top: 5px;
+  color: #999999;
+}
+
+.film-info-container .kp {
+  margin-right: 27px;
+}
+
+/**/
+.film-info {
+  padding-left: 2px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.film-info {
+  margin-top: -10px;
+}
+
+.film-info table tr {
+  vertical-align: top;
+}
+
+.film-info table tr td:first-child {
+  width: 130px;
+}
+.films {
+  width: 71%;
+  font-size: 12px;
+}
+
+
+//////////////     FROM    root of p_film.html       ///////////////
+
+.movie_screenings {
+  .maps {
+    display: block;
+    height: 300px;
+    padding-bottom: 20px;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 50px;
+
+    img {
+      width: 235px;
+      height: auto;
+      margin-left: 35%;
+    }
+
+    .block_news {
+      height: 300px;
+      margin-top: 10px;
+      padding-bottom: 20px;
+      position: relative;
+      display: block;
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-bottom: 80px;
+
+      .news {
+        width: 200px;
+        float: left;
+        text-align: center;
+        box-shadow: 0 0 5px 2.5px #ccc;
+        height: 300px;
+        margin-left: 5%;
+      }
+    }
+  }
+}

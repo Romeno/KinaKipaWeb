@@ -18,29 +18,23 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 from KinaKipa.views import (test_trans, get_server_info,
-                            news, index, last_film, catalog, p_film, last_baner)
-
+                            news, index, last_film, catalog, movie_screenings,
+                            last_news, my_ajax, get_events, film, news_gallery)
+from filebrowser.sites import site
 import tagulous.views
 from KinaKipa.models import Genre
+from haystack.views import SearchView
 
 
 urlpatterns = [
+    url(r'^admin/filebrowser/', include(site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
-    url(r'^pages/', include('django.contrib.flatpages.urls')),
 
-    # main web pages
-    url(r'^$', index, name='index'),
-    url(r'^news/$', news),
-    url(r'^last_film/$', last_film),
-    url(r'^p_film/$', p_film, name='p_film'),
-
-    # development tests
-    url(r'^test_trans/$', test_trans),
-    url(r'^server_info/$', get_server_info),
-    url(r'^catalog/$', catalog, name='catalog'),
-    url(r'^p_film/$', p_film, name='p_film'),
+    # url(r'^my_ajax/$', my_ajax),
 
     # Tagulous api to call autocomplete via JS
     url(
@@ -50,6 +44,36 @@ urlpatterns = [
         name='film_genres_autocomplete',
     ),
 ]
+
+# These urls will lead to pages that will be dependant on Language chosen by user
+# Language setting will be in URL
+urlpatterns += i18n_patterns(
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
+
+    # main web pages
+    url(r'^$', index, name='index'),
+    url(r'^news/(?P<pk>\d+)/$', news, name='news_id'),
+    url(r'^events/$', movie_screenings, name='movie_screenings'),
+    url(r'^film/(?P<film_id>[0-9]+)$', film, name='film_id'),
+    url(r'^catalog/$', catalog, name='catalog'),
+    url(r'^search/$', SearchView(), name='search'),
+    url(r'^news_gallery/$', news_gallery, name='news_gallery'),
+
+    # ajax
+    url(r'^api/events/$', get_events),
+
+
+
+
+
+
+    # development tests
+    url(r'^test_trans/$', test_trans),
+    url(r'^server_info/$', get_server_info),
+
+    url(r'^last_news/$', last_news),
+    url(r'^last_film/$', last_film),
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

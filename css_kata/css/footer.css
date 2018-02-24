@@ -1,0 +1,54 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    margin-top: 50px;
+    min-height: 150px;
+    width: 100%;
+    background: #111;
+    padding: 10px 60px 20px;
+    text-align: center;
+}
+
+footer > div {
+    vertical-align: center;
+    width: 100%;
+    height: 100%;
+    color: #999;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer h1 {
+    position: relative;
+    right: 10px;
+}
+
+footer a.vk-logo {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+    background-image: url('../img/vk-com.png');
+    filter: invert(100%); -webkit-filter: invert(100%);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    
+    /*margin: 10px 0 5px;*/
+}
+
+
+
+footer .description, footer h1 {
+    text-align: center;
+    color: white;
+}
+
+footer .description {
+    margin-bottom: 5px;
+}

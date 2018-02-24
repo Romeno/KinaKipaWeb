@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/hamburgers.css">
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/circles.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/search.css">
+    <script type="text/javascript" src="scripts/search.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    
+    <script src="https://use.fontawesome.com/fcd25faebd.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <script type="text/javascript" src="scripts/hamburgers.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="#">KinaKipa</a>
+    </div>
+    <div class="search-button">
+        <a href="#" onclick='showSearch()'><i class="fa fa-search" aria-hidden="true"></i></a>
+    </div>
+    <div id="menu">
+        <button class="hamburger hamburger--3dxy js-hamburger" type="button" onclick='menu()'>
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+        </button>
+    </div>
+    <nav>
+        <ul class="">
+            <li>
+                <a href="#"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i>Фільмы</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-hashtag" aria-hidden="true"></i>Навіны</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>Кінапрагляды</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i>Пра нас</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i>Кантакты</a>
+            </li>
+        </ul>
+        <div class="search">
+            <input type="search" placeholder="Blah-blah text!">
+            <a class="submit" href="#">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </a>
+        </div>
+    </nav>
+
+</header>
+
+<content>
+    <div class="carousel">
+        <img src="img/carousel.png">
+    </div>
+
+    <div class="news-gallery category">
+        <header>
+            <a href="#"><h1 class="category-name">Навіны</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    праглядзець астатняе <i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+        <div class="news-block">
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="#" class="image-wrapper" style="background-image: url('img/news0.jpg')">
+
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>2 гадзіны таму</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="#">
+                            Я, Тоня!
+                        </a>
+                        <p class="news-text">
+                            <a href="#">
+                                Хочаце сапраўды класны фільм на каляспартыўную тэматыку? Не пра баскетбол. А такі, дзе героі не плоскія...
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="#" class="image-wrapper" style="background-image: url('img/news2.jpg')">
+
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>5 гадзін таму</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="#">
+                            Форма вады
+                        </a>
+                        <p class="news-text">
+                            <a href="#">
+                            Хутка на Кінакіпа...
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+        </div>
+        <div class="news-block">
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="#" class="image-wrapper" style="background-image: url('img/news3.jpg')">
+
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>17 студзеня 2018</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="#">
+                            Сандэнс-2018
+                        </a>
+                        <p class="news-text">
+                            <a href="#">
+                            У амерыканскім Сандэнсе, штат Юта, 18 студзеня пачынаецца чарговы фестываль незалежнага кіно.
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="#" class="image-wrapper" style="background-image: url('img/news4.jpg')">
+
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Кінапрагляд</p></a>
+                            <div>
+                                
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>11 студзеня 2018</p>
+                            </div>
+                        </div>
+                        <a class="news-title" href="#">
+                            Хронікі Нарніі
+                        </a>
+                        <p class="news-text">
+                            <a href="#">
+                            Для менчукоў ёсць яшчэ адна магчымасць трапіць на паказ фільма Хронікі Нарніі.
+                            </a>
+                        </p>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">Драмы</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    праглядзець астатняе <i class="fa fa-window-restore" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+        <div class="news-block">
+            <div>
+                <div class="news">
+
+                    <a class="film" href="#" style="background-image: url('img/film1.jpg')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">Мае печаныя куры</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="news">
+                    <a class="film" href="#" style="background-image: url('img/film2.jpg')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">Брат майго каханага</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="news-block">
+            <div>
+                <div class="news">
+                    <a class="film" href="#" style="background-image: url('img/film3.jpg')">
+                        <!---->
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">Вікі Крысціна Барселона</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="news">
+                    <a class="film" href="#" style="background-image: url('img/film4.jpg')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">Гуча!</h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</content>
+
+
+
+ <!--just for fun-->
+<!--<content style="overflow: hidden; display: block; height: 1200px; position: relative; top:0px;">-->
+    <!--<div class="circle one"></div>-->
+    <!--<div class="circle two"></div>-->
+    <!--<div class="circle three"></div>-->
+<!--</content>-->
+ <!--will be deleted-->
+
+<footer>
+    <div>
+    
+        <h1><a class='vk-logo' href='#'></a>KinaKipa</h1>
+        <p class='description'>Фільмы, перакладзеныя на мову</p>
+        <p>Калі вы знайшлі памылку ў матэрыяле, ці ў вас не працуе нейкая частка сайта, калі ласка, паведаміце нас праз пошту: <a href="email:kinakipa@gmail.com">kinakipa@gmail.com</a></p>
+    </div>
+</footer>
+
+</body>
+
+
+

@@ -36,6 +36,8 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
+    'filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,18 +46,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'flatblocks',
     'KinaKipa',
     'tinymce',
     'el_pagination',
     'tagulous',
     'unidecode',
-    'Crawler'
+    'Crawler',
+    'haystack',
 ]
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -95,10 +100,23 @@ DATABASES = {
         'USER': settings_local.DATABASES['default']['USER'],
         'PASSWORD': settings_local.DATABASES['default']['PASSWORD'],
         'HOST': settings_local.DATABASES['default']['HOST'],
-        'PORT': settings_local.DATABASES['default']['PORT'],
+
     }
 }
 
+
+FILEBROWSER_DIRECTORY = ''
+FILEBROWSER_MAX_UPLOAD_SIZE = 50*1024*1024
+FILEBROWSER_NORMALIZE_FILENAME = False
+FILEBROWSER_OVERWRITE_EXISTING = False
+FILEBROWSER_DEFAULT_PERMISSIONS = 0o766
+FILEBROWSER_EXTENSIONS = {
+    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff', ''],
+    'Document': ['.pdf', '.doc', '.rtf', '.txt', '.xls', '.csv', '.xlsx', '.docx', '.djvu', ''],
+    'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm', '.ogv'],
+    'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p', '.ogg'],
+    'None': [],
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -122,7 +140,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'be'
+LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
     ('en', _('English')),
@@ -160,4 +178,66 @@ SERIALIZATION_MODULES = {
     'yaml':   'tagulous.serializers.pyyaml',
 }
 
-TAGULOUS_NAME_MAX_LENGTH=191
+TAGULOUS_NAME_MAX_LENGTH = 191
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "advanced",
+    'skin': "o2k7",
+    'skin_variant': "silver",
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 50,
+    'relative_urls': False,
+    'remove_script_host': False,
+    'convert_urls': True,
+
+    'plugins': "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups,autosave,wordcount",
+
+    # no styleselect
+    'theme_advanced_buttons1': "save,newdocument,|,bold,italic,underline,strikethrough,|,forecolor,backcolor,|,justifyleft,justifycenter,justifyright,justifyfull,formatselect,fontselect,fontsizeselect",
+    'theme_advanced_buttons2': "undo,redo,|,cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,charmap,image,media,|,cleanup,code,preview,help,",
+    'theme_advanced_buttons3': "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|print,|,fullscreen",
+    'theme_advanced_buttons4': "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,restoredraft",
+    'theme_advanced_toolbar_location': "top",
+    'theme_advanced_toolbar_align': "left",
+    'theme_advanced_statusbar_location': "bottom",
+    'theme_advanced_resizing': True,
+
+    'theme_advanced_font_sizes': "9px,10px,11px,12px,13px,14px,15px,16px,17px,18px,20px,22px,24px,26px,28px,30px,36px,54px,72px",
+    'theme_advanced_fonts': "Helios Cond=HeliosCond;Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats",
+
+    'width': '90%',
+    'height': 700,
+
+    # for styleselect
+    # 'theme_advanced_styles': "Header 1=header1;Header 2=header2;Header 3=header3;Table Row=tableRow1",
+    'theme_advanced_blockformats': "p,div,h1,h2,h3,h4,h5,h6,blockquote",
+
+    'content_css': "/static/css/content-1.01.css",
+
+    # Drop lists for link/image/media/template dialogs
+    'external_link_list_url': "lists/link_list.js",
+    'external_image_list_url': "lists/image_list.js",
+    'media_external_list_url': "lists/media_list.js",
+
+    'style_formats': [
+        {'title': 'KinaKipaParagraph', 'block': 'p',
+         'styles': {
+             'font-family': '\'HeliosCond\', sans-serif',
+             'font-size': '16px',
+             'font-weight': '300',
+             'text-align': 'left',
+             ''
+             'text-decoration': 'none',
+             'color': '#111'
+         }
+         },
+        {'title': 'BoldText', 'inline': 'b'}
+    ]
+}
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}

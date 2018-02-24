@@ -5,10 +5,12 @@ import re
 import requests
 import bs4
 
+
 def full_url(local_url):
     head = 'http://www.movananova.by/medyateka/videa-\
             medyateka/inshazemnae-kino-pa-belarusku/'
     return head + local_url
+
 
 def get_page(url, storage='memory'):
     content = requests.get(url).text
@@ -19,6 +21,7 @@ def get_page(url, storage='memory'):
             _file.write(content)
         return storage
 
+
 def get_films_links(genre):
     url = full_url(genre)
     storage = (
@@ -27,7 +30,8 @@ def get_films_links(genre):
         'main.html'
         )
     page = get_page(url, storage)
-    
+
+
 genres = (
     'kamiedyi/',
     'bajeviki/',
@@ -42,6 +46,7 @@ films = dict.fromkeys(genres)
 for genre in genres:
     get_films_links(genre)
 
+
 def parse_genre(genre):
     storage = (
         os.getcwd() + '\\genres\\' +
@@ -54,6 +59,7 @@ def parse_genre(genre):
         all_links = [link.get('href') for link in soup.find_all('a')]
         links = [link for link in all_links if re.findall(pattern, link)]
     return links
+
 
 megalinks = dict.fromkeys(genres)
 for genre in megalinks:

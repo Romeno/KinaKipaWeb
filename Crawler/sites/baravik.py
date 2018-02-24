@@ -7,6 +7,7 @@ from Crawler.models import Crawled_Film
 from .baravik_patterns import *
 from Crawler.tools.html import Soup_opener
 
+
 class Library():
     def __init__(self, *args):
 
@@ -33,7 +34,6 @@ class Library():
                         self.film_lists.append(link.attrs['href'])
                         break
                 sleep(randint(5,10))
-
 
     def get_film_urls(self):
         # This function finds every film URL located on film-lists pages
@@ -85,7 +85,7 @@ class Library():
                     # store all crawled info into crawled_items dict:
                     crawled_items = {}
                     crawled_items['torrent_link'] = film_url
-                    # 1) Somehow @Length isn't always could be founded
+                    # 1) Somehow @Length could not always be founded
                     #    with methods below. So we'll catch it in global-html
                     _length = re.findall(meta_patterns['length'], str(soup))
                     crawled_items['length'] = _length[0] if _length else ''
@@ -159,12 +159,14 @@ class Library():
                 with open('baravik_failed.txt', 'a') as log:
                     log.write(film_url)
 
+
 def start_crawling():
     lib = Library()
     lib.get_film_lists()
     # lib.film_urls = [r'https://baravik.org/topic/1771/',]
     lib.get_film_urls()
     lib.get_film_data()
+
 
 def update_images():
     lib = Library()

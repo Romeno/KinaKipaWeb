@@ -1,48 +1,29 @@
 {% extends "base.html" %}
+
 {% load static %}
+{% load i18n %}
+{% load kinakipa_extras %}
+
 {% block content %}
-<content class="news-group">
-	<div class="news-navigation-strip">
-		<h4>
-			<a href="#" class="main">Навiны кiно</a><span class="devider"> | </span><a href="#">Трэйлер фільма «Мсціўцы: Вайна бясконцасці»</a>
-		</h4>
-   	</div>
-
-    <header>
-        <div class="title item">
-            <h3>Трэйлер фільма «Мсціўцы: Вайна бясконцасці»: Эпічнасці бітва пачынаецца</h3>
-            <h5>29 кастрычніка 2017</h5>
-            <h4>Трэйлер блокбастара «Мсціўцы: Вайна бясконцасці» чакалі з лета гэтага года.</h4>
-        </div>
-    </header>
-
-    <div class="content item">
-    	<div class="img-box">
-       		<img src="{% static 'img/news1.jpg' %}" alt="Мсціўцы: Вайна бясконцасці">
-       	</div>
-
-       	<div class="img-text">
-       		<p>Мсціўцы: Вайна бясконцасці. Вар'яцкі тытан Танос (Джош Бролін)</p>
-       	</div>
-
-        <p>Найвялікшым героям Зямлі трэба будзе сутыкнуцца з новай, дагэтуль
-            нябачанай пагрозай. Вар'яцкі тытан Танос (Джош Бролін) разам з
-            жахлівым Чорным Ордэнам накіроўваецца да планеце, каб здабыць
-            наступны камень бясконцасці. Танос хоча знішчыць ўсё жывое ў
-            Сусвеце, і героям прыйдзецца адкінуць старыя крыўды, каб спыніць яго.
-        </p>
-
-        <div class="video-box">
-        	<video id=video" controls poster="{% static 'img/news2.jpg' %}">
-            	<source src="{% static 'video/Avengers.mp4' %}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-        	</video>
-    	</div>
-
-        <p>У фільме з'явіцца сапраўдная армія знаёмых супергерояў ў выкананні
-            Роберта Даўні-мал., Крыса Эванса, Крыса Хэмсварт, Крыса Пратта,
-            Скарлет Ёхансан, Бенедыкта Камбербэтча, Чедвика Боузмана, Джэрэмі Рэннера,
-            Элізабэт Олсен, Дэйва Батысты, Тома Холанда, Зоі Салдана і многих- многіх іншых.
-        </p>
+    <div class="news-navigation-strip">
+        <h4>
+            <a href="#" class="main">{{news.title}}</a><span class="divider">&nbsp; ||&nbsp;  </span><a href="#">{{news.published_date|format_latest_date}}</a>
+        </h4>
     </div>
-</content>
+
+    <content class="news-group">
+        <div class="badge-image-wrapper">
+            <img class="badge-image" src="{{ news.badge_image.url }}">
+        </div>
+
+        <div class="news_content">
+            <div class="content-wrapper">
+                {{news.content|safe}}
+            </div>
+        </div>
+
+        <div class="news-video">
+            {{news.video_link|safe}}
+        </div>
+    </content>
 {% endblock %}

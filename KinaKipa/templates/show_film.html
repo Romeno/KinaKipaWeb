@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<style>
+    .container {
+        height: 300px;
+	    margin-top: 20px;
+	    padding-bottom: 20px;
+	    position: relative;
+	    display: block;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-bottom: 50px;
+        box-shadow: 0px 0px 5px 2.5px #ccc;
+    }
+</style>
+
+
+
+<content class="container">
+    <div class="film">
+        <span><h1>{{ event.title }}</h1></span>
+        <span><h2>{{event.start_date}} - {{event.end_date}}</h2></span>
+        <span><h3>{{event.address}}</h3></span>
+    </div>
+    <div class="describe">
+        <span><h2><span>{{event.description}}</span></h2></span>
+    </div>
+    <div class="map"></div>
+    <div class="footer"></div>
+</content>
+{% endblock %}

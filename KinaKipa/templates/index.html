@@ -1,40 +1,281 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load i18n %}
+{% load kinakipa_extras %}
+
 {% block content %}
-<content class="film-group recent">
-	<header class="header">
-		<div class="title item"><h2>Апошняе</h2></div>
-		<div class="devider item">|</div>
-		<a href="#" class="see-all item">Праглядзець астатняе</a>
-	</header>
 
-    <div class="b_bottom">
-		<img class="btop_img" src="{{baner.image.url}}"  alt="">
+<content>
+
+    <div class="carousel-wrapper">
+        <div class="carousel">
+            {% for hero_slide in hero_slides %}
+                <div class="hero-slide" style="background-image: url({{hero_slide.image.url}})">
+                    <div class="hero-info">
+                        {% if hero_slide|get_model_name == 'MovieHeroSlide' %}
+                            {% include 'includes/hero_content.html' %}
+                        {% else %}
+                            {{ hero_slide.content|safe }}
+                        {% endif %}
+                    </div>
+                    <div style="clear:both;"></div>
+                    <a class="hero-go-button" href="#">
+                        {% if hero_slide|get_model_name == 'MovieHeroSlide' %}
+                            {% trans 'Watch now' %}
+                        {% else %}
+                            {{ hero_slide.button_caption }}
+                        {% endif %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
-	<div id="films">
-		<!--
-			class films unused now 14.11
-		-->
-		<ul class="flex-container">
-			{% for film in last_films %}
-			<li class="flex-item" style="background-image: url('{{film.image.url}}');">
-				<a href='#' style="display: block;">
-					<h1 style="color: red">{{film.name}}</h1>
-				</a>
-			</li>
-			{% endfor %}
-			<!--<li class="flex-item"><a href="film/{{ film.id }}" class="film-1"></a><image src="{% static 'img/1.jpg' %}"></li>-->
-			<!--<li class="flex-item"><a href="#" class="film-2"></a><image src="{% static 'img/2.jpg' %}"></li>-->
-			<!--<li class="flex-item"><a href="#" class="film-3"></a><image src="{% static 'img/3.jpg' %}"></li>-->
-			<!--<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>-->
-			<!--<li class="flex-item"><a href="#" class="film-4"></a><image src="{% static 'img/4.jpg' %}"></li>-->
-		</ul>
-	</div>
+    <div class="news-gallery category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'News' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more' %}<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
 
-    <div class="btop">
-		<img class="btop_img" src="{{baner.image.url}}" alt="">
+        <div class="news-block">
+        {% for n in news1 %}
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="{% url 'news_id' pk=n.pk %}" class="image-wrapper" style="background-image: url({{ n.badge_image.url }})">
+
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">Навіны</p></a>
+                            <div>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date|format_latest_date }}</p>
+                            </div>
+                        </div>
+                        <div class="news-text-wrapper">
+                            <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
+                                {{ n.title }}
+                            </a>
+                            <p class="news-text">
+                                <a href="{% url 'news_id' pk=n.pk %}">
+                                    {{ n.content|clean_text|safe  }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for n in news2 %}
+            <div>
+                <div class="news">
+                    <!-- news items starts-->
+                    <a href="{% url 'news_id' pk=n.pk %}" class="image-wrapper" style="background-image: url({{ n.badge_image.url }})">
+                    </a>
+                    <div>
+                        <div class="news-meta">
+                            <a href="#"><p class="category-link">{% trans 'News' %}</p></a>
+                            <div>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i>{{ n.published_date|format_latest_date }}</p>
+                            </div>
+                        </div>
+                        <div class="news-text-wrapper">
+                            <a class="news-title" href="{% url 'news_id' pk=n.pk %}">
+                                {{ n.title }}
+                            </a>
+                            <p class="news-text">
+                                <a href="{% url 'news_id' pk=n.pk %}">
+                                    {{ n.content|clean_text|safe  }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- news items ends-->
+                </div>
+            </div>
+        {% endfor %}
+        </div>
     </div>
+
+
+    <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'Dramas' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more' %}<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+
+        <div class="news-block">
+        {% for film in drama1 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for film in drama2 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'Comedies' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more' %}<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+
+        <div class="news-block">
+        {% for film in comedies1 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for film in comedies2 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+     <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'Crimes' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more' %}<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+
+        <div class="news-block">
+        {% for film in crimes1 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for film in crimes2 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="category">
+        <header>
+            <a href="#"><h1 class="category-name">{% trans 'Fiction' %}</h1></a>
+            <a href="#" class="category-view-all-wrapper"><h3 class="category-view-all">
+                    {% trans 'View more'%}<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </h3>
+            </a>
+        </header>
+
+        <div class="news-block">
+        {% for film in fiction1 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="news-block">
+        {% for film in fiction2 %}
+            <div>
+                <div class="news">
+
+                    <a class="film" href="{% url 'film_id' film_id=film.id %}" style="background-image: url('{{ film.image.url }}')">
+                        <div class="film-info">
+                            <h1 class="film-play-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></h1>
+                            <h1 class="film-name">{{ film.name }} </h1>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
 </content>
 {% endblock %}

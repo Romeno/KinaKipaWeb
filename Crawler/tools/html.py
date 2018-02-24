@@ -11,10 +11,12 @@ from django.core.files.base import ContentFile
 # SILENT defines whether or not parsing information is displayed
 SILENT = False
 
+
 def clean_html(text):
     soup = bs.BeautifulSoup(text, 'html.parser')
     clean_text = soup.text
     return clean_text
+
 
 class Soup_opener():
     # This class allows to open urls as soup object.

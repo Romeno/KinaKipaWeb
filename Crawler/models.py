@@ -10,8 +10,9 @@ from difflib import SequenceMatcher
 import re
 import os
 from Crawler.tools.html import clean_html
-
+import csv
 import KinaKipa.models
+import time
 
 # Create your models here.
 class Crawled_Film(models.Model):
@@ -43,8 +44,8 @@ class Crawled_Film(models.Model):
     def __eq__(self, other):
         # This function compares films-objects
 
-        if not isinstance(other, self.__class__):
-            return False
+        # if not isinstance(other, self.__class__):
+        #     return False
         if self.name == other.name:
             return True
 
@@ -130,11 +131,9 @@ class Crawled_Film(models.Model):
         found_similar = KinaKipa.models.Film.objects.filter(
             name__exact=str(self.name)
         )
-        if found_similar:
-            return None
 
         # create instance of Film-model
-        other = KinaKipa.models.Film()
+        other = found_similar[0] if found_similar else KinaKipa.models.Film()
         other.name = self.name
 
         required_keys = list(other.__dict__.keys())
@@ -161,9 +160,6 @@ class Crawled_Film(models.Model):
             if not other.__dict__[key]:
                 other.__dict__[key] = self.__dict__[key]
                 other.save()
-
-
-
 
 class Library():
     def clean_data(*args):
@@ -231,9 +227,96 @@ class Library():
             counter += 1 if film.is_valid() else 0
         return counter
 
+    def save_from_csv(self):
+        # 1) store csv in list
+        output = []
+        filename = 'kinakipa_films.csv'
+        with open(filename, 'r', encoding='windows-1251') as csv_file:
+            reader = csv.reader(csv_file, delimiter=';')
+            for line in reader:
+                if line:
+                    output.append(line)
+        # console log
+        print(f'1) Stored in list \'{len(output)}\' items')
+
+        # 2) replace some column names
+        keys_analogy = {
+            'title': 'name',
+            'origin_title': 'name_origin',
+            'tags': 'genres',
+            'kinopoisk': 'kp_link',
+            'imdb': 'imdb_link',
+            'video': 'video_html'
+        }
+        keys = output[0]
+        for key, value in keys_analogy.items():
+            try:
+                index = keys.index(key)
+                keys[index] = value
+            except ValueError:
+                pass
+
+        # console log
+        print(f'2) changed keys to: {keys}')
+
+        # 3) store best img
+        films = [film for film in output[1:] if len(film)==len(keys)]
+        for film in films:
+            for img_src in film[15:9:-1]:
+                if img_src:
+                    film.append(img_src)
+                    break
+            if len(film) != 18:
+                film.append(None)
+        # and don't forget to add key to img
+        keys.append('image_url')
+
+        # console log
+        print(f'3) within {len(films)} we got',
+              f'{sum([bool(film[17]) for film in films])} images')
+
+        # 4) set trusted elements
+        trusted = [
+            'name', 'name_origin', 'year', 'genres',
+            'kp_link', 'imdb_link', 'torrent_link',
+            'image_url', 'video_html'
+        ]
+
+        # console log
+        print(f'4) Set trusted keys to {trusted}')
+
+        # 5) make dicts of trusted films
+        trusted_films = []
+        for film in films:
+            trusted_film = {}
+            film_zip = zip(keys, film)
+            for key, val in film_zip:
+                if val and key in trusted:
+                    trusted_film[key] = val
+            if trusted_film:
+                trusted_films.append(trusted_film)
+        # console log
+        print(f'5) And now we got {len(trusted_films)} trusted films')
+
+        # 6) store trusted in model
+        for film in trusted_films:
+            crawled_film = Crawled_Film.objects.create()
+            try:
+                for key, value in film.items():
+                    crawled_film.__dict__[key] = value
+                crawled_film.save()
+            except Exception as err:
+                crawled_film.delete()
+                print(f"Couldn't save film: {film}.\n {err} \n {err.__traceback__} \n")
 
 def send_valid_to_site():
-    films = Crawled_Film.objects.all()
+    films = Crawled_Film.objects.all()[230:]
+    films_len = len(films)
+    print('Initialising merging films...')
+    counter = 0
     for film in films:
+        print(f'>>> {film.__dict__}')
         if film.is_valid():
             film.send_to_site()
+        counter += 1
+        print(f'{time.ctime()} Congratulations, dude! Successfully merged {counter}/{films_len} film!\n')
