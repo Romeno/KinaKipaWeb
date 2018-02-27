@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from KinaKipa.views import (test_trans, get_server_info,
-                            news, index, last_film, catalog, movie_screenings,
+                            news, index, catalog, movie_screenings,
                             last_news, my_ajax, get_events, film, news_gallery)
 from filebrowser.sites import site
 import tagulous.views
@@ -72,7 +72,6 @@ urlpatterns += i18n_patterns(
     url(r'^server_info/$', get_server_info),
 
     url(r'^last_news/$', last_news),
-    url(r'^last_film/$', last_film),
 )
 
 if settings.DEBUG:

@@ -89,10 +89,6 @@ def get_server_info(req):
     return HttpResponse(response)
 
 
-def last_film(request):
-    film_cursor = Film.objects.last()
-    return render(request, 'film_page.html', {'film': film_cursor})
-
 
 @page_template('catalog_endless_pages.html')
 def catalog(request, template='catalog.html', extra_context=None):
