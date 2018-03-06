@@ -1,11 +1,11 @@
 
 .carousel-wrapper {
-  $slide-height: 750px;
+  $slide-height: 615px;
   $dots-overlay-height: 48px;
   $arrow-size: 48px;
   //$slider-indigo-color: #0089d8;
   $slider-indigo-color: #4c03bd;
-
+  height: $slide-height;
   width: 100%;
 
   .hero-slide {
