@@ -33,7 +33,7 @@
                         </button>
                     </div>
 
-                    <nav class="lang-block">
+                    <nav id="lang-block">
                         <ul>
                             <li>
                                 <a href="/be{{ request.path|slice:'3:' }}">БЕЛ</a>
@@ -47,7 +47,7 @@
                         </ul>
                     </nav>
 
-                    <nav class="">
+                    <nav class="" id="header-search">
                         <ul>
                             <li>
                                 <a href="{% url 'catalog' %}"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i>{% trans 'Movies' %}</a>
