@@ -18,3 +18,27 @@
 //        });
 //    });
 //});
+
+
+$('#id_q').change(function () {
+    querry = $(this).val();
+    console.log( querry );
+
+    $.ajax({
+        url: 'api/search/',
+        data: {
+            'q': querry
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.films) {
+                var names = '';
+                for (var film in data.films) {
+                    names += data.films[film]['name']
+                }
+
+                alert(names);
+            }
+        }
+    });
+});

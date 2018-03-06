@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from django.template.response import TemplateResponse
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import ugettext as _
 from el_pagination.decorators import page_template
@@ -141,8 +142,6 @@ def film(request, film_id):
         pass
     film = found[0] # for filter returns queryset, but film needed
 
-
-
     return render(request, 'film.html', {'film': film})
 
 
@@ -155,3 +154,28 @@ def news_gallery(request, template='news_gallery.html', extra_context=None):
     if extra_context is not None:
         context.update(extra_context)
     return render(request, template, context)
+
+def search_films(request):
+    """"""
+    search_text = request.GET.get('q', None)
+    if not search_text:
+        return JsonResponse({'films': None})
+
+    found = (
+        Film.objects.filter(name__icontains=search_text)[:5] or
+        Film.objects.filter(name_origin__icontains=search_text)[:5]
+    )
+    if not found:
+        return JsonResponse({'films': None})
+
+    data = {'films': []}
+    for film in found:
+        film_name = film.name
+        film_url = reverse(
+            'film_id', kwargs={'film_id': film.id}
+        )
+        data['films'].append({
+            'name': film_name,
+            'url': film_url
+        })
+    return JsonResponse(data)

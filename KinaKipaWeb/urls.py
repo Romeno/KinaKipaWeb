@@ -21,7 +21,8 @@ from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from KinaKipa.views import (test_trans, get_server_info,
                             news, index, catalog, movie_screenings,
-                            last_news, my_ajax, get_events, film, news_gallery)
+                            last_news, my_ajax, get_events, film, news_gallery,
+                            search_films)
 from filebrowser.sites import site
 import tagulous.views
 from KinaKipa.models import Genre
@@ -61,7 +62,7 @@ urlpatterns += i18n_patterns(
 
     # ajax
     url(r'^api/events/$', get_events),
-
+    url(r'api/search/$', search_films),
 
 
 
