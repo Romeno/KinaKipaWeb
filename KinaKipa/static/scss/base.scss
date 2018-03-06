@@ -44,7 +44,7 @@ nav#lang-block {
 .main-header {
   color: white;
   height: 50px;
-  background-color: #222222;
+  background-color: $menu-background-color;
 
   > .logo {
     color: black;
@@ -67,6 +67,7 @@ nav#lang-block {
       font-size: 1.5em;
 
       &:hover {
+        opacity: 1;
         background-color: #7ebabb;
       }
     }
@@ -77,6 +78,17 @@ nav#lang-block {
     height: 100%;
     float: right;
     margin-right: 40px;
+
+    a {
+      transition-property: background-color, filter;
+      transition-duration: 0.15s;
+      transition-timing-function: linear;
+
+      &:hover {
+        opacity: 1;
+        background-color: #7ebabb;
+      }
+    }
 
     li {
       /*padding: 0 5px;*/
@@ -105,7 +117,7 @@ nav#lang-block {
       height: 100%;
 
       &:hover {
-        background-color: #8cd5d7;
+        background-color: #7ebabb;
       }
     }
   }

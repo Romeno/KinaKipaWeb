@@ -9,14 +9,24 @@
 }
 
 body {
-	font-family: "HeliosCond", Helvetica, "Lucida Grande", "Lucida Sans Unicode", sans-serif;
-	background: $white;
-	text-align: center;
-	background: url(../img/body.png) repeat-x;
+  font-family: "HeliosCond", Helvetica, "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  background: $white;
+  text-align: center;
+  background: url(../img/body.png) repeat-x;
 
-    h1 {
-	  font-size: 26px;
-    }
+  h1 {
+    font-size: 26px;
+  }
+
+  a {
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+  }
+  a:hover {
+    opacity: 0.7;
+}
+
 }
 
 
