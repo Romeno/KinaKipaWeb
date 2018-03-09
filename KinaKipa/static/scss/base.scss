@@ -95,13 +95,13 @@
 }
 
 @media all and (max-width: 840px){
-  .main-header > .logo {
+  .main-header  .logo {
     /*position: inherit;*/
     float: right;
     /*margin-right: 50px;*/
   }
 
-  .main-header > #menu {
+  .main-header  #menu {
     margin: 0 6px;
     display: block;
     width: 50px;
@@ -109,48 +109,49 @@
     float: right;
   }
 
-  .main-header > #menu > a {
+  .main-header  #menu > a {
     display: block;
     height: 50px;
   }
 
-  .main-header > nav {
+  .main-header  nav {
     display: none;
   }
 
-  .main-header > nav.is-opened {
-    float: left;
+  .main-header  nav.is-opened {
     display: block;
-    position: relative;
-    /*top: 50px;*/
+    position: absolute;
+    top: 50px;
+    z-index: 1000;
+    height: auto;
     background-color: #222222;
     width: 100%;
   }
 
-  .main-header > nav.is-opened li {
+  .main-header  nav.is-opened li {
     width: 100%;
     background-color: #222222;
   }
 
-  .main-header > nav.is-opened a {
+  .main-header  nav.is-opened a {
     padding-left: 62px;
     text-align: left;
     margin-left: 0;
     z-index: 10000 !important;
   }
 
-  .main-header > nav li i {
+  .main-header  nav li i {
     margin-right: 1em;
     text-align: center;
     min-width: 1em;
     display: inline-block !important;
   }
 
-  .main-header > nav li:first-child {
+  .main-header  nav li:first-child {
     padding-top: 5px;
   }
 
-  .main-header > nav li:last-child {
+  .main-header  nav li:last-child {
     padding-bottom: 5px;
   }
 }
