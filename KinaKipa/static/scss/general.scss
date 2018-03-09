@@ -3,8 +3,8 @@
 
 * {
 	/* old-style reset here :) */
-	border: 0px;
-	padding: 0px;
+	border: 0;
+	padding: 0;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 	background: url(../img/body.png) repeat-x;
 }
 
-body h1 {
+body > h1 {
 	padding-top: 20px;
 	font-size: 26px;
 	color: #335;
@@ -443,12 +443,12 @@ h1, h2, h3, h4, h5, h6 {
 .movie_screenings {
   .maps {
     display: block;
-    height: 300px;
+    height: 400px;
     padding-bottom: 20px;
     position: relative;
     margin-top: 20px;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-bottom: 50px;
 
     img {

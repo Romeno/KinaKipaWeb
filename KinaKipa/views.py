@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.utils.translation import ugettext as _
 from el_pagination.decorators import page_template
 from .models import Article, Banner, Film, Event, HeroSlide, MovieHeroSlide
+from datetime import timedelta
 
 # Create your views here.
 
@@ -123,7 +124,7 @@ MONTHS = {
 
 
 def get_events(request):
-    events = Event.objects.filter(end_date__gte=timezone.now())
+    events = Event.objects.filter(end_date__gte=timezone.now() - timedelta(90))
     result = []
     for event in events:
         result.append({

@@ -20,7 +20,7 @@
                         {% endif %}
                     </div>
                     <div style="clear:both;"></div>
-                    <a class="hero-go-button" href="#">
+                    <a class="hero-go-button" href="{{ hero_slide.url }}">
                         {% if hero_slide|get_model_name == 'MovieHeroSlide' %}
                             {% trans 'Watch now' %}
                         {% else %}
