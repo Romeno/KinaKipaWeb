@@ -191,7 +191,7 @@ class HeroSlideBase(models.Model):
 
 
 class HeroSlide(HeroSlideBase):
-    content = HTMLField(verbose_name=_('Hero slide text'), help_text=_('Hero slide text'))
+    content = CharField(max_length=250, verbose_name=_('Hero slide text'), help_text=_('Hero slide text'))
     button_caption = CharField(max_length=200, verbose_name=_('Button caption'), help_text=_("Button caption"))
 
     def __str__(self):

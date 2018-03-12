@@ -16,7 +16,9 @@
                         {% if hero_slide|get_model_name == 'MovieHeroSlide' %}
                             {% include 'includes/hero_content.html' %}
                         {% else %}
-                            {{ hero_slide.content|safe }}
+                            <h1 class="hero-title">
+                                {{ hero_slide.content }}
+                            </h1>
                         {% endif %}
                     </div>
                     <div style="clear:both;"></div>
