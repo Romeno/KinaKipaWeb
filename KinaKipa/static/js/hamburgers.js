@@ -110,6 +110,6 @@ $(document).ready(function () {
     var $hamburger = $(".hamburger");
     $hamburger.on("click", function(e) {
         $hamburger.toggleClass("is-active");
-        $(".main-header .main-menu").toggleClass("is-opened");
+        $(".main-header #header-search").toggleClass("is-opened");
     });
 });

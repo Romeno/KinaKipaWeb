@@ -1,0 +1,127 @@
+.film-plate {
+  min-height: 450px;
+  background: white;
+}
+
+.film-names {
+  margin: 0px;
+  padding: 0px;
+}
+
+.film-names {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-left: 78px;
+  font-size: 36px;
+}
+
+.film-names div:nth-child(1) {
+  color: tomato;
+}
+
+.film-names div:nth-child(3) {
+  color: #999;
+}
+
+.film-page header {
+  margin-left: 100px;
+}
+
+.film-page header h1, div {
+  display: inline-block;
+}
+
+.film-plate {
+  width: 100%;
+}
+
+.film-plate aside {
+  display: block;
+  float: left;
+  height: 450px;
+  width: 60px;
+  background-color: #222;
+}
+
+.film-plate .poster {
+  padding: 0;
+  float: left;
+  background: url("img/poster.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 300px;
+  height: 450px;
+  margin: 0 15px;
+}
+
+.film-plate main {
+  background: url("img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+
+
+  display: block;
+  margin-left: 390px;
+  height: 450px;
+  min-width: 550px;
+  background-color: #222;
+}
+
+.info-container {
+  margin: 25px 50px;
+  height: 380px;
+  min-width: 400px;
+  max-width: 600px;
+  /*background-color: rgba(255, 0, 0, 0.2);*/
+}
+
+.info-container .film-info-container {
+  min-height: 55px;
+  width: 100%;
+}
+
+.film-info-container div {
+  float: left;
+  font-size: 36px;
+}
+
+.film-info-container .film-year {
+  width: 138px;
+  margin-top: -8px;
+  font-size: 50px;
+  font-weight: 500;
+  color: white;
+}
+
+.film-info-container .film-rating {
+  margin-top: 5px;
+  color: #999999;
+}
+
+.film-info-container .kp {
+  margin-right: 27px;
+}
+
+/**/
+.film-info {
+  padding-left: 2px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.film-info {
+  margin-top: -10px;
+}
+
+.film-info table tr{
+  vertical-align: top;
+}
+
+.film-info table tr td:first-child {
+  width: 130px;
+}
+.films {
+  width: 71%;
+  font-size: 12px;
+}
